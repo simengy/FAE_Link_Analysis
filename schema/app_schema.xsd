@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="app" type="vividApp" />
+
+	<xs:element name="apps" type="vividApps" />
+
+	<xs:element name="datasource" type="datasource" />
+
+	<xs:element name="mail" type="mailConfig" />
+
+	<xs:element name="property" type="property" />
+
+	<xs:complexType name="vividApps">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence>
+					<xs:element ref="app" minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="abstractRequestBody" abstract="true">
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="vividApp">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:all>
+					<xs:element name="datasources" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="datasource" minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="streams" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="stream" type="datasource" minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="analysises" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="analysis" type="analysis"
+									minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="caches" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="cache" type="cache" minOccurs="0"
+									maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="exports" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="export" type="export" minOccurs="0"
+									maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+<!-- 					<xs:element name="ruleEngines" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ruleEngine" type="ruleEngine"
+									minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element> -->
+<!-- 					<xs:element name="messageSource" minOccurs="0">
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="files" maxOccurs="1" minOccurs="1">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="file" type="xs:string"
+												minOccurs="0" maxOccurs="unbounded" />
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="langs" maxOccurs="1" minOccurs="1">
+									<xs:complexType>
+										<xs:sequence maxOccurs="1" minOccurs="1">
+											<xs:element name="lang" type="lang" minOccurs="0"
+												maxOccurs="unbounded" />
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element> -->
+					<xs:element name="view" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="mailConfig" type="mailConfig"
+						minOccurs="0" />
+					<xs:element name="messaging" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="properties" minOccurs="0">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element ref="property" minOccurs="0"
+												maxOccurs="unbounded" />
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+							<xs:attribute name="class" type="xs:string" use="required" />
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="userLog" type="userLog" minOccurs="0" />
+				</xs:all>
+				<xs:attribute name="enableCache" type="xs:boolean" use="optional"
+					default="true" />
+				<xs:attribute name="enableUiErrorMsgs" type="xs:boolean"
+					use="optional" default="true" />
+				<xs:attribute name="name" type="xs:string" use="required" />
+				<xs:attribute name="root" type="xs:string" use="required" />
+				<xs:attribute name="xmlRoot" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="datasource">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence>
+					<xs:element name="properties" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="property" minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="class" type="xs:string" use="required" />
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="analysis">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:all>
+					<xs:element name="properties" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="property" minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+<!-- 					<xs:element name="customTag" minOccurs="0" maxOccurs="1"></xs:element> -->
+				</xs:all>
+				<xs:attribute name="class" type="xs:string" use="required" />
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="export">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence>
+					<xs:element name="properties" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="property" minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="class" type="xs:string" use="required" />
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="cache">
+		<xs:all>
+			<xs:element name="properties" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="property" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="invalidator" type="invalidator"
+				minOccurs="0"></xs:element>
+		</xs:all>
+		<xs:attribute name="class" type="xs:string" use="required" />
+		<xs:attribute name="name" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="invalidator">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence>
+					<xs:element name="properties" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="property" minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="class" type="xs:string" use="required" />
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+<!-- 	<xs:complexType name="customTag">
+				<xs:attribute name="class" type="xs:string" use="required" />
+				<xs:attribute name="xsdLocation" type="xs:string" use="optional" />
+	</xs:complexType>
+ -->
+
+	<!-- <xs:complexType name="ruleEngine">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence>
+					<xs:element name="properties" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="property" minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="class" type="xs:string" use="required" />
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType> -->
+
+	<xs:complexType name="property">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence />
+				<xs:attribute name="key" type="xs:string" use="required" />
+				<xs:attribute name="value" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="mailConfig">
+		<xs:all>
+			<xs:element name="host" type="xs:string" />
+			<xs:element name="password" type="xs:string" />
+			<xs:element name="port" type="xs:int" />
+			<xs:element name="protocol" type="xs:string" default="smtp"
+				minOccurs="0" />
+			<xs:element name="smtpAuth" type="xs:boolean" default="true"
+				minOccurs="0" />
+			<xs:element name="startTlsEnabled" type="xs:boolean"
+				default="true" minOccurs="0" />
+			<xs:element name="username" type="xs:string" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="lang">
+		<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+		<xs:attribute name="country" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="charset" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="order" type="xs:string" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="userLog">
+		<xs:attribute name="enable" type="xs:boolean"></xs:attribute>
+	</xs:complexType>
+
+</xs:schema>
+

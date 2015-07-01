@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apps xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/app_schema.xsd">
+	<app name="sphinx" root="/sphinx" enableUiErrorMsgs="true" >
+		<datasources>
+			<datasource name="auth"
+				class="com.saama.vividsense.datasource.excel.SpreadSheetConnectorFactory">
+				<properties>
+					<property key="url" value="webcontent:sphinx/xml/demo/auth.xlsx" />
+				</properties>
+			</datasource>
+
+			<datasource name="excel"
+				class="com.saama.vividsense.datasource.excel.SpreadSheetConnectorFactory">
+				<properties>
+					<property key="url"
+						value="webcontent:sphinx/xml/demo/vividsense_13.xlsx" />
+				</properties>
+			</datasource>
+
+			<datasource name="rdbms"
+				class="com.saama.vividsense.datasource.rdbms.HibernateDataSourceFactory">
+				<properties>
+					<property key="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"></property>
+					<property key="hibernate.connection.url" value="jdbc:mysql://r130:3306/vividsense"></property>
+					<property key="hibernate.connection.username" value="root"></property>
+					<property key="hibernate.connection.password" value="Saama123"></property>
+					<property key="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"></property>
+				</properties>
+			</datasource>
+
+			<datasource name="mongo"
+				class="com.saama.vividsense.datasource.mongo.MongoDBDatasourceFactory">
+				<properties>
+					<property key="database_type" value="nosql" />
+					<property key="host" value="r131" />
+					<property key="port" value="27017" />
+					<property key="database.name" value="fifa_wc" />
+				</properties>
+			</datasource>
+
+		</datasources>
+		
+		<streams>
+			<stream name="test" class="com.saama.vividsense.stream.datasource.DatasourceStreamFactory">
+				<properties>
+					<property key="datasource" value="rdbms"/>
+				</properties>
+			</stream>
+		</streams>
+
+		<analysises>
+			<analysis name="wordCloud"
+				class="com.saama.vividsense.analysis.wordcount.WordCloudConnectorFactory">
+				<properties>
+				</properties>
+			</analysis>
+		</analysises>
+		
+		<view>layout.xml</view>
+		
+		<caches>
+			<cache name="guava"
+				class="com.saama.vividsense.cache.guava.GuavaCacheManagerFactory">
+				<properties>
+					<property key="cache_size" value="50" />
+					<property key="expire_after_access" value="50" />
+				</properties>
+			</cache>
+			<!-- <cache name="memcache"
+				class="com.saama.vividsense.cache.memcache.MemCacheManagerFactory">
+				<properties>
+					<property key="server" value="r130" />
+					<property key="port" value="11211" />
+					<property key="expiryTime" value="100000" />
+				</properties>
+			</cache> -->
+		</caches>
+		<!-- <messageSource>
+			<langs>
+				<lang name="dt" country="Dutch" />
+				<lang name="fr" country="French" />
+				<lang name="en" country="English" />
+			</langs>
+			<files>
+				<file>webcontent:/sphinx/xml/props/dashboard</file>
+				<file>webcontent:/sphinx/xml/props/layout</file>
+			</files>
+		</messageSource>  -->
+
+		<exports>
+			<export name="Email" class="com.saama.vividsense.export.EmailExportHandlerFactory"></export>
+			<export name="excel" class="com.saama.vividsense.export.excel.ExcelExportHelperFactory"></export>
+		</exports>
+
+
+		<!-- Start Email Configuration -->
+
+		<mailConfig>
+			<host>smtp.gmail.com</host>
+			<username>userName</username>
+			<password>pwd</password>
+			<port>587</port>
+			<protocol>smtp</protocol>
+			<smtpAuth>true</smtpAuth>
+			<startTlsEnabled>true</startTlsEnabled>
+		</mailConfig>
+		<!-- End Email Configuration -->
+		
+		<!-- <userLog enable="false"/> -->
+	</app>
+</apps>
+

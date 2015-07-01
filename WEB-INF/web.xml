@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>VividSenseMSDemo</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/conf/application-context.xml,/WEB-INF/classes/security/security.xml
+		</param-value>
+	</context-param>
+	<context-param>
+		<param-name>apps_file_location</param-name>
+		<param-value>webcontent:/custom_project/xml/apps.xml</param-value>
+	</context-param>
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- csrf -->
+<!-- 	<filter>
+		<filter-name>addCsrf</filter-name>
+		<filter-class>com.saama.vividsense.security.filter.csrf.CSRFTokenCreationFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>cache_size</param-name>
+			<param-value>5000</param-value>
+		</init-param>
+		<init-param>
+			<param-name>include_url_patterns</param-name>
+			<param-value>/|.*.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>token_timeout</param-name>
+			<param-value>30</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>addCsrf</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>validateCsrf</filter-name>
+		<filter-class>com.saama.vividsense.security.filter.csrf.CSRFTokenValidationFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>exclude_url_patterns</param-name>
+			<param-value>/|.*.jsp|/j_spring_security_logout|.*/wsstream/.*|.*/images/.*|.*/vs_lib/.*|.*/styles/.*|.*/images/.*|.*/font/.*|.*/scripts/.*|in-compatible-browser.html</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>validateCsrf</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+
+	<!-- XFS -->
+<!-- 	<filter>
+		<filter-name>xfs</filter-name>
+		<filter-class>com.saama.vividsense.security.filter.xfs.XFSFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	<filter-mapping>
+		<filter-name>xfs</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+
+	<!-- sniffing -->
+<!-- 	<filter>
+		<filter-name>nosniff</filter-name>
+		<filter-class>com.saama.vividsense.security.filter.nosniff.NoSniffFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	<filter-mapping>
+		<filter-name>nosniff</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+
+
+	<!-- uncomment for security -->
+	<!-- <filter> <filter-name>springSecurityFilterChain</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
+		<async-supported>true</async-supported> </filter> <filter-mapping> <filter-name>springSecurityFilterChain</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+
+	<filter>
+		<filter-name>vividsenseWS</filter-name>
+		<filter-class>org.glassfish.jersey.servlet.ServletContainer</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.saama.vividsense.web.ws.conf.App</param-value>
+		</init-param>
+		<init-param>
+			<param-name>jersey.config.servlet.filter.staticContentRegex</param-name>
+			<param-value>.*/images/.*|.*/wsstream/.*|.*.css|.*.html|.*.htm|.*.js|.*.gif|.*.png|.*.jpg|.*.jpeg|.*.woff|.*.eot|.*.svg|.*.ttf|.*/cisco/images/.*</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>vividsenseWS</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<error-page>
+		<error-code>401</error-code>
+		<location>/jsp/401.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/jsp/403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/jsp/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/jsp/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>408</error-code>
+		<location>/jsp/408.jsp</location>
+	</error-page>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

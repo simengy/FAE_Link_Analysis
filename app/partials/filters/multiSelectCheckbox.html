@@ -1,0 +1,30 @@
+<div style="position: relative; display: block; padding: 4px 0">
+	<div type="button"
+		class="chosen-container chosen-container-single multi_select_checkbox"
+		data-ng-click="hideMulti()">
+		<a class="chosen-single">Select Value
+			<div class="button_b">
+				<b></b>
+			</div>
+		</a>
+	</div>
+	<div class="multisel-dropdown" data-ng-show="vis.singleModel">
+		<div class="check_uncheck_all">
+			<a data-ng-click="checkAll(filterData)" data-ng-disabled="filterData.maxSelect" data-ng-class="{'disabled': filterData.maxSelect}"><i
+				class="glyphicon glyphicon-ok"></i> Check All</a> <a data-ng-click="uncheckAll()"><i
+				class="glyphicon glyphicon-remove"></i> Uncheck All</a>
+		</div>
+		<hr>
+		<input type="text" data-ng-model="nameTxt" />
+		<div class="inner">
+			<div data-ng-repeat="optionVal in filterData.data" href
+				data-ng-class="{active: (filterSelection.indexOf(optionVal)!==-1)}"
+				data-ng-show="(optionVal[getFilterIndexValue()].toString()).indexOf(nameTxt)!=-1 || nameTxt==null"
+				data-ng-click="setSelectedItem(optionVal)">
+				{{optionVal[getFilterIndexValue()]}}<i
+					data-ng-if="filterSelection.indexOf(optionVal)!=-1"
+					class="glyphicon glyphicon-ok pull-right"></i>
+			</div>
+		</div>
+	</div>
+</div>

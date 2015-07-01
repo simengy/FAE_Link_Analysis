@@ -1,0 +1,12 @@
+<!-- {{widgetData.credits.href}} -->
+
+<!-- Pivot table -->
+<div style="overflow: auto; min-height:183px">
+	<pivottable pivot-data="widgetData"></pivottable>
+	<div class="credit" data-ng-if="widgetData.credits.enabled">
+		<a class="credit"
+			style="color: #909090; cursor: pointer; fill: #909090; float: right; font-size: 10px; text-decoration: none;"
+			href="{{widgetData.credits.href}}">{{widgetData.credits.text}}</a>
+	</div>
+</div>
+<div class="clearfix"></div>

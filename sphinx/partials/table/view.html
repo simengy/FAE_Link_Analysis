@@ -1,0 +1,190 @@
+<div data-ng-controller='ViewCtrl'>
+	<button class="btn btn-link pull-right" data-ng-click="insert()"
+		style="font-size: 18px">
+		<img src="sphinx/images/add.png" height="27px" width="27px" /> <span
+			translate>Insert</span>
+	</button>
+	<!-- Data Table -->
+	<table datatable="overrideOptions" data="widgetData"
+		widgetParams="widgetParams"
+		class="table table-responsive table-bordered table-striped"></table>
+	<div class="clearfix"></div>
+	<div>
+		<h3>Design Chart</h3>
+		<h4>
+			<span style="width: 100px; display: inline-block;">Type</span> <select
+				data-ng-change="createChartForm()" name="chartType"
+				data-ng-model="chartType" required
+				data-ng-options="type for type in chartTypes">
+				<option value="Select Chart">select chart</option>
+			</select>
+		</h4>
+		<Form name="chartForm" data-ng-show="enableChartForm"
+			data-ng-submit="chartForm.$valid && drawChart()" novalidate>
+			<div id="chartOptions" data-ng-repeat="chartField in chartFields">
+				<h4>
+					<span style="width: 100px; display: inline-block;">{{chartField.name}}</span>
+					<select data-ng-model="chartField.value"
+						data-ng-options="value for value in fieldOptions"
+						style="width: 200px;" data-placeholder='Choose Field' required><option
+							value=''></option>
+					</select>
+				</h4>
+			</div>
+			<input type="submit" class="btn btn-primary" value="Draw Chart" /> <br />
+			<div id="chartpp"></div>
+		</Form>
+	</div>
+</div>
+<script>
+  function ViewCtrl($scope) {
+    var w = getAngularService('Widget'), ns = getAngularService('NotificationService'), $rs = getAngularService('$rootScope'), $m = getAngularService('$modal'), rs = getAngularService('RequireService');
+
+    fp = angular.extend({}, $scope.widgetParams);
+    self = this;
+
+    $scope.insert = function() {
+      self.getRowModel(function() {
+        self.openModal(angular.extend({}, $scope.widgetParams));
+      });
+    };
+
+    this.getRowModel = function(callBack) {
+      w.post({
+        widget: "meta"
+      }, angular.extend({}, $scope.widgetParams), function(data) {
+        if (data.responseBody.designs.length > 0) {
+          var d = data.responseBody.designs[0];
+          self.rowModel = {};
+          d.data.data.forEach(function(d) {
+            self.rowModel[d['Field']] = '';
+          });
+          console.log(d, self.rowModel);
+          callBack();
+        } else {
+          console.log(data.responseHeader);
+        }
+
+      });
+    };
+
+    this.openModal = function(fp) {
+      $m.open({
+        templateUrl: 'sphinx/partials/infographics/results.html',
+        controller: function($scope) {
+          $scope.rowModel = self.rowModel;
+          $scope.submit = function() {
+            fp.$rowEditMeta = [];
+            fp.$rowEditData = [];
+            for ( var e in $scope.rowModel) {
+              if ($scope.rowModel.hasOwnProperty(e)) {
+                fp.$rowEditMeta.push(e);
+                fp.$rowEditData.push($scope.rowModel[e]);
+              }
+            }
+            fp.queryType = "INSERT";
+
+            w.post({
+              'widget': 'dmlRow'
+            }, fp, function(data) {
+              if (data.responseHeader.errorMessages && data.responseHeader.errorMessages.length != 0) {
+                ns.alert("unable to insert data");
+                $scope.cancel();
+                console.log(data.responseHeader.errorMessages);
+              } else {
+                ns.alert("row inserted :: effects will be visible after refreshing the page");
+                $scope.cancel();
+              }
+            }, function(e) {
+              ns.alert("unable to insert row");
+              $scope.cancel();
+              console.log(e);
+            });
+
+          };
+          $scope.cancel = function() {
+            $scope.$dismiss('cancel');
+          };
+
+        }
+      });
+    };
+
+    $scope.$watch("widgetData", function() {
+      $scope.enableChartForm = false;
+      $scope.fieldOptions = $scope.widgetData.columns;
+      $scope.chartType = "";
+    })
+
+    var chartConf = {
+      pie: ["y", "name"],
+      line: ["y", "x"],
+      column: ["y", "x"],
+      area: ["y", "x"]
+    };
+
+    $scope.chartTypes = Object.keys(chartConf);
+
+    $scope.createChartForm = function() {
+      console.log($scope.chartType);
+      $scope.enableChartForm = true;
+
+      var conf = chartConf[$scope.chartType];
+
+      var chartFields = [];
+      for (var c = 0; c < conf.length; c++) {
+        v = {};
+        v.name = conf[c];
+        v.value = "";
+        chartFields.push(v);
+      }
+      $scope.chartFields = chartFields;
+      console.log($scope.chartFields);
+    };
+
+    $scope.drawChart = function() {
+      console.log($scope.chartFields);
+      var chartfa = $scope.chartFields;
+      var fieldArray = [];
+
+      for (var i = 0; i < chartfa.length; i++) {
+        fieldArray.push(chartfa[i].value);
+      }
+      var data = $scope.widgetData.data;
+      var da = {};
+      var chartData = [], innerData, categories = [];
+      for (var d = 0; d < data.length; d++) {
+        da = data[d];
+        innerData = {};
+        for (var i = 0; i < chartfa.length; i++) {
+          if (chartfa[i].name === "x") {
+            categories.push(da[chartfa[i].value]);
+          } else {
+            innerData[chartfa[i].name] = da[chartfa[i].value];
+          }
+        }
+        chartData.push(innerData);
+      }
+
+      rs.loadScript(['charts']).then(function() {
+        console.log(JSON.stringify(chartData));
+        $('#chartpp').highcharts({
+          chart:{
+            backgroundColor: 'rgba(0,0,0,0)'
+          },
+          credits: {
+            enabled: false
+          },
+          series: [{
+            type: $scope.chartType,
+            data: chartData
+          }],
+          xAxis: {
+            categories: categories
+          }
+        })
+        //new Highcharts.Chart(,{series:{"type":"line","data":[{"y":10},{"y":20}]}});    		
+      });
+    };
+  }
+</script>

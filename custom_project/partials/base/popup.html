@@ -1,0 +1,22 @@
+<div class="modal-body">
+	<button class="close" type="button" data-ng-click="cancel()"></button>
+	<div data-ng-repeat="d in design" data-ng-init="getTemplate(d)">
+		<div class="border_container_inr">
+			<span class="widget_icon" style="float: left"
+				data-ng-style="d.info.title.style"> <img
+				data-ng-if="widgetIcon" data-ng-src="{{widgetIcon}}" />
+			</span>
+			<div data-ng-if="d.info.title.text" class="container_header"
+				data-ng-class="'align_'+d.info.title.style.align"
+				data-ng-style="d.info.title.style">{{d.info.title.text | translate}}</div>
+			<div data-ng-if="d.info.subTitle.text" class="container_subheader"
+				data-ng-class="'align_'+d.info.subTitle.style.align"
+				data-ng-style="widgetInfo.subTitle.style">{{d.info.subTitle.text  | translate }}</div>
+			<div data-ng-include="template" data-ng-class="d.info.cssClass"
+				data-ng-style="d.info.style"></div>
+		</div>
+	</div>
+	<div data-ng-if="content">
+		<div data-ng-include="content"></div>
+	</div>
+</div>

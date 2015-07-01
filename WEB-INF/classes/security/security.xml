@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Document : spring-security-context.xml Created on : Jan 13, 20121 Author 
+	: BSSOSS Description: Contains the Spring security configuarions -->
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+
+	<security:global-method-security secured-annotations="enabled" />
+
+	<security:http pattern="/login.html" security="none" />
+	<security:http pattern="/app/css/**" security="none" />
+	<security:http pattern="/app/font/**" security="none" />
+	<security:http pattern="/app/images/**" security="none" />
+	<security:http pattern="/app/json/**" security="none" />
+	<security:http pattern="/vs_lib/**" security="none" />
+	<security:http pattern="/401.html" security="none" />
+	<security:http pattern="/404.html" security="none" />
+	<security:http pattern="/4500.html" security="none" />
+
+	<security:http access-denied-page="/401.html" use-expressions="true" auto-config="true" authentication-manager-ref="authenticationManager">
+		<security:form-login  always-use-default-target="true" login-page="/login.html" default-target-url="/index.jsp" authentication-failure-url="/401.html"/>
+		<security:logout logout-success-url="/index.jsp" invalidate-session="true" delete-cookies="JSESSIONID" />
+		<security:intercept-url pattern="/dashboardXml/**" access="denyAll" />
+		<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER')" />
+	</security:http>
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider
+			user-service-ref="userDetailsService">
+<!-- 			<security:password-encoder ref="passwordEncoder"></security:password-encoder> -->
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<!-- specific format for query -->
+	<bean id="userDetailsService" class="com.saama.vividsense.authorization.VividUserDetailService">
+		
+		<property name="applicationName" value="sphinx" /> <!-- applicaionName -->
+		
+		<property name="connectorName" value="auth" /> <!-- connector for query to execute -->
+		
+		<property name="userNameQuery" value="select name,password,enabled from user where UCASE(name) = UCASE(?)" /> 
+		<!-- if only name,password is given then enabled is true by default 
+			if more than 3 elements is given then other elements are available for query reference
+		-->
+		<property name="rolesQuery" value="select username,role from role where UCASE(username) = UCASE(?)" /> 
+		
+		<!-- in case of excel -->
+		<!-- 		
+		<property name="report" value="" />  
+		-->
+	</bean>
+
+<!-- 	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder" /> -->
+</beans>

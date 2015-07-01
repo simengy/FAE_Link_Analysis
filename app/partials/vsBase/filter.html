@@ -1,0 +1,15 @@
+<div class="filter" data-ng-if="filter">
+	<div data-ng-repeat="item in filter track by $index"
+		class="{{item.cssClass|lowercase}} filter-{{item.type}}"
+		data-group="item.group" data-ng-style="item.style"
+		data-ng-hide="item.state==='hide'">
+		<label data-ng-if="item.title"
+			style="float: left; line-height: 38px; margin-bottom: 0; margin-right: 10px; color: #7F7F7F;"><span>{{item.title | translate}}</span></label>
+		<filter index="$index" value="item" level="filterLevel" widgetContainer="widgetContainer"
+			style="float:left"></filter>
+	</div>
+	<!-- Filter Button -->
+	<button data-ng-if="type === defaults.showComb"
+		data-ng-disabled="filterForm.$invalid" class="btn btn-primary"
+		data-ng-click="filterChanged()">Filter</button>
+</div>

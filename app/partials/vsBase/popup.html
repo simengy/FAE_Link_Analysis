@@ -1,0 +1,48 @@
+<div class="modal-body">
+	<button class="close" type="button" data-ng-click="cancel()"></button>
+	<div data-ng-repeat="d in design" data-ng-init="getTemplate(d)">
+		<div class="border_container_inr">
+			<span class="widget_icon" style="float: left"
+				data-ng-style="d.info.title.style"> <img
+				data-ng-if="widgetIcon" data-ng-src="{{widgetIcon}}" />
+			</span>
+			<div data-ng-if="d.info.title.text" class="container_header"
+				data-ng-class="'align_'+d.info.title.style.align"
+				data-ng-style="d.info.title.style">{{d.info.title.text |
+				translate}}</div>
+			<div data-ng-if="d.info.subTitle.text" class="container_subheader"
+				data-ng-class="'align_'+d.info.subTitle.style.align"
+				data-ng-style="widgetInfo.subTitle.style">{{d.info.subTitle.text
+				| translate}}</div>
+			<div data-ng-include="template" data-ng-class="d.info.cssClass"
+				data-ng-style="d.info.style"></div>
+		</div>
+	</div>
+	<div data-ng-if="content">
+		<div data-ng-include="content"></div>
+	</div>
+
+	<div class="alert" style="margin-top: 10px"
+		data-ng-class="'alert-'+widgetErrorType" data-ng-show="popupErrors">
+		<div data-ng-repeat="error in popupErrors"
+			class="alert {{error.type.toLowerCase()=='error'?'alert-danger':'alert-warning'}}">
+			<div>
+				<strong translate>Error Code - </strong> <span>{{error.errorCode}}</span>
+			</div>
+			<div>
+				<strong>Error Message - </strong> <span
+					data-ng-repeat="item in (error.errorMessage | newLine) track by $index">{{item}}<br /></span>
+			</div>
+			<div data-ng-if="error.errorDetails">
+				<strong style="float: left;">Error Details - </strong>
+				<div
+					data-ng-repeat="item in (error.errorDetails | newLine) track by $index">{{item}}</div>
+			</div>
+			<div data-ng-if="error.widgetName">
+				<strong style="float: left;">widgetName - </strong>
+				<div
+					data-ng-repeat="item in (error.widgetName | newLine) track by $index">{{item}}</div>
+			</div>
+		</div>
+	</div>
+</div>

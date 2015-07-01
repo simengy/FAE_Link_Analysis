@@ -1,0 +1,336 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.saama.vividsense</groupId>
+	<artifactId>vividsense-ui</artifactId>
+	<packaging>war</packaging>
+	<version>1.4.0-RELEASE</version>
+	<name>vividsense-ui Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<repositories>
+		<repository>
+			<id>main-repository</id>
+			<url>http://repo1.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>alternate-repository</id>
+			<url>http://mvnrepository.com</url>
+		</repository>
+		<repository>
+			<id>JBoss repository</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.0.0.RELEASE</spring.version>
+		<spring.security.version>3.2.3.RELEASE</spring.security.version>
+		<jersey.version>2.5.1</jersey.version>
+		<hibernate.version>4.3.0.Final</hibernate.version>
+		<junit.version>4.11</junit.version>
+		<jdk.version>1.7</jdk.version>
+		<sl4j.version>1.6.4</sl4j.version>
+		<logback.version>1.0.1</logback.version>
+		<vividsense.security.csrf.version>1.4.0-RELEASE</vividsense.security.csrf.version>
+		<vividsense.security.xfs.version>1.4.0-RELEASE</vividsense.security.xfs.version>
+		<vividsense.security.nosniff.version>1.4.0-RELEASE</vividsense.security.nosniff.version>
+		<vividsense.core.version>1.4.0-RELEASE</vividsense.core.version>
+		<vividsense.datasource.version>1.4.0-RELEASE</vividsense.datasource.version>
+		<vividsense.cache.export.version>1.0.0-RELEASE</vividsense.cache.export.version>
+	</properties>
+	<dependencies>
+
+		<!-- main -->
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>vividsense-core-main</artifactId>
+			<version>1.4.0-RELEASE</version>
+		</dependency>
+		<!-- / -->
+		<!-- rdbms -->
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>datasource-excel</artifactId>
+			<version>1.4.0-RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>vividsense-core-datasource</artifactId>
+					<groupId>com.saama.vividsense</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>datasource-rdbms</artifactId>
+			<version>1.4.0-RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>vividsense-core-datasource</artifactId>
+					<groupId>com.saama.vividsense</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>datasource-mongo</artifactId>
+			<version>1.4.0-RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>vividsense-core-datasource</artifactId>
+					<groupId>com.saama.vividsense</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.29</version>
+		</dependency>
+		<!-- / -->
+
+		<!-- analysis -->
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>analysis-wordcount</artifactId>
+			<version>1.0-RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>vividsense-core-analysis</artifactId>
+					<groupId>com.saama.vividsense</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- cache -->
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>cache-guava</artifactId>
+			<version>1.0-RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>vividsense-core-cache</artifactId>
+					<groupId>com.saama.vividsense</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- / -->
+		<!-- stream -->
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>stream-datasource</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>vividsense-core-main-api</artifactId>
+					<groupId>com.saama.vividsense</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- /stream -->
+
+		<!-- rule -->
+		<!-- <dependency> <groupId>com.saama.vividsense</groupId> <artifactId>ruleengine-drools</artifactId> 
+			<version>0.0.1-SNAPSHOT</version> </dependency> -->
+		<!-- / -->
+
+		<!-- export -->
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>export-excel</artifactId>
+			<version>1.0-RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>vividsense-core-export</artifactId>
+					<groupId>com.saama.vividsense</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- stream -->
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>stream-datasource</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>vividsense-core-main-api</artifactId>
+					<groupId>com.saama.vividsense</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- /stream -->
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>export-mail</artifactId>
+			<version>1.0-RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>vividsense-core-main-api</artifactId>
+					<groupId>com.saama.vividsense</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- /export -->
+
+
+		<!-- security -->
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>vividsense-security-csrf</artifactId>
+			<version>${vividsense.security.csrf.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>servlet-api</artifactId>
+					<groupId>javax.servlet</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>vividsense-security-xfs</artifactId>
+			<version>${vividsense.security.xfs.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>servlet-api</artifactId>
+					<groupId>javax.servlet</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.saama.vividsense</groupId>
+			<artifactId>vividsense-security-nosniff</artifactId>
+			<version>${vividsense.security.nosniff.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>servlet-api</artifactId>
+					<groupId>javax.servlet</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- taglibs -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<!-- / -->
+
+		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- / -->
+
+	</dependencies>
+
+	<build>
+		<finalName>vividsense-ui</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.12.4</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<executions>
+					<execution>
+						<id>compressyui</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compress</goal>
+						</goals>
+						<configuration>
+							<statistics>true</statistics>
+							<nosuffix>true</nosuffix>
+							<jswarn>false</jswarn>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<nosuffix>true</nosuffix>
+					<disableOptimizations>false</disableOptimizations>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<warSourceExcludes>**/*.css,**/*.js</warSourceExcludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<path>/</path>
+					<warSourceDirectory>${basedir}/target/${project.build.finalName}</warSourceDirectory>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<!-- this id show get matched with the server id defined in maven settings.xml -->
+			<id>nexus</id>
+			<name>Internal Releases</name>
+			<url>
+http://si-dtp-267:8081/nexus/content/repositories/releases/
+</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Snapshot Releases</name>
+			<url>
+http://si-dtp-267:8081/nexus/content/repositories/snapshots/
+</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+</project>

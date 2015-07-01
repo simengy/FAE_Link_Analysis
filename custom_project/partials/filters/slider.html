@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="vs_lib/jquery/jquery-ui.css" />
+
+
+<style>
+#colorSliderMinText
+{
+width:30px;
+}
+
+#colorSliderMaxText
+{
+width:30px;
+}
+
+</style>
+
+
+<div data-ng-controller="ColorSliderController" id="slider1" style="width : 200px">
+	<br>
+	<div id="inputSlider">
+		<input type="text" id="colorSliderMinText" data-index="0" />
+		<input type="text" id="colorSliderMaxText" data-index="1" />
+	</div>
+	<div id="colorSlider" style="width:inherit"></div>
+</div>
+<script>
+  function ColorSliderController($scope, $rootScope) {
+
+    var render = function(min,max,step) {
+      require([ "jqueryUi" ], function() {
+        $('#colorSlider').slider(
+            {
+              range : true,
+              values : [ min, max ],
+              step : step,
+              min : min,
+              max : max,
+              slide : function(event, ui) {
+                $('#colorSliderMinText').val(ui.values[0]);
+                $('#colorSliderMaxText').val(ui.values[1]);
+                $rootScope.$broadcast("colorSliderChanged", ui.values[0],
+                    ui.values[1])
+              }
+            });
+        $('#colorSliderMinText').val(min);
+        $('#colorSliderMaxText').val(max);
+        $('#colorSliderMinText,#colorSliderMaxText').change(
+            function() {
+              $('#colorSlider').slider(
+                  'values',
+                  [ parseInt($('#colorSliderMinText').val()),
+                      parseInt($('#colorSliderMaxText').val()) ]);
+              $rootScope.$broadcast("colorSliderChanged", parseInt($(
+                  '#colorSliderMinText').val()), ui.values[0], parseInt($(
+                  '#colorSliderMaxText').val()))
+            });
+      });
+    }
+    render(0,100,1);
+/*     
+    $scope.$watch("widgetData.data", function() {
+      var data = $scope.widgetData.data["sliderData"][0];
+      render(data.min,data.max,data.step);
+    }); */
+
+  }
+</script>

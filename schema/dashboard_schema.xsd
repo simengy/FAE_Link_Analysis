@@ -1,0 +1,4663 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:ns1="http://jaxb.dev.java.net/array"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="vsMap" type="vsMap" />
+
+	<xs:element name="area" type="areaDTO" />
+
+	<xs:element name="areaRange" type="areaRangeDTO" />
+
+	<xs:element name="areaSpline" type="areaSplineDTO" />
+
+	<xs:element name="background" type="background" />
+
+	<xs:element name="backgroundColor" type="backgroundColor" />
+
+	<xs:element name="bar" nillable="true" type="barDTO" />
+
+	<xs:element name="bubble" type="bubbleDTO" />
+
+	<xs:element name="gauge" type="gaugeDTO" />
+
+	<xs:element name="buttonOptions" type="buttonOptions" />
+
+	<xs:element name="buttons" type="buttons" />
+
+	<xs:element name="candlestick" type="candlestickDTO" />
+
+	<xs:element name="chartOptions" type="chartOptions" />
+
+	<xs:element name="queryParam" nillable="true" type="queryParam" />
+
+	<xs:element name="columnRange" type="columnRangeDTO" />
+
+	<xs:element name="contextButton" type="contextButton" />
+
+	<xs:element name="crosshair" type="crosshair" />
+
+	<xs:element name="plugin" type="plugin" />
+
+	<xs:element name="dashboard" type="dashboardRequestBody" />
+
+	<xs:element name="dashboardInfo" type="dashboardInfo" />
+
+	<xs:element name="data" type="data" />
+
+	<xs:element name="dataGrouping" type="dataGrouping" />
+
+	<xs:element name="dataLabels" type="dataLabels" />
+
+	<xs:element name="dateTimeLabelFormats" type="dateTimeLabelFormats" />
+
+	<xs:element name="design" type="design" />
+
+	<xs:element name="eventWidget" type="eventWidget" />
+
+	<xs:element name="exporting" type="exporting" />
+
+	<xs:element name="field" type="field" />
+
+	<xs:element name="filter" type="filterDTO" />
+
+	<xs:element name="filters" type="filters" />
+
+	<xs:element name="handles" type="handles" />
+
+	<xs:element name="hover" type="hover" />
+
+	<xs:element name="itemHiddenStyle" type="style" />
+
+	<xs:element name="itemHoverStyle" type="style" />
+
+	<xs:element name="itemStyle" type="style" />
+
+	<xs:element name="items" type="items" />
+
+	<xs:element name="label" type="label" />
+
+	<xs:element name="labels" type="labels" />
+
+	<xs:element name="legend" type="legend" />
+
+	<xs:element name="line" type="lineDTO" />
+
+	<xs:element name="marker" type="marker" />
+
+	<xs:element name="menuItemHoverStyle" type="menuItemHoverStyle" />
+
+	<xs:element name="menuItemStyle" type="menuItemStyle" />
+
+	<xs:element name="menuItems" type="menuItems" />
+
+	<xs:element name="menuStyle" type="menuStyle" />
+
+	<xs:element name="navigation" type="navigation" />
+
+	<xs:element name="navigator" type="navigator" />
+
+	<xs:element name="ohlc" type="ohlcDTO" />
+
+	<xs:element name="pane" type="pane" />
+
+	<xs:element name="param" nillable="true" type="param" />
+
+	<xs:element name="pie" type="pieDTO" />
+
+	<xs:element name="plotBand" type="plotBand" />
+
+	<xs:element name="plotLine" type="plotLine" />
+
+	<xs:element name="plotOptions" type="plotOptions" />
+
+	<xs:element name="point" type="point" />
+
+	<xs:element name="position" type="position" />
+
+	<xs:element name="property" type="property" />
+
+	<xs:element name="rangeSelector" type="rangeSelector" />
+
+	<xs:element name="resetZoomButton" type="resetZoomButton" />
+
+	<xs:element name="scatter" type="scatterDTO" />
+
+	<xs:element name="scrollbar" type="scrollbar" />
+
+	<xs:element name="select" type="select" />
+
+	<xs:element name="series" type="series" />
+
+	<xs:element name="stackLabels" type="stackLabels" />
+
+	<xs:element name="states" type="states" />
+
+	<xs:element name="style" type="style" />
+
+	<xs:element name="subtitle" type="subTitle" />
+
+	<xs:element name="theme" type="theme" />
+
+	<xs:element name="title" type="title" />
+
+	<xs:element name="tooltip" type="tooltip" />
+
+	<xs:element name="formatter" type="formatter" />
+
+	<xs:element name="server" type="server" />
+
+	<xs:element name="attribute" type="attribute" />
+
+	<xs:element name="format" type="format" />
+
+	<xs:element name="widget" type="widget" />
+
+	<xs:element name="xAxis" type="xAxis" />
+
+	<xs:element name="yAxis" type="yAxis" />
+
+	<xs:element name="drillUpButton" type="drillUpButton" />
+
+	<xs:element name="geoColorAxis" type="geoColorAxis" />
+
+	<xs:element name="dataClass" type="dataClass" />
+
+	<xs:element name="labelStyle" type="labelStyle" />
+
+	<xs:element name="mapNavigation" type="mapNavigation" />
+
+	<xs:element name="pagination" type="pagination" />
+
+	<xs:element name="recordCount" type="recordCount" />
+
+	<xs:element name="dial" type="dial" />
+
+	<xs:element name="pivot" type="pivot" />
+
+	<xs:element name="boxplot" type="boxPlotDTO" />
+
+	<xs:element name="funnel" type="funnelDTO" />
+
+	<xs:element name="pyramid" type="pyramidDTO" />
+
+	<xs:complexType name="dashboardRequestBody">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:all>
+					<xs:element ref="dashboardInfo" minOccurs="0" />
+					<xs:element name="data" type="data" minOccurs="0" />
+					<xs:element name="filters" type="filters" minOccurs="0" />
+					<xs:element name="widgets" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="widget" minOccurs="1" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:all>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="abstractRequestBody" abstract="true">
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="dashboardInfo">
+		<xs:all>
+			<xs:element ref="filters" minOccurs="0" />
+			<xs:element name="template" type="xs:string" minOccurs="0" />
+			<xs:element name="title" type="title" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="filters">
+		<xs:sequence>
+			<xs:element ref="filter" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="type" type="filtersType" />
+		<xs:attribute name="template" type="xs:string" />
+		<xs:attribute name="cssClass" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="filterDTO">
+		<xs:all>
+			<xs:element ref="data" minOccurs="1" maxOccurs="1" />
+			<xs:element name="style" type="htmlCSS" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="validation" type="validation" minOccurs="0"
+				maxOccurs="1" />
+		</xs:all>
+		<xs:attribute name="event" type="filterEvents" />
+		<xs:attribute name="id" type="nonEmptyString" use="required" />
+		<xs:attribute name="initIndexes" type="xs:string" />
+		<xs:attribute name="parent" type="xs:string" />
+		<xs:attribute name="state" type="xs:string" />
+		<xs:attribute name="template" type="xs:string" />
+		<xs:attribute name="title" type="xs:string" />
+		<xs:attribute name="type" type="filterUnion" use="required" />
+		<xs:attribute name="cssClass" type="xs:string" />
+		<xs:attribute name="maxSelect" type="maxSelectAllowType" />
+	</xs:complexType>
+
+	<xs:complexType name="validation">
+		<xs:attribute name="maxLength" type="xs:long" />
+		<xs:attribute name="minLength" type="xs:long" />
+		<xs:attribute name="required" type="xs:boolean" />
+		<xs:attribute name="validationType" type="validationType"
+			use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="data">
+		<xs:sequence>
+			<xs:element name="dataSource" type="dataSourceDef"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="analysis" type="analysisDef" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+
+		<xs:attribute name="cacheConnectorName" type="xs:string"></xs:attribute>
+		<xs:attribute name="cacheName" type="xs:string"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="stream">
+		<xs:sequence>
+			<xs:element name="streamSource" type="streamSourceDef"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="analysisDef">
+		<xs:sequence maxOccurs="1" minOccurs="1">
+			<xs:element name="inputs" minOccurs="1" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="input" type="field" minOccurs="1"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="outputs" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="output" type="output" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="options" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="option" type="analysisOptions"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+<!-- 			<xs:any maxOccurs="1" minOccurs="0" namespace="##other"
+				processContents="lax"></xs:any> -->
+		</xs:sequence>
+		<xs:attribute name="connector" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="condition" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="analysisOptions">
+		<xs:sequence />
+		<xs:attribute name="key" type="xs:string" />
+		<xs:attribute name="value" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="output">
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="value" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="dataSourceDef">
+		<xs:all>
+			<xs:element name="options" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="option" type="queryOptions"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="queryParams" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="queryParam" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="queryType" minOccurs="1" />
+		</xs:all>
+		<xs:attribute name="connector" type="connectorTypeUnion"
+			use="required" />
+		<xs:attribute name="name" type="nonEmptyString" use="required" />
+		<!-- <xs:attribute name="report" type="xs:string" /> -->
+		<xs:attribute name="type" type="queryTypeEnum" default="find"></xs:attribute>
+		<xs:attribute name="transaction" type="transactionTypeEnum"
+			default="none"></xs:attribute>
+		<xs:attribute name="timeout" type="xs:long" />
+		<xs:attribute name="condition" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="streamSourceDef">
+		<xs:all>
+			<xs:element name="options" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="option" type="queryOptions"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="queryParams" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="queryParam" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="queryType" minOccurs="1" />
+		</xs:all>
+		<xs:attribute name="connector" type="connectorTypeUnion"
+			use="required" />
+		<xs:attribute name="name" type="nonEmptyString" use="required" />
+	</xs:complexType>
+
+	<xs:element name="queryType" abstract="true" />
+
+	<xs:element name="query" substitutionGroup="queryType">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="queryBuilder" substitutionGroup="queryType">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="id" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="queryTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="find" />
+			<xs:enumeration value="insert" />
+			<xs:enumeration value="delete" />
+			<xs:enumeration value="update" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="transactionTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="none" />
+			<xs:enumeration value="propogate" />
+			<xs:enumeration value="isolated" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:complexType name="queryParam">
+		<xs:sequence />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="type" type="queryParamType" />
+		<xs:attribute name="defaultValue" type="xs:string" />
+		<xs:attribute name="isColumn" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="queryOptions">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="value" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="column">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="columnKey" type="xs:string" />
+		<xs:attribute name="displayOption" type="displayOptionType" />
+	</xs:complexType>
+
+	<xs:complexType name="vsTable">
+		<xs:all>
+			<xs:element name="columns" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="column" type="column" minOccurs="1"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="plugins" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="plugin" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="plotOptions" type="tablePlotOptions"
+				minOccurs="0"></xs:element>
+		</xs:all>
+		<xs:attribute name="type" type="tableType" default="datatable" />
+	</xs:complexType>
+
+	<xs:complexType name="tablePlotOptions">
+		<xs:all>
+			<xs:element name="datatable" type="dataTablePlotOptions"
+				minOccurs="0"></xs:element>
+			<xs:element name="pivot" type="pivotTablePlotOptions"
+				minOccurs="0"></xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="tableEvents">
+		<xs:all>
+			<xs:element name="rowCreated" minOccurs="0" maxOccurs="1"
+				type="xs:string" />
+			<xs:element name="headerCreated" type="xs:string"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element name="tableCreated" type="xs:string"
+				minOccurs="0" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="plotOptionsColumn">
+		<xs:attribute name="name" use="required"></xs:attribute>
+		<xs:attribute name="searchable" type="xs:boolean" />
+		<xs:attribute name="sortable" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="headerColor" type="xs:string" />
+		<xs:attribute name="cellPaddingLeft" type="xs:string" />
+		<xs:attribute name="cellPaddingRight" type="xs:string" />
+		<xs:attribute name="cellPaddingTop" type="xs:string" />
+		<xs:attribute name="cellPaddingBottom" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="dataTablePlotOptions">
+		<xs:all>
+			<xs:element ref="pagination" minOccurs="0"></xs:element>
+			<xs:element name="columns" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="column" type="plotOptionsColumn"
+							minOccurs="1" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="point" type="tablePoint" minOccurs="0"></xs:element>
+			<xs:element name="events" type="tableEvents" minOccurs="0"></xs:element>
+			<xs:element name="style" type="htmlCSS" minOccurs="0"></xs:element>
+		</xs:all>
+		<xs:attribute name="searchable" type="xs:boolean" />
+		<xs:attribute name="sortable" type="xs:boolean" />
+		<xs:attribute name="enableInfo" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="pivotTablePlotOptions">
+		<xs:attribute name="renderType" type="renderTypeEnum"
+			default="Heatmap" />
+		<xs:attribute name="aggregatorName" type="aggregatorType"
+			default="count" />
+		<xs:attribute name="showAxis" type="xs:boolean" default="false" />
+	</xs:complexType>
+
+	<xs:simpleType name="tableType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="datatable" />
+			<xs:enumeration value="pivotTable" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="buttonType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="fullButton" />
+			<xs:enumeration value="twoButton" />
+			<xs:enumeration value="scrolling" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="property">
+		<xs:attribute name="key" use="required"></xs:attribute>
+		<xs:attribute name="value" use="required"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="drillUpButton">
+		<xs:all>
+			<xs:element ref="position" minOccurs="0" />
+			<xs:element ref="theme" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="relativeTo" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="dataClass">
+		<xs:sequence />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="from" type="xs:double" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="to" type="xs:double" />
+	</xs:complexType>
+
+	<xs:complexType name="mapNavigation">
+		<xs:all>
+			<xs:element name="buttonOptions" type="mapButtonOptions"
+				minOccurs="0" />
+			<xs:element name="buttons" type="mapButtons" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="enableButtons" type="xs:boolean" />
+		<xs:attribute name="enableDoubleClickZoom" type="xs:boolean" />
+		<xs:attribute name="enableDoubleClickZoomTo" type="xs:boolean" />
+		<xs:attribute name="enableMouseWheelZoom" type="xs:boolean" />
+		<xs:attribute name="enableTouchZoom" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="mapButtonOptions">
+		<xs:all>
+			<xs:element ref="theme" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="height" type="xs:long" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="width" type="xs:long" />
+		<xs:attribute name="x" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="mapButtons">
+		<xs:all>
+			<xs:element name="zoomIn" type="zoomIn" minOccurs="0" />
+			<xs:element name="zoomOut" type="zoomOut" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="zoomIn">
+		<xs:all>
+			<xs:element ref="theme" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+			<xs:element name="onclick" type="xs:string" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="height" type="xs:long" />
+
+		<xs:attribute name="text" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="width" type="xs:long" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="zoomOut">
+		<xs:all>
+			<xs:element ref="theme" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+			<xs:element name="onclick" type="xs:string" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="height" type="xs:long" />
+		<xs:attribute name="text" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="width" type="xs:long" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="gradientStopValue">
+		<xs:attribute name="gradientPosition" use="required"
+			type="xs:float"></xs:attribute>
+		<xs:attribute name="color" use="required" type="xs:string"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="geoColorAxis">
+		<xs:all>
+			<xs:element name="dataClasses" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="dataClass" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="labels" minOccurs="0" />
+			<xs:element name="events" type="axisEvents" minOccurs="0" />
+			<xs:element name="gridMarker" type="marker" minOccurs="0" />
+			<xs:element name="stops" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="stop" type="gradientStopValue"
+							minOccurs="1" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="tickPositions" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="tickPosition" type="xs:long"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+		<xs:attribute name="tickPositioner" type="xs:string" />
+		<xs:attribute name="tickWidth" type="xs:long" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="dataClassColor" type="xs:string" />
+		<xs:attribute name="endOnTick" type="xs:boolean" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="gridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="gridLineWidth" type="xs:long" />
+		<xs:attribute name="gridLineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="max" type="xs:long" />
+		<xs:attribute name="maxColor" type="xs:string" />
+		<xs:attribute name="maxPadding" type="xs:long" />
+		<xs:attribute name="min" type="xs:long" />
+		<xs:attribute name="minColor" type="xs:string" />
+		<xs:attribute name="minPadding" type="xs:long" />
+		<xs:attribute name="minorGridLineColor" type="xs:string" />
+		<xs:attribute name="minorGridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="minorGridLineWidth" type="xs:long" />
+		<xs:attribute name="minTickColor" type="xs:string" />
+		<xs:attribute name="minTickInterval" type="xs:long" />
+		<xs:attribute name="minorTickLength" type="xs:long" />
+		<xs:attribute name="minorTickPositon" type="xs:string" />
+		<xs:attribute name="minorTickWidth" type="xs:long" />
+		<xs:attribute name="reversed" type="xs:boolean" />
+		<xs:attribute name="showFirstLabel" type="xs:boolean" />
+		<xs:attribute name="showLastLabel" type="xs:boolean" />
+		<xs:attribute name="startOnTick" type="xs:boolean" />
+		<xs:attribute name="tickColor" type="xs:string" />
+		<xs:attribute name="tickInterval" type="xs:long" />
+		<xs:attribute name="tickLength" type="xs:long" />
+		<xs:attribute name="tickPixelInterval" type="xs:long" />
+		<xs:attribute name="tickPosition" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="labelStyle">
+		<xs:sequence />
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="background" type="xs:string" />
+		<xs:attribute name="backgroundAttachment" type="xs:string" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="backgroundImage" type="xs:string" />
+		<xs:attribute name="backgroundPosition" type="xs:string" />
+		<xs:attribute name="backgroundRepeat" type="xs:string" />
+		<xs:attribute name="border" type="xs:string" />
+		<xs:attribute name="borderBottom" type="xs:string" />
+		<xs:attribute name="borderBottomColor" type="xs:string" />
+		<xs:attribute name="borderBottomWidth" type="xs:string" />
+		<xs:attribute name="borderCollapse" type="xs:string" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderLeft" type="xs:string" />
+		<xs:attribute name="borderLeftColor" type="xs:string" />
+		<xs:attribute name="borderLeftWidth" type="xs:string" />
+		<xs:attribute name="borderRight" type="xs:string" />
+		<xs:attribute name="borderRightColor" type="xs:string" />
+		<xs:attribute name="borderRightWidth" type="xs:string" />
+		<xs:attribute name="borderSpacing" type="xs:string" />
+		<xs:attribute name="borderStyle" type="xs:string" />
+		<xs:attribute name="borderTop" type="xs:string" />
+		<xs:attribute name="borderTopColor" type="xs:string" />
+		<xs:attribute name="borderTopWidth" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:string" />
+		<xs:attribute name="bottom" type="xs:string" />
+		<xs:attribute name="captionSide" type="xs:string" />
+		<xs:attribute name="clear" type="xs:string" />
+		<xs:attribute name="clip" type="xs:string" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="content" type="xs:string" />
+		<xs:attribute name="counterIncrement" type="xs:string" />
+		<xs:attribute name="counterReset" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="direction" type="xs:string" />
+		<xs:attribute name="display" type="xs:string" />
+		<xs:attribute name="elevation" type="xs:string" />
+		<xs:attribute name="emptyCells" type="xs:string" />
+		<xs:attribute name="font" type="xs:string" />
+		<xs:attribute name="fontFamily" type="xs:string" />
+		<xs:attribute name="fontSize" type="xs:string" />
+		<xs:attribute name="fontStyle" type="xs:string" />
+		<xs:attribute name="fontVariant" type="xs:string" />
+		<xs:attribute name="fontWeight" type="xs:string" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="left" type="xs:string" />
+		<xs:attribute name="letterSpacing" type="xs:string" />
+		<xs:attribute name="lineHeight" type="xs:string" />
+		<xs:attribute name="listStyle" type="xs:string" />
+		<xs:attribute name="listStyleImage" type="xs:string" />
+		<xs:attribute name="listStylePosition" type="xs:string" />
+		<xs:attribute name="listStyleType" type="xs:string" />
+		<xs:attribute name="margin" type="xs:string" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="maxHeight" type="xs:string" />
+		<xs:attribute name="maxWidth" type="xs:string" />
+		<xs:attribute name="minHeight" type="xs:string" />
+		<xs:attribute name="minWidth" type="xs:string" />
+		<xs:attribute name="opacity" type="xs:double" />
+		<xs:attribute name="orphans" type="xs:string" />
+		<xs:attribute name="outline" type="xs:string" />
+		<xs:attribute name="outlineColor" type="xs:string" />
+		<xs:attribute name="outlineStyle" type="xs:string" />
+		<xs:attribute name="outlineWidth" type="xs:string" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="padding" type="xs:string" />
+		<xs:attribute name="paddingBottom" type="xs:string" />
+		<xs:attribute name="paddingLeft" type="xs:string" />
+		<xs:attribute name="paddingRight" type="xs:string" />
+		<xs:attribute name="paddingTop" type="xs:string" />
+		<xs:attribute name="pageBreakAfter" type="xs:string" />
+		<xs:attribute name="pageBreakBefore" type="xs:string" />
+		<xs:attribute name="pageBreakInside" type="xs:string" />
+		<xs:attribute name="position" type="xs:string" />
+		<xs:attribute name="quotes" type="xs:string" />
+		<xs:attribute name="right" type="xs:string" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="tableLayout" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="textDecoration" type="xs:string" />
+		<xs:attribute name="textIndent" type="xs:string" />
+		<xs:attribute name="textTransform" type="xs:string" />
+		<xs:attribute name="top" type="xs:string" />
+		<xs:attribute name="unicodeBidi" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="visibility" type="xs:string" />
+		<xs:attribute name="whiteSpace" type="xs:string" />
+		<xs:attribute name="widows" type="xs:string" />
+		<xs:attribute name="width" type="xs:string" />
+		<xs:attribute name="wordSpacing" type="xs:string" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="geoSeries">
+		<xs:all>
+			<xs:element name="fields" minOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="field" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="joinBy" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="join" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+		<xs:attribute name="dataFormat" type="seriesDataformat"
+			default="JSON_ARRAY" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="index" type="xs:long" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="mapDataLocation" type="xs:string" />
+		<xs:attribute name="mapName" type="mapNameTypeUnion" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="type" type="mapType" default="map" />
+		<xs:attribute name="color" type="xs:string" />
+	</xs:complexType>
+
+	<xs:simpleType name="mapNameType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="africa" />
+			<xs:enumeration value="antarctica" />
+			<xs:enumeration value="asia" />
+			<xs:enumeration value="australia" />
+			<xs:enumeration value="europe" />
+			<xs:enumeration value="european-union" />
+			<xs:enumeration value="india" />
+			<xs:enumeration value="south-america" />
+			<xs:enumeration value="uk-ireland" />
+			<xs:enumeration value="united_kingdom" />
+			<xs:enumeration value="usa" />
+			<xs:enumeration value="uda-and-canada" />
+			<xs:enumeration value="world" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="mapNameTypeUnion">
+		<xs:union memberTypes="mapNameType xs:string" />
+	</xs:simpleType>
+
+	<xs:simpleType name="mapType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="map" />
+			<xs:enumeration value="mapline" />
+			<xs:enumeration value="mapbubble" />
+			<xs:enumeration value="mappoint" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="geoPlotOptions">
+		<xs:all>
+			<xs:element name="map" type="map" minOccurs="0" />
+			<xs:element name="mapbubble" type="mapbubble" minOccurs="0" />
+			<xs:element name="mapline" type="mapline" minOccurs="0" />
+			<xs:element name="mappoint" type="mappoint" minOccurs="0" />
+			<xs:element name="series" type="geoPlotOptionsSeries"
+				minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="mappoint">
+		<xs:all>
+			<xs:element name="dataLabels" type="mapDataLabels"
+				minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="geoStates" minOccurs="0" />
+			<xs:element name="tooltip" type="mapSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="cropThreshold" type="xs:integer" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="xs:string" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="lineWidth" type="xs:integer" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:integer" />
+		<xs:attribute name="pointStart" type="xs:integer" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:integer" />
+		<xs:attribute name="turboThreshold" type="xs:integer" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="geoHover">
+		<xs:attribute name="borderColor" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="borderWidth" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="brightness" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="color" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="enabled" type="xs:boolean" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="geoSelect">
+		<xs:attribute name="borderColor" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="borderWidth" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="color" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="enabled" type="xs:boolean" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="geoNormal">
+		<xs:attribute name="animation" type="xs:boolean" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="geoStates">
+		<xs:all>
+			<xs:element name="hover" type="geoHover" minOccurs="0"></xs:element>
+			<xs:element name="select" type="geoSelect" minOccurs="0"></xs:element>
+			<xs:element name="normal" type="geoNormal" minOccurs="0"></xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="mapSeriesTooltip">
+		<xs:all>
+			<xs:element ref="backgroundColor" minOccurs="0" />
+			<xs:element name="crosshairs" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="crosshair" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="formatter" minOccurs="0" />
+			<xs:element name="positioner" type="xs:string" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="followPointer" type="xs:boolean" />
+		<xs:attribute name="followTouchMove" type="xs:boolean" />
+		<xs:attribute name="footerFormat" type="xs:string" />
+		<xs:attribute name="headerFormat" type="xs:string" />
+		<xs:attribute name="hideDelay" type="xs:long" />
+		<xs:attribute name="pointFormat" type="xs:string" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="valueDecimals" type="xs:long" />
+		<xs:attribute name="valuePrefix" type="xs:string" />
+		<xs:attribute name="valueSuffix" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="map">
+		<xs:all>
+			<xs:element name="dataLabels" type="mapDataLabels"
+				minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element name="joinBy" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="join" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="geoStates" minOccurs="0" />
+			<xs:element name="tooltip" type="mapSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allAreas" type="xs:boolean" />
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="nullColor" type="xs:string" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+
+	<xs:complexType name="mapline">
+		<xs:all>
+			<xs:element name="dataLabels" type="mapDataLabels"
+				minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element name="joinBy" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="join" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="geoStates" minOccurs="0" />
+			<xs:element name="tooltip" type="mapSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allAreas" type="xs:boolean" />
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="xs:string" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="fillColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="mapbubble">
+		<xs:all>
+			<!-- <xs:element name="dataLabels" type="mapDataLabels" minOccurs="0" 
+				/> -->
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element name="joinBy" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="join" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="geoStates" minOccurs="0" />
+			<xs:element name="tooltip" type="mapSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allAreas" type="xs:boolean" />
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<!-- <xs:attribute name="borderColor" type="xs:string" /> <xs:attribute 
+			name="borderWidth" type="xs:long" /> -->
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="displayNegative" type="xs:boolean" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="maxSize" type="xs:string" />
+		<xs:attribute name="minSize" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="sizeBy" type="xs:string" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="zIndex" type="xs:long" />
+		<xs:attribute name="zThreshold" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="heatmap">
+		<xs:all>
+			<xs:element name="dataLabels" type="mapDataLabels"
+				minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="geoStates" minOccurs="0" />
+			<xs:element name="tooltip" type="mapSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="nullColor" type="xs:string" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="vsMap">
+		<xs:all>
+			<xs:element name="options" type="chartOptionsMap"
+				minOccurs="0" />
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="colorAxis" type="geoColorAxis"
+				minOccurs="0" />
+			<xs:element name="labels" type="geoLabels" minOccurs="0" />
+			<xs:element name="legend" type="geoLegend" minOccurs="0" />
+			<xs:element ref="mapNavigation" minOccurs="0" />
+			<xs:element name="plotOptions" type="geoPlotOptions"
+				minOccurs="0" />
+			<xs:element name="seriesList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="series" type="geoSeries" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="tooltip" minOccurs="0" />
+			<xs:element name="xAxises" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="xAxis" type="geoXAxis" minOccurs="0"
+							maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="yAxises" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="yAxis" type="geoYAxis" minOccurs="0"
+							maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="plugins" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="plugin" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="geoYAxis">
+		<xs:all>
+			<xs:element ref="dateTimeLabelFormats" minOccurs="0" />
+			<xs:element name="events" type="axisEvents" minOccurs="0" />
+			<xs:element ref="labels" minOccurs="0" />
+			<xs:element name="tickPositioner" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="tickPositions" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="tickPosition" type="xs:long"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="title" type="legendTitle" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowDecimals" type="xs:boolean" />
+		<xs:attribute name="alternateGridColor" type="xs:string" />
+		<xs:attribute name="endOnTick" type="xs:boolean" />
+		<xs:attribute name="gridLineColor" type="xs:string" />
+		<xs:attribute name="gridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="gridLineWidth" type="xs:long" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="max" type="xs:long" />
+		<xs:attribute name="maxPadding" type="xs:double" />
+		<xs:attribute name="min" type="xs:long" />
+		<xs:attribute name="minPadding" type="xs:double" />
+		<xs:attribute name="minRange" type="xs:long" />
+		<xs:attribute name="minTickInterval" type="xs:long" />
+		<xs:attribute name="minorGridLineColor" type="xs:string" />
+		<xs:attribute name="minorGridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="minorGridLineWidth" type="xs:long" />
+		<xs:attribute name="minorTickColor" type="xs:string" />
+		<xs:attribute name="minorTickInterval" type="xs:string" />
+		<xs:attribute name="minorTickLength" type="xs:long" />
+		<xs:attribute name="minorTickPosition" type="xs:string" />
+		<xs:attribute name="minorTickWidth" type="xs:long" />
+		<xs:attribute name="offset" type="xs:long" />
+		<xs:attribute name="opposite" type="xs:boolean" />
+		<xs:attribute name="reversed" type="xs:boolean" />
+		<xs:attribute name="showEmpty" type="xs:boolean" />
+		<xs:attribute name="showFirstLabel" type="xs:boolean" />
+		<xs:attribute name="showLastLabel" type="xs:boolean" />
+		<xs:attribute name="startOnTick" type="xs:boolean" />
+		<xs:attribute name="tickColor" type="xs:string" />
+		<xs:attribute name="tickInterval" type="xs:long" />
+		<xs:attribute name="tickLength" type="xs:long" />
+		<xs:attribute name="tickPixelInterval" type="xs:long" />
+		<xs:attribute name="tickPosition" type="xs:string" />
+		<xs:attribute name="tickWidth" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="geoXAxis">
+		<xs:all>
+			<xs:element ref="dateTimeLabelFormats" minOccurs="0" />
+			<xs:element name="events" type="axisEvents" minOccurs="0" />
+			<xs:element ref="labels" minOccurs="0" />
+			<xs:element name="tickPositioner" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="tickPositions" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="tickPosition" type="xs:long"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="title" type="legendTitle" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowDecimals" type="xs:boolean" />
+		<xs:attribute name="alternateGridColor" type="xs:string" />
+		<xs:attribute name="endOnTick" type="xs:boolean" />
+		<xs:attribute name="gridLineColor" type="xs:string" />
+		<xs:attribute name="gridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="gridLineWidth" type="xs:long" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="max" type="xs:long" />
+		<xs:attribute name="maxPadding" type="xs:double" />
+		<xs:attribute name="min" type="xs:long" />
+		<xs:attribute name="minPadding" type="xs:double" />
+		<xs:attribute name="minRange" type="xs:long" />
+		<xs:attribute name="minTickInterval" type="xs:long" />
+		<xs:attribute name="minorGridLineColor" type="xs:string" />
+		<xs:attribute name="minorGridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="minorGridLineWidth" type="xs:long" />
+		<xs:attribute name="minorTickColor" type="xs:string" />
+		<xs:attribute name="minorTickInterval" type="xs:string" />
+		<xs:attribute name="minorTickLength" type="xs:long" />
+		<xs:attribute name="minorTickPosition" type="xs:string" />
+		<xs:attribute name="minorTickWidth" type="xs:long" />
+		<xs:attribute name="offset" type="xs:long" />
+		<xs:attribute name="opposite" type="xs:boolean" />
+		<xs:attribute name="reversed" type="xs:boolean" />
+		<xs:attribute name="showEmpty" type="xs:boolean" />
+		<xs:attribute name="showFirstLabel" type="xs:boolean" />
+		<xs:attribute name="showLastLabel" type="xs:boolean" />
+		<xs:attribute name="startOnTick" type="xs:boolean" />
+		<xs:attribute name="tickColor" type="xs:string" />
+		<xs:attribute name="tickInterval" type="xs:long" />
+		<xs:attribute name="tickLength" type="xs:long" />
+		<xs:attribute name="tickPixelInterval" type="xs:long" />
+		<xs:attribute name="tickPosition" type="xs:string" />
+		<xs:attribute name="tickWidth" type="xs:long" />
+	</xs:complexType>
+
+
+	<xs:complexType name="legendTitle">
+		<xs:sequence>
+			<xs:element ref="style" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="text" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="geoLegend">
+		<xs:all>
+			<xs:element ref="itemHiddenStyle" minOccurs="0"></xs:element>
+			<xs:element ref="itemHoverStyle" minOccurs="0"></xs:element>
+			<xs:element ref="itemStyle" minOccurs="0"></xs:element>
+			<xs:element name="navigation" type="geoLegendNavigation"
+				minOccurs="0"></xs:element>
+			<xs:element name="title" type="legendTitle" minOccurs="0"></xs:element>
+			<xs:element name="labelFormatter" type="xs:string"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="align" type="alignType"></xs:attribute>
+		<xs:attribute name="backgroundColor" type="xs:string"></xs:attribute>
+		<xs:attribute name="borderColor" type="xs:string"></xs:attribute>
+		<xs:attribute name="borderRadius" type="xs:long"></xs:attribute>
+		<xs:attribute name="borderWidth" type="xs:long"></xs:attribute>
+		<xs:attribute name="enabled" type="xs:boolean"></xs:attribute>
+		<xs:attribute name="floating" type="xs:boolean"></xs:attribute>
+		<xs:attribute name="itemDistance" type="xs:long"></xs:attribute>
+		<xs:attribute name="itemMarginBottom" type="xs:long"></xs:attribute>
+		<xs:attribute name="itemMarginTop" type="xs:long"></xs:attribute>
+		<xs:attribute name="itemWidth" type="xs:long"></xs:attribute>
+		<xs:attribute name="labelFormat" type="xs:string"></xs:attribute>
+		<xs:attribute name="layout" type="layoutType"></xs:attribute>
+		<xs:attribute name="margin" type="xs:long"></xs:attribute>
+		<xs:attribute name="maxHeight" type="xs:long"></xs:attribute>
+		<xs:attribute name="padding" type="xs:long"></xs:attribute>
+		<xs:attribute name="reversed" type="xs:boolean"></xs:attribute>
+		<xs:attribute name="rtl" type="xs:boolean"></xs:attribute>
+		<xs:attribute name="shadow" type="xs:boolean"></xs:attribute>
+		<xs:attribute name="symbolHeight" type="xs:long"></xs:attribute>
+		<xs:attribute name="symbolWidth" type="xs:long"></xs:attribute>
+		<xs:attribute name="symbolPadding" type="xs:long"></xs:attribute>
+		<xs:attribute name="useHTML" type="xs:boolean"></xs:attribute>
+		<xs:attribute name="verticalAlign" type="xs:string"></xs:attribute>
+		<xs:attribute name="width" type="xs:long"></xs:attribute>
+		<xs:attribute name="x" type="xs:long"></xs:attribute>
+		<xs:attribute name="y" type="xs:long"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="geoLegendNavigation">
+		<xs:all>
+			<xs:element ref="style" minOccurs="0"></xs:element>
+		</xs:all>
+		<xs:attribute name="activeColor" type="xs:string"></xs:attribute>
+		<xs:attribute name="animation" type="xs:boolean"></xs:attribute>
+		<xs:attribute name="arrowSize" type="xs:long"></xs:attribute>
+		<xs:attribute name="inactiveColor" type="xs:string"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="axisTitle">
+		<xs:sequence>
+			<xs:element name="style" type="style" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="align" type="axisTitleAlign" />
+		<xs:attribute name="margin" type="xs:float" />
+		<xs:attribute name="offset" type="xs:integer" />
+		<xs:attribute name="rotation" type="xs:integer" />
+		<xs:attribute name="text" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="widget">
+		<xs:all>
+			<xs:element ref="data" minOccurs="0" maxOccurs="1" />
+			<xs:element name="stream" type="stream" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element ref="design" minOccurs="1" maxOccurs="1" />
+			<!-- <xs:element name="rules" type="rules" minOccurs="0" maxOccurs="1" 
+				/> -->
+			<xs:element ref="filters" minOccurs="0" />
+			<xs:element ref="subtitle" minOccurs="0" />
+			<xs:element ref="title" minOccurs="0" />
+			<xs:element name="style" type="htmlCSS" minOccurs="0" />
+			<xs:element name="exporting" type="exporting" minOccurs="0"></xs:element>
+		</xs:all>
+		<xs:attribute name="streamId" type="xs:string" use="optional" />
+		<xs:attribute name="container" type="xs:string" use="required" />
+		<xs:attribute name="icon" type="xs:string" />
+		<xs:attribute name="name" type="nonEmptyString" use="required" />
+		<xs:attribute name="state" type="widgetState" />
+		<xs:attribute name="template" type="xs:string" />
+		<xs:attribute name="zoom" type="xs:boolean" />
+		<xs:attribute name="cssClass" type="xs:string" />
+	</xs:complexType>
+
+	<!-- <xs:complexType name="rules"> <xs:all> <xs:element name="options" minOccurs="0"> 
+		<xs:complexType> <xs:sequence> <xs:element name="option" type="analysisOptions" 
+		/> </xs:sequence> </xs:complexType> </xs:element> <xs:element name="services" 
+		minOccurs="0"> <xs:complexType> <xs:sequence> <xs:element name="service" 
+		type="ruleService" /> </xs:sequence> </xs:complexType> </xs:element> <xs:element 
+		name="value" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element> </xs:all> 
+		<xs:attribute name="connector" type="xs:string" use="required" /> <xs:attribute 
+		name="id" type="xs:string" use="required" /> </xs:complexType> <xs:complexType 
+		name="ruleService"> <xs:attribute name="name" type="xs:string" use="required"></xs:attribute> 
+		</xs:complexType> -->
+
+	<xs:complexType name="design">
+		<xs:choice>
+			<xs:element name="table" type="vsTable" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="map" type="vsMap" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="chart" type="vsChart" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="infographics" type="infographics"
+				minOccurs="0" maxOccurs="1"></xs:element>
+		</xs:choice>
+		<!-- <xs:attribute name="ref" type="xs:string" /> -->
+	</xs:complexType>
+
+	<xs:complexType name="infographics">
+		<xs:all>
+			<xs:element name="plugins" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="plugin" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="vsChart">
+		<xs:all>
+			<xs:element name="options" type="chartOptions" minOccurs="0" />
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="plugins" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="plugin" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="legend" minOccurs="0" />
+			<xs:element ref="navigator" minOccurs="0" />
+			<xs:element ref="pane" minOccurs="0" />
+			<xs:element ref="plotOptions" minOccurs="0" />
+			<xs:element ref="rangeSelector" minOccurs="0" />
+			<xs:element ref="scrollbar" minOccurs="0" />
+			<xs:element name="seriesList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="series" minOccurs="1" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="tooltip" minOccurs="0" />
+			<xs:element name="xAxises" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="xAxis" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="yAxises" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="yAxis" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+		<xs:attribute name="chartLib" type="chartLib" />
+	</xs:complexType>
+
+	<xs:simpleType name="chartLib">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="chart" />
+			<xs:enumeration value="stockChart" />
+			<xs:enumeration value="custom" /> <!-- TODO -->
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="chartOptions">
+		<xs:all>
+			<xs:element ref="backgroundColor" minOccurs="0" />
+			<xs:element name="events" type="chartEvents" minOccurs="0" />
+			<xs:element name="plotBackgroundColor" type="backgroundColor"
+				minOccurs="0" />
+			<xs:element ref="resetZoomButton" minOccurs="0" />
+			<xs:element name="style" type="htmlCSS" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="alignTicks" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="className" type="xs:string" />
+		<xs:attribute name="defaultSeriesType" type="xs:string" />
+		<xs:attribute name="height" type="xs:long" />
+		<xs:attribute name="ignoreHiddenSeries" type="xs:boolean" />
+		<xs:attribute name="inverted" type="xs:boolean" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="panning" type="xs:boolean" />
+		<xs:attribute name="pinchType" type="xs:string" />
+		<xs:attribute name="plotBackgroundImage" type="xs:string" />
+		<xs:attribute name="plotBorderColor" type="xs:string" />
+		<xs:attribute name="plotBorderWidth" type="xs:long" />
+		<xs:attribute name="plotShadow" type="xs:boolean" />
+		<xs:attribute name="polar" type="xs:boolean" />
+		<xs:attribute name="reflow" type="xs:boolean" />
+		<xs:attribute name="selectionMarkerFill" type="xs:string" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showAxes" type="xs:boolean" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="type" type="chartsTypeUnion" />
+		<xs:attribute name="width" type="xs:long" />
+		<xs:attribute name="zoomType" type="zoomType" />
+	</xs:complexType>
+
+	<xs:complexType name="chartOptionsMap">
+		<xs:all>
+			<xs:element ref="backgroundColor" minOccurs="0" />
+			<xs:element name="events" type="chartEvents" minOccurs="0" />
+			<xs:element name="plotBackgroundColor" type="backgroundColor"
+				minOccurs="0" />
+			<xs:element ref="resetZoomButton" minOccurs="0" />
+			<xs:element name="style" type="htmlCSS" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="className" type="xs:string" />
+		<xs:attribute name="height" type="xs:long" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="plotBackgroundImage" type="xs:string" />
+		<xs:attribute name="plotBorderColor" type="xs:string" />
+		<xs:attribute name="plotBorderWidth" type="xs:long" />
+		<xs:attribute name="plotShadow" type="xs:boolean" />
+		<xs:attribute name="reflow" type="xs:boolean" />
+		<xs:attribute name="selectionMarkerFill" type="xs:string" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="width" type="xs:long" />
+	</xs:complexType>
+
+
+	<xs:simpleType name="zoomType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="x" />
+			<xs:enumeration value="y" />
+			<xs:enumeration value="xy" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="backgroundColor">
+		<xs:choice>
+			<xs:element name="color" type="xs:string" minOccurs="0"></xs:element>
+			<xs:sequence minOccurs="0">
+				<xs:element name="linearGradient" minOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="gradient" minOccurs="1" maxOccurs="4"
+								type="xs:double" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="stops" minOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="stop" type="gradientStopValue"
+								minOccurs="1" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="seriesEvents">
+		<xs:sequence>
+			<xs:element name="event" type="seriesEvent" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="click" minOccurs="0" maxOccurs="1"
+				type="xs:string" />
+			<xs:element name="mouseOut" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="mouseOver" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="select" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="unselect" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="legendItemClick" type="xs:string"
+				minOccurs="0" maxOccurs="1" />
+			<!-- <xs:element name="remove" type="xs:string" minOccurs="0" maxOccurs="1" 
+				/> -->
+			<xs:element name="update" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tableSeriesEvents">
+		<xs:sequence>
+			<xs:element name="event" type="tableSeriesEvent"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="click" minOccurs="0" maxOccurs="1"
+				type="xs:string" />
+			<xs:element name="mouseOut" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="mouseOver" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tableSeriesEvent">
+		<xs:sequence>
+			<xs:element name="eventWidgets" minOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="eventWidget" minOccurs="1" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="action" type="eventActionTypeUnion" />
+		<xs:attribute name="location" type="xs:string" />
+		<!-- <xs:attribute name="target" type="xs:string" /> -->
+		<xs:attribute name="type" type="tableSeriesEventType" />
+	</xs:complexType>
+
+	<xs:complexType name="axisEvents">
+		<xs:sequence>
+			<xs:element name="event" type="axisEvent" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="afterSetExtremes" type="xs:string"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element name="setExtremes" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="chartEvents">
+		<xs:sequence>
+			<xs:element name="event" type="chartEvent" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="click" minOccurs="0" maxOccurs="1"
+				type="xs:string" />
+			<xs:element name="addSeries" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="load" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="redraw" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="selection" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="plotoptionsEvents">
+		<xs:sequence>
+			<xs:element name="event" type="plotoptionEvent" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="click" minOccurs="0" maxOccurs="1"
+				type="xs:string" />
+			<xs:element name="mouseOut" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="mouseOver" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="checkboxClick" type="xs:string"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element name="show" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="hide" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+	<xs:complexType name="chartEvent">
+		<xs:sequence>
+			<xs:element name="eventWidgets" minOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="eventWidget" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="action" type="eventActionTypeUnion" />
+		<xs:attribute name="location" type="xs:string" />
+		<xs:attribute name="type" type="chartEventType" />
+	</xs:complexType>
+
+	<xs:complexType name="axisEvent">
+		<xs:sequence>
+			<xs:element name="eventWidgets" minOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="eventWidget" minOccurs="1" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="action" type="eventActionTypeUnion" />
+		<xs:attribute name="location" type="xs:string" />
+		<!-- <xs:attribute name="target" type="xs:string" /> -->
+		<xs:attribute name="type" type="axisEventType" />
+	</xs:complexType>
+
+	<xs:complexType name="seriesEvent">
+		<xs:sequence>
+			<xs:element name="eventWidgets" minOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="eventWidget" minOccurs="1" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="action" type="eventActionTypeUnion" />
+		<xs:attribute name="location" type="xs:string" />
+		<!-- <xs:attribute name="target" type="xs:string" /> -->
+		<xs:attribute name="type" type="seriesEventType" />
+	</xs:complexType>
+
+	<xs:complexType name="plotoptionEvent">
+		<xs:sequence>
+			<xs:element name="eventWidgets" minOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="eventWidget" minOccurs="1" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="action" type="eventActionTypeUnion" />
+		<xs:attribute name="location" type="xs:string" />
+		<!-- <xs:attribute name="target" type="xs:string" /> -->
+		<xs:attribute name="type" type="plotoptionEventType" />
+	</xs:complexType>
+
+	<xs:simpleType name="eventActionTypeUnion">
+		<xs:union memberTypes="eventActionType customFilterType" />
+	</xs:simpleType>
+
+	<xs:complexType name="eventWidget">
+		<xs:sequence>
+			<xs:element name="params" minOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="param" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="param">
+		<xs:sequence />
+		<xs:attribute name="key" type="eventParamUnion" use="required" />
+		<xs:attribute name="value" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="resetZoomButton">
+		<xs:all>
+			<xs:element ref="position" minOccurs="0" />
+			<xs:element ref="theme" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="relativeTo" type="resetZoomType"
+			default="plot" />
+	</xs:complexType>
+
+	<xs:complexType name="position">
+		<xs:sequence />
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="theme">
+		<xs:all>
+			<xs:element ref="states" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="fill" type="xs:string" />
+		<xs:attribute name="r" type="xs:long" />
+		<xs:attribute name="stroke" type="xs:string" />
+		<xs:attribute name="stroke-width" type="xs:int" />
+	</xs:complexType>
+
+	<xs:complexType name="states">
+		<xs:all>
+			<xs:element ref="hover" minOccurs="0" />
+			<xs:element ref="select" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="plotOptionsStates">
+		<xs:all>
+			<xs:element name="hover" type="plotOptionsStateHover"
+				minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="plotOptionsStateHover">
+		<xs:attribute name="brightness" type="xs:double" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="hover">
+		<xs:sequence>
+			<xs:element ref="style" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="brightness" type="xs:double" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="fill" type="xs:string" />
+		<xs:attribute name="fillColor" type="xs:string" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="radius" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="style">
+		<xs:sequence />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="clip" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="direction" type="xs:string" />
+		<xs:attribute name="display" type="xs:string" />
+		<xs:attribute name="font" type="xs:string" />
+		<xs:attribute name="fontFamily" type="xs:string" />
+		<xs:attribute name="fontSize" type="xs:string" />
+		<xs:attribute name="fontStyle" type="xs:string" />
+		<xs:attribute name="fontVariant" type="xs:string" />
+		<xs:attribute name="fontWeight" type="xs:string" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="left" type="xs:string" />
+		<xs:attribute name="opacity" type="xs:double" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="textDecoration" type="xs:string" />
+		<xs:attribute name="top" type="xs:string" />
+		<xs:attribute name="unicodeBidi" type="xs:string" />
+		<xs:attribute name="visibility" type="xs:string" />
+		<xs:attribute name="width" type="xs:string" />
+		<xs:attribute name="wordSpacing" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="select">
+		<xs:sequence>
+			<xs:element ref="style" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="fill" type="xs:string" />
+		<xs:attribute name="fillColor" type="xs:string" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="radius" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="credits">
+		<xs:all>
+			<xs:element ref="position" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="href" type="xs:string" />
+		<xs:attribute name="text" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="plugin">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence>
+					<xs:element ref="property" minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="exporting">
+		<!-- <xs:all> <xs:element ref="buttons" minOccurs="0" /> <xs:element name="chartOptions" 
+			type="xs:string" minOccurs="0" /> </xs:all> -->
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<!-- <xs:attribute name="filename" type="xs:string" /> <xs:attribute name="scale" 
+			type="xs:long" /> <xs:attribute name="sourceHeight" type="xs:long" /> <xs:attribute 
+			name="sourceWidth" type="xs:long" /> <xs:attribute name="type" type="xs:string" 
+			/> <xs:attribute name="url" type="xs:string" /> <xs:attribute name="width" 
+			type="xs:long" /> -->
+	</xs:complexType>
+
+	<xs:complexType name="buttons">
+		<!-- <xs:sequence> <xs:element ref="contextButton" minOccurs="0" /> </xs:sequence> -->
+		<xs:attribute name="count" type="xs:long" />
+		<xs:attribute name="text" type="xs:string" />
+		<xs:attribute name="type" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="contextButton">
+		<xs:sequence>
+			<xs:element name="menuItems" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="menuItems" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="onclick" type="xs:string" minOccurs="0" />
+			<xs:element ref="theme" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="height" type="xs:long" />
+		<xs:attribute name="symbol" type="xs:string" />
+		<xs:attribute name="symbolFill" type="xs:string" />
+		<xs:attribute name="symbolSize" type="xs:long" />
+		<xs:attribute name="symbolStroke" type="xs:string" />
+		<xs:attribute name="symbolStrokeWidth" type="xs:long" />
+		<xs:attribute name="symbolX" type="xs:double" />
+		<xs:attribute name="symbolY" type="xs:double" />
+		<xs:attribute name="text" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="width" type="xs:long" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="menuItems">
+		<xs:sequence />
+		<xs:attribute name="onclick" type="xs:string" />
+		<xs:attribute name="separator" type="xs:boolean" />
+		<xs:attribute name="text" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="legend">
+		<xs:all>
+			<xs:element ref="itemHiddenStyle" minOccurs="0" />
+			<xs:element ref="itemHoverStyle" minOccurs="0" />
+			<xs:element ref="itemStyle" minOccurs="0" />
+			<xs:element name="labelFormatter" type="xs:string"
+				minOccurs="0" />
+			<xs:element ref="navigation" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+			<xs:element name="title" type="legendTitle" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="floating" type="xs:boolean" />
+		<xs:attribute name="itemMarginBottom" type="xs:long" />
+		<xs:attribute name="itemMarginTop" type="xs:long" />
+		<xs:attribute name="itemWidth" type="xs:long" />
+		<xs:attribute name="labelFormat" type="xs:string" />
+		<xs:attribute name="layout" type="layoutType" />
+		<xs:attribute name="lineHeight" type="xs:long" />
+		<xs:attribute name="margin" type="xs:long" />
+		<xs:attribute name="maxHeight" type="xs:long" />
+		<xs:attribute name="padding" type="xs:long" />
+		<xs:attribute name="reversed" type="xs:boolean" />
+		<xs:attribute name="rtl" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="symbolPadding" type="xs:long" />
+		<xs:attribute name="symbolWidth" type="xs:long" />
+		<xs:attribute name="useHTML" type="xs:boolean" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="width" type="xs:long" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="itemHiddenStyle">
+		<xs:sequence />
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="background" type="xs:string" />
+		<xs:attribute name="backgroundAttachment" type="xs:string" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="backgroundImage" type="xs:string" />
+		<xs:attribute name="backgroundPosition" type="xs:string" />
+		<xs:attribute name="backgroundRepeat" type="xs:string" />
+		<xs:attribute name="border" type="xs:string" />
+		<xs:attribute name="borderBottom" type="xs:string" />
+		<xs:attribute name="borderBottomColor" type="xs:string" />
+		<xs:attribute name="borderBottomWidth" type="xs:string" />
+		<xs:attribute name="borderCollapse" type="xs:string" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderLeft" type="xs:string" />
+		<xs:attribute name="borderLeftColor" type="xs:string" />
+		<xs:attribute name="borderLeftWidth" type="xs:string" />
+		<xs:attribute name="borderRight" type="xs:string" />
+		<xs:attribute name="borderRightColor" type="xs:string" />
+		<xs:attribute name="borderRightWidth" type="xs:string" />
+		<xs:attribute name="borderSpacing" type="xs:string" />
+		<xs:attribute name="borderStyle" type="xs:string" />
+		<xs:attribute name="borderTop" type="xs:string" />
+		<xs:attribute name="borderTopColor" type="xs:string" />
+		<xs:attribute name="borderTopWidth" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:string" />
+		<xs:attribute name="bottom" type="xs:string" />
+		<xs:attribute name="captionSide" type="xs:string" />
+		<xs:attribute name="clear" type="xs:string" />
+		<xs:attribute name="clip" type="xs:string" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="content" type="xs:string" />
+		<xs:attribute name="counterIncrement" type="xs:string" />
+		<xs:attribute name="counterReset" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="direction" type="xs:string" />
+		<xs:attribute name="display" type="xs:string" />
+		<xs:attribute name="emptyCells" type="xs:string" />
+		<xs:attribute name="font" type="xs:string" />
+		<xs:attribute name="fontFamily" type="xs:string" />
+		<xs:attribute name="fontSize" type="xs:string" />
+		<xs:attribute name="fontStyle" type="xs:string" />
+		<xs:attribute name="fontVariant" type="xs:string" />
+		<xs:attribute name="fontWeight" type="xs:string" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="left" type="xs:string" />
+		<xs:attribute name="letterSpacing" type="xs:string" />
+		<xs:attribute name="lineHeight" type="xs:string" />
+		<xs:attribute name="listStyle" type="xs:string" />
+		<xs:attribute name="listStyleImage" type="xs:string" />
+		<xs:attribute name="listStylePosition" type="xs:string" />
+		<xs:attribute name="listStyleType" type="xs:string" />
+		<xs:attribute name="margin" type="xs:string" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="maxHeight" type="xs:string" />
+		<xs:attribute name="maxWidth" type="xs:string" />
+		<xs:attribute name="minHeight" type="xs:string" />
+		<xs:attribute name="minWidth" type="xs:string" />
+		<xs:attribute name="opacity" type="xs:double" />
+		<xs:attribute name="orphans" type="xs:string" />
+		<xs:attribute name="outline" type="xs:string" />
+		<xs:attribute name="outlineColor" type="xs:string" />
+		<xs:attribute name="outlineStyle" type="xs:string" />
+		<xs:attribute name="outlineWidth" type="xs:string" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="padding" type="xs:string" />
+		<xs:attribute name="paddingBottom" type="xs:string" />
+		<xs:attribute name="paddingLeft" type="xs:string" />
+		<xs:attribute name="paddingRight" type="xs:string" />
+		<xs:attribute name="paddingTop" type="xs:string" />
+		<xs:attribute name="pageBreakAfter" type="xs:string" />
+		<xs:attribute name="pageBreakBefore" type="xs:string" />
+		<xs:attribute name="pageBreakInside" type="xs:string" />
+		<xs:attribute name="position" type="xs:string" />
+		<xs:attribute name="quotes" type="xs:string" />
+		<xs:attribute name="right" type="xs:string" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="tableLayout" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="textDecoration" type="xs:string" />
+		<xs:attribute name="textIndent" type="xs:string" />
+		<xs:attribute name="textTransform" type="xs:string" />
+		<xs:attribute name="top" type="xs:string" />
+		<xs:attribute name="unicodeBidi" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="visibility" type="xs:string" />
+		<xs:attribute name="whiteSpace" type="xs:string" />
+		<xs:attribute name="widows" type="xs:string" />
+		<xs:attribute name="width" type="xs:string" />
+		<xs:attribute name="wordSpacing" type="xs:string" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="itemHoverStyle">
+		<xs:sequence />
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="background" type="xs:string" />
+		<xs:attribute name="backgroundAttachment" type="xs:string" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="backgroundImage" type="xs:string" />
+		<xs:attribute name="backgroundPosition" type="xs:string" />
+		<xs:attribute name="backgroundRepeat" type="xs:string" />
+		<xs:attribute name="border" type="xs:string" />
+		<xs:attribute name="borderBottom" type="xs:string" />
+		<xs:attribute name="borderBottomColor" type="xs:string" />
+		<xs:attribute name="borderBottomWidth" type="xs:string" />
+		<xs:attribute name="borderCollapse" type="xs:string" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderLeft" type="xs:string" />
+		<xs:attribute name="borderLeftColor" type="xs:string" />
+		<xs:attribute name="borderLeftWidth" type="xs:string" />
+		<xs:attribute name="borderRight" type="xs:string" />
+		<xs:attribute name="borderRightColor" type="xs:string" />
+		<xs:attribute name="borderRightWidth" type="xs:string" />
+		<xs:attribute name="borderSpacing" type="xs:string" />
+		<xs:attribute name="borderStyle" type="xs:string" />
+		<xs:attribute name="borderTop" type="xs:string" />
+		<xs:attribute name="borderTopColor" type="xs:string" />
+		<xs:attribute name="borderTopWidth" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:string" />
+		<xs:attribute name="bottom" type="xs:string" />
+		<xs:attribute name="captionSide" type="xs:string" />
+		<xs:attribute name="clear" type="xs:string" />
+		<xs:attribute name="clip" type="xs:string" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="content" type="xs:string" />
+		<xs:attribute name="counterIncrement" type="xs:string" />
+		<xs:attribute name="counterReset" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="direction" type="xs:string" />
+		<xs:attribute name="display" type="xs:string" />
+		<xs:attribute name="emptyCells" type="xs:string" />
+		<xs:attribute name="font" type="xs:string" />
+		<xs:attribute name="fontFamily" type="xs:string" />
+		<xs:attribute name="fontSize" type="xs:string" />
+		<xs:attribute name="fontStyle" type="xs:string" />
+		<xs:attribute name="fontVariant" type="xs:string" />
+		<xs:attribute name="fontWeight" type="xs:string" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="left" type="xs:string" />
+		<xs:attribute name="letterSpacing" type="xs:string" />
+		<xs:attribute name="lineHeight" type="xs:string" />
+		<xs:attribute name="listStyle" type="xs:string" />
+		<xs:attribute name="listStyleImage" type="xs:string" />
+		<xs:attribute name="listStylePosition" type="xs:string" />
+		<xs:attribute name="listStyleType" type="xs:string" />
+		<xs:attribute name="margin" type="xs:string" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="maxHeight" type="xs:string" />
+		<xs:attribute name="maxWidth" type="xs:string" />
+		<xs:attribute name="minHeight" type="xs:string" />
+		<xs:attribute name="minWidth" type="xs:string" />
+		<xs:attribute name="opacity" type="xs:double" />
+		<xs:attribute name="orphans" type="xs:string" />
+		<xs:attribute name="outline" type="xs:string" />
+		<xs:attribute name="outlineColor" type="xs:string" />
+		<xs:attribute name="outlineStyle" type="xs:string" />
+		<xs:attribute name="outlineWidth" type="xs:string" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="padding" type="xs:string" />
+		<xs:attribute name="paddingBottom" type="xs:string" />
+		<xs:attribute name="paddingLeft" type="xs:string" />
+		<xs:attribute name="paddingRight" type="xs:string" />
+		<xs:attribute name="paddingTop" type="xs:string" />
+		<xs:attribute name="pageBreakAfter" type="xs:string" />
+		<xs:attribute name="pageBreakBefore" type="xs:string" />
+		<xs:attribute name="pageBreakInside" type="xs:string" />
+		<xs:attribute name="position" type="xs:string" />
+		<xs:attribute name="quotes" type="xs:string" />
+		<xs:attribute name="right" type="xs:string" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="tableLayout" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="textDecoration" type="xs:string" />
+		<xs:attribute name="textIndent" type="xs:string" />
+		<xs:attribute name="textTransform" type="xs:string" />
+		<xs:attribute name="top" type="xs:string" />
+		<xs:attribute name="unicodeBidi" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="visibility" type="xs:string" />
+		<xs:attribute name="whiteSpace" type="xs:string" />
+		<xs:attribute name="widows" type="xs:string" />
+		<xs:attribute name="width" type="xs:string" />
+		<xs:attribute name="wordSpacing" type="xs:string" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="itemStyle">
+		<xs:sequence />
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="background" type="xs:string" />
+		<xs:attribute name="backgroundAttachment" type="xs:string" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="backgroundImage" type="xs:string" />
+		<xs:attribute name="backgroundPosition" type="xs:string" />
+		<xs:attribute name="backgroundRepeat" type="xs:string" />
+		<xs:attribute name="border" type="xs:string" />
+		<xs:attribute name="borderBottom" type="xs:string" />
+		<xs:attribute name="borderBottomColor" type="xs:string" />
+		<xs:attribute name="borderBottomWidth" type="xs:string" />
+		<xs:attribute name="borderCollapse" type="xs:string" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderLeft" type="xs:string" />
+		<xs:attribute name="borderLeftColor" type="xs:string" />
+		<xs:attribute name="borderLeftWidth" type="xs:string" />
+		<xs:attribute name="borderRight" type="xs:string" />
+		<xs:attribute name="borderRightColor" type="xs:string" />
+		<xs:attribute name="borderRightWidth" type="xs:string" />
+		<xs:attribute name="borderSpacing" type="xs:string" />
+		<xs:attribute name="borderStyle" type="xs:string" />
+		<xs:attribute name="borderTop" type="xs:string" />
+		<xs:attribute name="borderTopColor" type="xs:string" />
+		<xs:attribute name="borderTopWidth" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:string" />
+		<xs:attribute name="bottom" type="xs:string" />
+		<xs:attribute name="captionSide" type="xs:string" />
+		<xs:attribute name="clear" type="xs:string" />
+		<xs:attribute name="clip" type="xs:string" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="content" type="xs:string" />
+		<xs:attribute name="counterIncrement" type="xs:string" />
+		<xs:attribute name="counterReset" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="direction" type="xs:string" />
+		<xs:attribute name="display" type="xs:string" />
+		<xs:attribute name="elevation" type="xs:string" />
+		<xs:attribute name="emptyCells" type="xs:string" />
+		<xs:attribute name="font" type="xs:string" />
+		<xs:attribute name="fontFamily" type="xs:string" />
+		<xs:attribute name="fontSize" type="xs:string" />
+		<xs:attribute name="fontStyle" type="xs:string" />
+		<xs:attribute name="fontVariant" type="xs:string" />
+		<xs:attribute name="fontWeight" type="xs:string" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="left" type="xs:string" />
+		<xs:attribute name="letterSpacing" type="xs:string" />
+		<xs:attribute name="lineHeight" type="xs:string" />
+		<xs:attribute name="listStyle" type="xs:string" />
+		<xs:attribute name="listStyleImage" type="xs:string" />
+		<xs:attribute name="listStylePosition" type="xs:string" />
+		<xs:attribute name="listStyleType" type="xs:string" />
+		<xs:attribute name="margin" type="xs:string" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="maxHeight" type="xs:string" />
+		<xs:attribute name="maxWidth" type="xs:string" />
+		<xs:attribute name="minHeight" type="xs:string" />
+		<xs:attribute name="minWidth" type="xs:string" />
+		<xs:attribute name="opacity" type="xs:double" />
+		<xs:attribute name="orphans" type="xs:string" />
+		<xs:attribute name="outline" type="xs:string" />
+		<xs:attribute name="outlineColor" type="xs:string" />
+		<xs:attribute name="outlineStyle" type="xs:string" />
+		<xs:attribute name="outlineWidth" type="xs:string" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="padding" type="xs:string" />
+		<xs:attribute name="paddingBottom" type="xs:string" />
+		<xs:attribute name="paddingLeft" type="xs:string" />
+		<xs:attribute name="paddingRight" type="xs:string" />
+		<xs:attribute name="paddingTop" type="xs:string" />
+		<xs:attribute name="pageBreakAfter" type="xs:string" />
+		<xs:attribute name="pageBreakBefore" type="xs:string" />
+		<xs:attribute name="pageBreakInside" type="xs:string" />
+		<xs:attribute name="position" type="xs:string" />
+		<xs:attribute name="quotes" type="xs:string" />
+		<xs:attribute name="right" type="xs:string" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="tableLayout" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="textDecoration" type="xs:string" />
+		<xs:attribute name="textIndent" type="xs:string" />
+		<xs:attribute name="textTransform" type="xs:string" />
+		<xs:attribute name="top" type="xs:string" />
+		<xs:attribute name="unicodeBidi" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="visibility" type="xs:string" />
+		<xs:attribute name="whiteSpace" type="xs:string" />
+		<xs:attribute name="widows" type="xs:string" />
+		<xs:attribute name="width" type="xs:string" />
+		<xs:attribute name="wordSpacing" type="xs:string" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="navigation">
+		<xs:all>
+			<xs:element ref="style" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="activeColor" type="xs:string" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="arrowSize" type="xs:long" />
+		<xs:attribute name="inactiveColor" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="buttonOptions">
+		<xs:sequence>
+			<xs:element ref="theme" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="height" type="xs:long" />
+		<xs:attribute name="symbolFill" type="xs:string" />
+		<xs:attribute name="symbolSize" type="xs:long" />
+		<xs:attribute name="symbolStroke" type="xs:string" />
+		<xs:attribute name="symbolStrokeWidth" type="xs:long" />
+		<xs:attribute name="symbolX" type="xs:double" />
+		<xs:attribute name="symbolY" type="xs:double" />
+		<xs:attribute name="text" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="width" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="menuItemHoverStyle">
+		<xs:sequence />
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="background" type="xs:string" />
+		<xs:attribute name="backgroundAttachment" type="xs:string" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="backgroundImage" type="xs:string" />
+		<xs:attribute name="backgroundPosition" type="xs:string" />
+		<xs:attribute name="backgroundRepeat" type="xs:string" />
+		<xs:attribute name="border" type="xs:string" />
+		<xs:attribute name="borderBottom" type="xs:string" />
+		<xs:attribute name="borderBottomColor" type="xs:string" />
+		<xs:attribute name="borderBottomWidth" type="xs:string" />
+		<xs:attribute name="borderCollapse" type="xs:string" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderLeft" type="xs:string" />
+		<xs:attribute name="borderLeftColor" type="xs:string" />
+		<xs:attribute name="borderLeftWidth" type="xs:string" />
+		<xs:attribute name="borderRight" type="xs:string" />
+		<xs:attribute name="borderRightColor" type="xs:string" />
+		<xs:attribute name="borderRightWidth" type="xs:string" />
+		<xs:attribute name="borderSpacing" type="xs:string" />
+		<xs:attribute name="borderStyle" type="xs:string" />
+		<xs:attribute name="borderTop" type="xs:string" />
+		<xs:attribute name="borderTopColor" type="xs:string" />
+		<xs:attribute name="borderTopWidth" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:string" />
+		<xs:attribute name="bottom" type="xs:string" />
+		<xs:attribute name="captionSide" type="xs:string" />
+		<xs:attribute name="clear" type="xs:string" />
+		<xs:attribute name="clip" type="xs:string" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="content" type="xs:string" />
+		<xs:attribute name="counterIncrement" type="xs:string" />
+		<xs:attribute name="counterReset" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="direction" type="xs:string" />
+		<xs:attribute name="display" type="xs:string" />
+		<xs:attribute name="emptyCells" type="xs:string" />
+		<xs:attribute name="font" type="xs:string" />
+		<xs:attribute name="fontFamily" type="xs:string" />
+		<xs:attribute name="fontSize" type="xs:string" />
+		<xs:attribute name="fontStyle" type="xs:string" />
+		<xs:attribute name="fontVariant" type="xs:string" />
+		<xs:attribute name="fontWeight" type="xs:string" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="left" type="xs:string" />
+		<xs:attribute name="letterSpacing" type="xs:string" />
+		<xs:attribute name="lineHeight" type="xs:string" />
+		<xs:attribute name="listStyle" type="xs:string" />
+		<xs:attribute name="listStyleImage" type="xs:string" />
+		<xs:attribute name="listStylePosition" type="xs:string" />
+		<xs:attribute name="listStyleType" type="xs:string" />
+		<xs:attribute name="margin" type="xs:string" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="maxHeight" type="xs:string" />
+		<xs:attribute name="maxWidth" type="xs:string" />
+		<xs:attribute name="minHeight" type="xs:string" />
+		<xs:attribute name="minWidth" type="xs:string" />
+		<xs:attribute name="opacity" type="xs:double" />
+		<xs:attribute name="orphans" type="xs:string" />
+		<xs:attribute name="outline" type="xs:string" />
+		<xs:attribute name="outlineColor" type="xs:string" />
+		<xs:attribute name="outlineStyle" type="xs:string" />
+		<xs:attribute name="outlineWidth" type="xs:string" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="padding" type="xs:string" />
+		<xs:attribute name="paddingBottom" type="xs:string" />
+		<xs:attribute name="paddingLeft" type="xs:string" />
+		<xs:attribute name="paddingRight" type="xs:string" />
+		<xs:attribute name="paddingTop" type="xs:string" />
+		<xs:attribute name="pageBreakAfter" type="xs:string" />
+		<xs:attribute name="pageBreakBefore" type="xs:string" />
+		<xs:attribute name="pageBreakInside" type="xs:string" />
+		<xs:attribute name="position" type="xs:string" />
+		<xs:attribute name="quotes" type="xs:string" />
+		<xs:attribute name="right" type="xs:string" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="tableLayout" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="textDecoration" type="xs:string" />
+		<xs:attribute name="textIndent" type="xs:string" />
+		<xs:attribute name="textTransform" type="xs:string" />
+		<xs:attribute name="top" type="xs:string" />
+		<xs:attribute name="unicodeBidi" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="visibility" type="xs:string" />
+		<xs:attribute name="whiteSpace" type="xs:string" />
+		<xs:attribute name="widows" type="xs:string" />
+		<xs:attribute name="width" type="xs:string" />
+		<xs:attribute name="wordSpacing" type="xs:string" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="menuItemStyle">
+		<xs:sequence />
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="background" type="xs:string" />
+		<xs:attribute name="backgroundAttachment" type="xs:string" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="backgroundImage" type="xs:string" />
+		<xs:attribute name="backgroundPosition" type="xs:string" />
+		<xs:attribute name="backgroundRepeat" type="xs:string" />
+		<xs:attribute name="border" type="xs:string" />
+		<xs:attribute name="borderBottom" type="xs:string" />
+		<xs:attribute name="borderBottomColor" type="xs:string" />
+		<xs:attribute name="borderBottomWidth" type="xs:string" />
+		<xs:attribute name="borderCollapse" type="xs:string" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderLeft" type="xs:string" />
+		<xs:attribute name="borderLeftColor" type="xs:string" />
+		<xs:attribute name="borderLeftWidth" type="xs:string" />
+		<xs:attribute name="borderRight" type="xs:string" />
+		<xs:attribute name="borderRightColor" type="xs:string" />
+		<xs:attribute name="borderRightWidth" type="xs:string" />
+		<xs:attribute name="borderSpacing" type="xs:string" />
+		<xs:attribute name="borderStyle" type="xs:string" />
+		<xs:attribute name="borderTop" type="xs:string" />
+		<xs:attribute name="borderTopColor" type="xs:string" />
+		<xs:attribute name="borderTopWidth" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:string" />
+		<xs:attribute name="bottom" type="xs:string" />
+		<xs:attribute name="captionSide" type="xs:string" />
+		<xs:attribute name="clear" type="xs:string" />
+		<xs:attribute name="clip" type="xs:string" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="content" type="xs:string" />
+		<xs:attribute name="counterIncrement" type="xs:string" />
+		<xs:attribute name="counterReset" type="xs:string" />
+		<xs:attribute name="direction" type="xs:string" />
+		<xs:attribute name="display" type="xs:string" />
+		<xs:attribute name="emptyCells" type="xs:string" />
+		<xs:attribute name="font" type="xs:string" />
+		<xs:attribute name="fontFamily" type="xs:string" />
+		<xs:attribute name="fontSize" type="xs:string" />
+		<xs:attribute name="fontStyle" type="xs:string" />
+		<xs:attribute name="fontVariant" type="xs:string" />
+		<xs:attribute name="fontWeight" type="xs:string" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="left" type="xs:string" />
+		<xs:attribute name="letterSpacing" type="xs:string" />
+		<xs:attribute name="lineHeight" type="xs:string" />
+		<xs:attribute name="listStyle" type="xs:string" />
+		<xs:attribute name="listStyleImage" type="xs:string" />
+		<xs:attribute name="listStylePosition" type="xs:string" />
+		<xs:attribute name="listStyleType" type="xs:string" />
+		<xs:attribute name="margin" type="xs:string" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="maxHeight" type="xs:string" />
+		<xs:attribute name="maxWidth" type="xs:string" />
+		<xs:attribute name="minHeight" type="xs:string" />
+		<xs:attribute name="minWidth" type="xs:string" />
+		<xs:attribute name="opacity" type="xs:double" />
+		<xs:attribute name="orphans" type="xs:string" />
+		<xs:attribute name="outline" type="xs:string" />
+		<xs:attribute name="outlineColor" type="xs:string" />
+		<xs:attribute name="outlineStyle" type="xs:string" />
+		<xs:attribute name="outlineWidth" type="xs:string" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="padding" type="xs:string" />
+		<xs:attribute name="paddingBottom" type="xs:string" />
+		<xs:attribute name="paddingLeft" type="xs:string" />
+		<xs:attribute name="paddingRight" type="xs:string" />
+		<xs:attribute name="paddingTop" type="xs:string" />
+		<xs:attribute name="pageBreakAfter" type="xs:string" />
+		<xs:attribute name="pageBreakBefore" type="xs:string" />
+		<xs:attribute name="pageBreakInside" type="xs:string" />
+		<xs:attribute name="position" type="xs:string" />
+		<xs:attribute name="quotes" type="xs:string" />
+		<xs:attribute name="right" type="xs:string" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="tableLayout" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="textDecoration" type="xs:string" />
+		<xs:attribute name="textIndent" type="xs:string" />
+		<xs:attribute name="textTransform" type="xs:string" />
+		<xs:attribute name="top" type="xs:string" />
+		<xs:attribute name="unicodeBidi" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="visibility" type="xs:string" />
+		<xs:attribute name="whiteSpace" type="xs:string" />
+		<xs:attribute name="widows" type="xs:string" />
+		<xs:attribute name="width" type="xs:string" />
+		<xs:attribute name="wordSpacing" type="xs:string" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="menuStyle">
+		<xs:sequence />
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="background" type="xs:string" />
+		<xs:attribute name="backgroundAttachment" type="xs:string" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="backgroundImage" type="xs:string" />
+		<xs:attribute name="backgroundPosition" type="xs:string" />
+		<xs:attribute name="backgroundRepeat" type="xs:string" />
+		<xs:attribute name="border" type="xs:string" />
+		<xs:attribute name="borderBottom" type="xs:string" />
+		<xs:attribute name="borderBottomColor" type="xs:string" />
+		<xs:attribute name="borderBottomWidth" type="xs:string" />
+		<xs:attribute name="borderCollapse" type="xs:string" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderLeft" type="xs:string" />
+		<xs:attribute name="borderLeftColor" type="xs:string" />
+		<xs:attribute name="borderLeftWidth" type="xs:string" />
+		<xs:attribute name="borderRight" type="xs:string" />
+		<xs:attribute name="borderRightColor" type="xs:string" />
+		<xs:attribute name="borderRightWidth" type="xs:string" />
+		<xs:attribute name="borderSpacing" type="xs:string" />
+		<xs:attribute name="borderStyle" type="xs:string" />
+		<xs:attribute name="borderTop" type="xs:string" />
+		<xs:attribute name="borderTopColor" type="xs:string" />
+		<xs:attribute name="borderTopWidth" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:string" />
+		<xs:attribute name="bottom" type="xs:string" />
+		<xs:attribute name="captionSide" type="xs:string" />
+		<xs:attribute name="clear" type="xs:string" />
+		<xs:attribute name="clip" type="xs:string" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="content" type="xs:string" />
+		<xs:attribute name="counterIncrement" type="xs:string" />
+		<xs:attribute name="counterReset" type="xs:string" />
+		<xs:attribute name="direction" type="xs:string" />
+		<xs:attribute name="display" type="xs:string" />
+		<xs:attribute name="emptyCells" type="xs:string" />
+		<xs:attribute name="font" type="xs:string" />
+		<xs:attribute name="fontFamily" type="xs:string" />
+		<xs:attribute name="fontSize" type="xs:string" />
+		<xs:attribute name="fontStyle" type="xs:string" />
+		<xs:attribute name="fontVariant" type="xs:string" />
+		<xs:attribute name="fontWeight" type="xs:string" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="left" type="xs:string" />
+		<xs:attribute name="letterSpacing" type="xs:string" />
+		<xs:attribute name="lineHeight" type="xs:string" />
+		<xs:attribute name="listStyle" type="xs:string" />
+		<xs:attribute name="listStyleImage" type="xs:string" />
+		<xs:attribute name="listStylePosition" type="xs:string" />
+		<xs:attribute name="listStyleType" type="xs:string" />
+		<xs:attribute name="margin" type="xs:string" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="maxHeight" type="xs:string" />
+		<xs:attribute name="maxWidth" type="xs:string" />
+		<xs:attribute name="minHeight" type="xs:string" />
+		<xs:attribute name="minWidth" type="xs:string" />
+		<xs:attribute name="opacity" type="xs:double" />
+		<xs:attribute name="orphans" type="xs:string" />
+		<xs:attribute name="outline" type="xs:string" />
+		<xs:attribute name="outlineColor" type="xs:string" />
+		<xs:attribute name="outlineStyle" type="xs:string" />
+		<xs:attribute name="outlineWidth" type="xs:string" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="padding" type="xs:string" />
+		<xs:attribute name="paddingBottom" type="xs:string" />
+		<xs:attribute name="paddingLeft" type="xs:string" />
+		<xs:attribute name="paddingRight" type="xs:string" />
+		<xs:attribute name="paddingTop" type="xs:string" />
+		<xs:attribute name="pageBreakAfter" type="xs:string" />
+		<xs:attribute name="pageBreakBefore" type="xs:string" />
+		<xs:attribute name="pageBreakInside" type="xs:string" />
+		<xs:attribute name="position" type="xs:string" />
+		<xs:attribute name="quotes" type="xs:string" />
+		<xs:attribute name="richness" type="xs:string" />
+		<xs:attribute name="right" type="xs:string" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="tableLayout" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="textDecoration" type="xs:string" />
+		<xs:attribute name="textIndent" type="xs:string" />
+		<xs:attribute name="textTransform" type="xs:string" />
+		<xs:attribute name="top" type="xs:string" />
+		<xs:attribute name="unicodeBidi" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="visibility" type="xs:string" />
+		<xs:attribute name="whiteSpace" type="xs:string" />
+		<xs:attribute name="widows" type="xs:string" />
+		<xs:attribute name="width" type="xs:string" />
+		<xs:attribute name="wordSpacing" type="xs:string" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="htmlCSS">
+		<xs:sequence />
+		<xs:attribute name="background" type="xs:string" />
+		<xs:attribute name="backgroundAttachment" type="xs:string" />
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="backgroundImage" type="xs:string" />
+		<xs:attribute name="backgroundPosition" type="xs:string" />
+		<xs:attribute name="backgroundRepeat" type="xs:string" />
+		<xs:attribute name="border" type="xs:string" />
+		<xs:attribute name="borderBottom" type="xs:string" />
+		<xs:attribute name="borderBottomColor" type="xs:string" />
+		<xs:attribute name="borderBottomWidth" type="xs:string" />
+		<xs:attribute name="borderCollapse" type="xs:string" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderLeft" type="xs:string" />
+		<xs:attribute name="borderLeftColor" type="xs:string" />
+		<xs:attribute name="borderLeftWidth" type="xs:string" />
+		<xs:attribute name="borderRight" type="xs:string" />
+		<xs:attribute name="borderRightColor" type="xs:string" />
+		<xs:attribute name="borderRightWidth" type="xs:string" />
+		<xs:attribute name="borderSpacing" type="xs:string" />
+		<xs:attribute name="borderStyle" type="xs:string" />
+		<xs:attribute name="borderTop" type="xs:string" />
+		<xs:attribute name="borderTopColor" type="xs:string" />
+		<xs:attribute name="borderTopWidth" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:string" />
+		<xs:attribute name="bottom" type="xs:string" />
+		<xs:attribute name="captionSide" type="xs:string" />
+		<xs:attribute name="clear" type="xs:string" />
+		<xs:attribute name="content" type="xs:string" />
+		<xs:attribute name="counterIncrement" type="xs:string" />
+		<xs:attribute name="counterReset" type="xs:string" />
+		<xs:attribute name="emptyCells" type="xs:string" />
+		<xs:attribute name="left" type="xs:string" />
+		<xs:attribute name="letterSpacing" type="xs:string" />
+		<xs:attribute name="lineHeight" type="xs:string" />
+		<xs:attribute name="listStyle" type="xs:string" />
+		<xs:attribute name="listStyleImage" type="xs:string" />
+		<xs:attribute name="listStylePosition" type="xs:string" />
+		<xs:attribute name="listStyleType" type="xs:string" />
+		<xs:attribute name="margin" type="xs:string" />
+		<xs:attribute name="marginBottom" type="xs:long" />
+		<xs:attribute name="marginLeft" type="xs:long" />
+		<xs:attribute name="marginRight" type="xs:long" />
+		<xs:attribute name="marginTop" type="xs:long" />
+		<xs:attribute name="maxHeight" type="xs:string" />
+		<xs:attribute name="maxWidth" type="xs:string" />
+		<xs:attribute name="minHeight" type="xs:string" />
+		<xs:attribute name="minWidth" type="xs:string" />
+		<xs:attribute name="orphans" type="xs:string" />
+		<xs:attribute name="outline" type="xs:string" />
+		<xs:attribute name="outlineColor" type="xs:string" />
+		<xs:attribute name="outlineStyle" type="xs:string" />
+		<xs:attribute name="outlineWidth" type="xs:string" />
+		<xs:attribute name="padding" type="xs:string" />
+		<xs:attribute name="paddingBottom" type="xs:string" />
+		<xs:attribute name="paddingLeft" type="xs:string" />
+		<xs:attribute name="paddingRight" type="xs:string" />
+		<xs:attribute name="paddingTop" type="xs:string" />
+		<xs:attribute name="pageBreakAfter" type="xs:string" />
+		<xs:attribute name="pageBreakBefore" type="xs:string" />
+		<xs:attribute name="pageBreakInside" type="xs:string" />
+		<xs:attribute name="playDuring" type="xs:string" />
+		<xs:attribute name="position" type="xs:string" />
+		<xs:attribute name="quotes" type="xs:string" />
+		<xs:attribute name="right" type="xs:string" />
+		<xs:attribute name="spacingBottom" type="xs:long" />
+		<xs:attribute name="spacingLeft" type="xs:long" />
+		<xs:attribute name="spacingRight" type="xs:long" />
+		<xs:attribute name="spacingTop" type="xs:long" />
+		<xs:attribute name="tableLayout" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="textIndent" type="xs:string" />
+		<xs:attribute name="textTransform" type="xs:string" />
+		<xs:attribute name="top" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="whiteSpace" type="xs:string" />
+		<xs:attribute name="widows" type="xs:string" />
+		<xs:attribute name="zIndex" type="xs:string" />
+		<xs:attribute name="clip" type="xs:string" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="direction" type="xs:string" />
+		<xs:attribute name="display" type="xs:string" />
+		<xs:attribute name="font" type="xs:string" />
+		<xs:attribute name="fontFamily" type="xs:string" />
+		<xs:attribute name="fontSize" type="xs:string" />
+		<xs:attribute name="fontStyle" type="xs:string" />
+		<xs:attribute name="fontVariant" type="xs:string" />
+		<xs:attribute name="fontWeight" type="xs:string" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="opacity" type="xs:double" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="textDecoration" type="xs:string" />
+		<xs:attribute name="unicodeBidi" type="xs:string" />
+		<xs:attribute name="visibility" type="xs:string" />
+		<xs:attribute name="width" type="xs:string" />
+		<xs:attribute name="wordSpacing" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="title">
+		<xs:sequence>
+			<xs:element name="style" type="htmlCSS" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="text" type="xs:string" />
+		<xs:attribute name="cssClass" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="navigator">
+		<xs:all>
+			<xs:element ref="handles" minOccurs="0" />
+			<xs:element ref="series" minOccurs="0" />
+			<xs:element ref="xAxis" minOccurs="0" />
+			<xs:element ref="yAxis" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="adaptToUpdatedData" type="xs:boolean" />
+		<xs:attribute name="baseSeries" type="xs:long" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="height" type="xs:long" />
+		<xs:attribute name="margin" type="xs:long" />
+		<xs:attribute name="maskFill" type="xs:string" />
+		<xs:attribute name="outlineColor" type="xs:string" />
+		<xs:attribute name="outlineWidth" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="handles">
+		<xs:sequence>
+			<xs:element ref="backgroundColor" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="borderColor" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="series">
+		<xs:all>
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element name="fields">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="field" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="index" type="xs:long" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="stack" type="xs:string" />
+		<xs:attribute name="type" type="chartsTypeUnion" />
+		<xs:attribute name="xAxis" type="xs:long" />
+		<xs:attribute name="yAxis" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:long" />
+		<xs:attribute name="dataFormat" type="seriesDataformat"
+			default="JSON_OBJECT" />
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="connectNulls" type="xs:boolean" />
+		<xs:attribute name="stacking" type="xs:string" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="innerSize" type="xs:string" />
+		<xs:attribute name="size" type="xs:string" />
+	</xs:complexType>
+
+	<xs:simpleType name="stackingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="normal" />
+			<xs:enumeration value="percent" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="seriesDataformat">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="JSON_ARRAY" />
+			<xs:enumeration value="JSON_OBJECT" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:complexType name="geoPlotOptionsSeries">
+		<xs:all>
+			<xs:element name="dataLabels" type="mapDataLabels"
+				minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element name="joinBy" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="join" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="geoStates" minOccurs="0" />
+			<xs:element ref="tooltip" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allAreas" type="xs:boolean" />
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckBox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="plotOptionsSeries">
+		<xs:all>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element ref="tooltip" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="connectEnds" type="xs:boolean" />
+		<xs:attribute name="connectNulls" type="xs:boolean" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="xs:string" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="dataGrouping">
+		<xs:sequence>
+			<xs:element ref="dateTimeLabelFormats" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="approximation" type="xs:string" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="forced" type="xs:boolean" />
+		<xs:attribute name="groupPixelWidth" type="xs:long" />
+		<xs:attribute name="smoothed" type="xs:boolean" />
+		<xs:attribute name="units">
+			<xs:simpleType>
+				<xs:list itemType="xs:string" />
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="dateTimeLabelFormats">
+		<xs:sequence />
+		<xs:attribute name="day" type="xs:string" />
+		<xs:attribute name="hour" type="xs:string" />
+		<xs:attribute name="millisecond" type="xs:string" />
+		<xs:attribute name="minute" type="xs:string" />
+		<xs:attribute name="month" type="xs:string" />
+		<xs:attribute name="second" type="xs:string" />
+		<xs:attribute name="week" type="xs:string" />
+		<xs:attribute name="year" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="dataLabels">
+		<xs:all>
+			<xs:element name="formatter" type="xs:string" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+			<xs:element ref="backgroundColor" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="crop" type="xs:boolean" />
+		<xs:attribute name="distance" type="xs:long" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="format" type="xs:string" />
+		<xs:attribute name="inside" type="xs:boolean" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="padding" type="xs:double" />
+		<xs:attribute name="rotation" type="xs:long" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="useHTML" type="xs:boolean" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="mapDataLabels">
+		<xs:all>
+			<xs:element name="formatter" type="xs:string" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+			<xs:element ref="backgroundColor" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="align" type="alignType" />
+
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="crop" type="xs:boolean" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="format" type="xs:string" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="padding" type="xs:double" />
+		<xs:attribute name="rotation" type="xs:long" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="useHTML" type="xs:boolean" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="field">
+		<xs:sequence />
+		<xs:attribute name="columnKey" type="xs:string" use="required" />
+		<xs:attribute name="name" type="fieldTypeUnion" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="marker">
+		<xs:sequence>
+			<xs:element ref="states" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="fillColor" type="xs:string" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="radius" type="xs:long" />
+		<xs:attribute name="symbol" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="point">
+		<xs:sequence>
+			<xs:element name="events" type="seriesEvents" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tablePoint">
+		<xs:sequence>
+			<xs:element name="events" type="tableSeriesEvents"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tooltip">
+		<xs:all>
+			<xs:element ref="backgroundColor" minOccurs="0" />
+			<xs:element name="crosshairs" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="crosshair" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="dateTimeLabelFormats" minOccurs="0" />
+			<xs:element ref="formatter" minOccurs="0" />
+			<xs:element name="positioner" type="xs:string" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="followPointer" type="xs:boolean" />
+		<xs:attribute name="followTouchMove" type="xs:boolean" />
+		<xs:attribute name="footerFormat" type="xs:string" />
+		<xs:attribute name="headerFormat" type="xs:string" />
+		<xs:attribute name="hideDelay" type="xs:long" />
+		<xs:attribute name="pointFormat" type="xs:string" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="shared" type="xs:boolean" />
+		<xs:attribute name="snap" type="xs:long" />
+		<xs:attribute name="valueDecimals" type="xs:long" />
+		<xs:attribute name="valuePrefix" type="xs:string" />
+		<xs:attribute name="valueSuffix" type="xs:string" />
+		<xs:attribute name="xDateFormat" type="xs:string" />
+		<xs:attribute name="useHTML" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="formatter">
+		<xs:choice>
+			<xs:element ref="server"></xs:element>
+			<xs:element name="client" type="xs:string"></xs:element>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="server">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element ref="attribute"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="attribute">
+		<xs:sequence>
+			<xs:element ref="format" minOccurs="0"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="key" type="tooltipTypeUnion" />
+		<xs:attribute name="prefix" type="xs:string" />
+		<xs:attribute name="suffix" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="format">
+		<xs:sequence />
+		<xs:attribute name="decimal" type="xs:long" use="optional"
+			default="2" />
+		<xs:attribute name="formatter" type="formatterTypeUnion"
+			use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="crosshair">
+		<xs:sequence />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="width" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="xAxis">
+		<xs:all>
+			<xs:element name="categories" type="xs:string" minOccurs="0" />
+			<xs:element ref="dateTimeLabelFormats" minOccurs="0" />
+			<xs:element name="events" type="axisEvents" minOccurs="0" />
+			<xs:element ref="labels" minOccurs="0" />
+			<xs:element name="plotBands" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="plotBand" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="plotLines" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="plotLine" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="tickPositioner" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="tickPositions" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="tickPosition" type="xs:long"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="title" type="axisTitle" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowDecimals" type="xs:boolean" />
+		<xs:attribute name="alternateGridColor" type="xs:string" />
+		<xs:attribute name="columnKey" type="xs:string" />
+		<xs:attribute name="endOnTick" type="xs:boolean" />
+		<xs:attribute name="gridLineColor" type="xs:string" />
+		<xs:attribute name="gridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="gridLineWidth" type="xs:long" />
+		<xs:attribute name="gridZIndex" type="xs:long" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:long" />
+		<xs:attribute name="max" type="xs:long" />
+		<xs:attribute name="maxPadding" type="xs:double" />
+		<xs:attribute name="min" type="xs:long" />
+		<xs:attribute name="minPadding" type="xs:double" />
+		<xs:attribute name="minRange" type="xs:long" />
+		<xs:attribute name="minTickInterval" type="xs:long" />
+		<xs:attribute name="minorGridLineColor" type="xs:string" />
+		<xs:attribute name="minorGridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="minorGridLineWidth" type="xs:long" />
+		<xs:attribute name="minorTickColor" type="xs:string" />
+		<xs:attribute name="minorTickInterval" type="xs:float" />
+		<xs:attribute name="minorTickLength" type="xs:long" />
+		<xs:attribute name="minorTickPosition" type="xs:string" />
+		<xs:attribute name="minorTickWidth" type="xs:long" />
+		<xs:attribute name="offset" type="xs:long" />
+		<xs:attribute name="opposite" type="xs:boolean" />
+		<xs:attribute name="ordinal" type="xs:boolean" />
+		<xs:attribute name="range" type="xs:long" />
+		<xs:attribute name="reversed" type="xs:boolean" />
+		<xs:attribute name="showEmpty" type="xs:boolean" />
+		<xs:attribute name="showFirstLabel" type="xs:boolean" />
+		<xs:attribute name="showLastLabel" type="xs:boolean" />
+		<xs:attribute name="startOfWeek" type="xs:long" />
+		<xs:attribute name="startOnTick" type="xs:boolean" />
+		<xs:attribute name="tickColor" type="xs:string" />
+		<xs:attribute name="tickInterval" type="xs:long" />
+		<xs:attribute name="tickLength" type="xs:long" />
+		<xs:attribute name="tickPixelInterval" type="xs:long" />
+		<xs:attribute name="tickPosition" type="xs:string" />
+		<xs:attribute name="tickWidth" type="xs:long" />
+		<xs:attribute name="tickmarkPlacement" type="xs:string" />
+		<xs:attribute name="type" type="minorTickType" />
+	</xs:complexType>
+
+	<xs:complexType name="labels">
+		<xs:all>
+			<xs:element name="formatter" type="xs:string" minOccurs="0" />
+			<xs:element ref="items" minOccurs="0" maxOccurs="1" />
+			<xs:element ref="style" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="format" type="xs:string" />
+		<xs:attribute name="overflow" type="xs:string" />
+		<xs:attribute name="rotation" type="xs:long" />
+		<xs:attribute name="staggerLines" type="xs:long" />
+		<xs:attribute name="step" type="xs:long" />
+		<xs:attribute name="useHTML" type="xs:boolean" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="geoLabels">
+		<xs:all>
+			<xs:element ref="items" minOccurs="0" maxOccurs="1" />
+			<xs:element ref="style" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="items">
+		<xs:sequence>
+			<xs:element ref="style" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="html" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="plotBand">
+		<xs:sequence>
+			<xs:element name="events" type="seriesEvents" minOccurs="0" />
+			<xs:element ref="label" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="from" type="xs:long" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="innerRadius" type="xs:string" />
+		<xs:attribute name="outerRadius" type="xs:string" />
+		<xs:attribute name="thickness" type="xs:string" />
+		<xs:attribute name="to" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="label">
+		<xs:sequence>
+			<xs:element ref="style" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="rotation" type="xs:long" />
+		<xs:attribute name="text" type="xs:string" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="plotLine">
+		<xs:all>
+			<xs:element name="events" type="seriesEvents" minOccurs="0" />
+			<xs:element ref="label" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="value" type="xs:long" />
+		<xs:attribute name="width" type="xs:long" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:simpleType name="gridLineInterpolationType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="circle" />
+			<xs:enumeration value="polygon" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="yAxis">
+		<xs:all>
+			<xs:element name="categories" type="xs:string" minOccurs="0" />
+			<xs:element ref="dateTimeLabelFormats" minOccurs="0" />
+			<xs:element name="events" type="axisEvents" minOccurs="0" />
+			<xs:element ref="labels" minOccurs="0" />
+			<xs:element name="plotBands" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="plotBand" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="plotLines" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="plotLine" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="stackLabels" minOccurs="0" />
+			<xs:element name="tickPositioner" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="tickPositions" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="tickPosition" type="xs:long"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="title" type="axisTitle" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowDecimals" type="xs:boolean" />
+		<xs:attribute name="alternateGridColor" type="xs:string" />
+		<xs:attribute name="columnKey" type="xs:string" />
+		<xs:attribute name="endOnTick" type="xs:boolean" />
+		<xs:attribute name="gridLineColor" type="xs:string" />
+		<xs:attribute name="gridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="gridLineInterpolation" type="gridLineInterpolationType" />
+		<xs:attribute name="gridLineWidth" type="xs:long" />
+		<xs:attribute name="gridZIndex" type="xs:long" />
+		<xs:attribute name="height" type="xs:long" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:long" />
+		<xs:attribute name="max" type="xs:long" />
+		<xs:attribute name="maxPadding" type="xs:double" />
+		<xs:attribute name="min" type="xs:long" />
+		<xs:attribute name="minPadding" type="xs:double" />
+		<xs:attribute name="minRange" type="xs:long" />
+		<xs:attribute name="minTickInterval" type="xs:long" />
+		<xs:attribute name="minorGridLineColor" type="xs:string" />
+		<xs:attribute name="minorGridLineDashStyle" type="dashStyleType" />
+		<xs:attribute name="minorGridLineWidth" type="xs:long" />
+		<xs:attribute name="minorTickColor" type="xs:string" />
+		<xs:attribute name="minorTickInterval" type="xs:float" />
+		<xs:attribute name="minorTickLength" type="xs:long" />
+		<xs:attribute name="minorTickPosition" type="xs:string" />
+		<xs:attribute name="minorTickWidth" type="xs:long" />
+		<xs:attribute name="offset" type="xs:long" />
+		<xs:attribute name="opposite" type="xs:boolean" />
+		<xs:attribute name="ordinal" type="xs:boolean" />
+		<xs:attribute name="range" type="xs:long" />
+		<xs:attribute name="reversed" type="xs:boolean" />
+		<xs:attribute name="showEmpty" type="xs:boolean" />
+		<xs:attribute name="showFirstLabel" type="xs:boolean" />
+		<xs:attribute name="showLastLabel" type="xs:boolean" />
+		<xs:attribute name="startOfWeek" type="xs:long" />
+		<xs:attribute name="startOnTick" type="xs:boolean" />
+		<xs:attribute name="tickColor" type="xs:string" />
+		<xs:attribute name="tickInterval" type="xs:long" />
+		<xs:attribute name="tickLength" type="xs:long" />
+		<xs:attribute name="tickPixelInterval" type="xs:long" />
+		<xs:attribute name="tickPosition" type="xs:string" />
+		<xs:attribute name="tickWidth" type="xs:long" />
+		<xs:attribute name="tickmarkPlacement" type="xs:string" />
+		<xs:attribute name="top" type="xs:long" />
+		<xs:attribute name="type" type="minorTickType" />
+	</xs:complexType>
+
+	<xs:complexType name="stackLabels">
+		<xs:all>
+			<xs:element name="formatter" type="xs:string" minOccurs="0" />
+			<xs:element ref="style" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="align" type="alignType" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="rotation" type="xs:long" />
+		<xs:attribute name="textAlign" type="xs:string" />
+		<xs:attribute name="useHTML" type="xs:boolean" />
+		<xs:attribute name="verticalAlign" type="verticalAlignType" />
+		<xs:attribute name="x" type="xs:long" />
+		<xs:attribute name="y" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="pane">
+		<xs:sequence>
+			<xs:element ref="background" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="center" type="xs:string" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="endAngle" type="xs:long" />
+		<xs:attribute name="startAngle" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="background">
+		<xs:sequence>
+			<xs:element ref="backgroundColor" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="innerRadius" type="xs:string" />
+		<xs:attribute name="outerRadius" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="plotOptions">
+		<xs:all>
+			<xs:element ref="area" minOccurs="0" />
+			<xs:element name="arearange" type="areaRangeDTO"
+				minOccurs="0" />
+			<xs:element name="areaspline" type="areaSplineDTO"
+				minOccurs="0" />
+			<xs:element ref="bar" minOccurs="0" />
+			<xs:element ref="bubble" minOccurs="0" />
+			<xs:element ref="candlestick" minOccurs="0" />
+			<xs:element name="column" minOccurs="0" type="columnDTO" />
+			<xs:element name="columnrange" type="columnRangeDTO"
+				minOccurs="0" />
+			<xs:element ref="line" minOccurs="0" />
+			<xs:element ref="ohlc" minOccurs="0" />
+			<xs:element ref="pie" minOccurs="0" />
+			<xs:element ref="scatter" minOccurs="0" />
+			<xs:element name="series" type="plotOptionsSeries"
+				minOccurs="0" />
+			<xs:element name="spline" type="splineDTO" minOccurs="0" />
+			<xs:element name="wordcloud" type="wordcloudDTO"
+				minOccurs="0" />
+			<xs:element name="custom" type="customDTO" minOccurs="0" />
+			<xs:element ref="boxplot" minOccurs="0" />
+			<xs:element ref="funnel" minOccurs="0" />
+			<xs:element ref="pyramid" minOccurs="0" />
+			<xs:element ref="gauge" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="chartSeriesTooltip">
+		<xs:all>
+			<xs:element ref="dateTimeLabelFormats" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="followPointer" type="xs:boolean" />
+		<xs:attribute name="followTouchMove" type="xs:boolean" />
+		<xs:attribute name="footerFormat" type="xs:string" />
+		<xs:attribute name="headerFormat" type="xs:string" />
+		<xs:attribute name="hideDelay" type="xs:long" />
+		<xs:attribute name="pointFormat" type="xs:string" />
+		<xs:attribute name="valueDecimals" type="xs:long" />
+		<xs:attribute name="valuePrefix" type="xs:string" />
+		<xs:attribute name="valueSuffix" type="xs:string" />
+		<xs:attribute name="xDateFormat" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="customDTO">
+		<xs:sequence>
+			<xs:element name="properties" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="property" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="areaDTO">
+		<xs:all>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="connectEnds" type="xs:boolean" />
+		<xs:attribute name="connectNulls" type="xs:boolean" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="fillColor" type="xs:string" />
+		<xs:attribute name="fillOpacity" type="xs:double" />
+		<xs:attribute name="gapSize" type="xs:long" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="negativeFillColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="xs:string" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="trackByArea" type="xs:boolean" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="areaRangeDTO">
+		<xs:all>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="connectNulls" type="xs:boolean" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="fillColor" type="xs:string" />
+		<xs:attribute name="fillOpacity" type="xs:double" />
+		<xs:attribute name="gapSize" type="xs:long" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="negativeFillColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="xs:string" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="trackByArea" type="xs:boolean" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="areaSplineDTO">
+		<xs:all>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="connectEnds" type="xs:boolean" />
+		<xs:attribute name="connectNulls" type="xs:boolean" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="fillColor" type="xs:string" />
+		<xs:attribute name="fillOpacity" type="xs:double" />
+		<xs:attribute name="gapSize" type="xs:long" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="negativeFillColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="xs:string" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="trackByArea" type="xs:boolean" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="barDTO">
+		<xs:all>
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="colorByPoint" type="xs:boolean" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="groupPadding" type="xs:double" />
+		<xs:attribute name="grouping" type="xs:boolean" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="minPointLength" type="xs:long" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPadding" type="xs:double" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="pointWidth" type="xs:long" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="stackingType" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="bubbleDTO">
+		<xs:all>
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="displayNegative" type="xs:boolean" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="zThreshold" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="gaugeDTO">
+		<xs:all>
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element ref="dial" minOccurs="0" />
+
+
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="pivot" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="overshoot" type="xs:long" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="wrap" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="candlestickDTO">
+		<xs:all>
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="groupPadding" type="xs:double" />
+		<xs:attribute name="grouping" type="xs:boolean" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="lineColor" type="xs:string" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="minPointLength" type="xs:long" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPadding" type="xs:double" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="pointWidth" type="xs:long" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="upColor" type="xs:string" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="columnDTO">
+		<xs:all>
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="colorByPoint" type="xs:boolean" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="groupPadding" type="xs:double" />
+		<xs:attribute name="grouping" type="xs:boolean" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="minPointLength" type="xs:long" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPadding" type="xs:double" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="pointWidth" type="xs:long" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="stackingType" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="columnRangeDTO">
+		<xs:all>
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderRadius" type="xs:long" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="colorByPoint" type="xs:boolean" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="groupPadding" type="xs:double" />
+		<xs:attribute name="grouping" type="xs:boolean" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="minPointLength" type="xs:long" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPadding" type="xs:double" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="pointWidth" type="xs:long" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="stackingType" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="lineDTO">
+		<xs:all>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="connectEnds" type="xs:boolean" />
+		<xs:attribute name="connectNulls" type="xs:boolean" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="gapSize" type="xs:long" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="stackingType" />
+		<xs:attribute name="step" type="xs:string" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="ohlcDTO">
+		<xs:all>
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="colorByPoint" type="xs:boolean" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="groupPadding" type="xs:double" />
+		<xs:attribute name="grouping" type="xs:boolean" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="minPointLength" type="xs:long" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPadding" type="xs:double" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="pointWidth" type="xs:long" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="zIndex" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="pieDTO">
+		<xs:all>
+			<xs:element name="centers" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="center" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="endAngle" type="xs:long" />
+		<xs:attribute name="ignoreHiddenPoint" type="xs:boolean" />
+		<xs:attribute name="innerSize" type="xs:string" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="minSize" type="xs:long" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="size" type="xs:string" />
+		<xs:attribute name="slicedOffset" type="xs:long" />
+		<xs:attribute name="startAngle" type="xs:long" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="scatterDTO">
+		<xs:all>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="stackingType" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="splineDTO">
+		<xs:all>
+			<xs:element ref="dataGrouping" minOccurs="0" />
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="marker" minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="animation" type="xs:boolean" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="compare" type="xs:string" />
+		<xs:attribute name="connectEnds" type="xs:boolean" />
+		<xs:attribute name="connectNulls" type="xs:boolean" />
+		<xs:attribute name="cropThreshold" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="dashStyle" type="dashStyleType" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="gapSize" type="xs:long" />
+		<xs:attribute name="legendIndex" type="xs:long" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stacking" type="stackingType" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="threshold" type="xs:long" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="boxPlotDTO">
+		<xs:all>
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="color" type="xs:string" />
+		<xs:attribute name="colorByPoint" type="xs:boolean" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<!-- <xs:attribute name="depth" type="xs:long" /> -->
+		<xs:attribute name="edgeColor" type="xs:string" />
+		<xs:attribute name="edgeWidth" type="xs:long" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="fillColor" type="xs:string" />
+		<xs:attribute name="groupPadding" type="xs:double" />
+		<xs:attribute name="groupZPadding" type="xs:long" />
+		<xs:attribute name="grouping" type="xs:boolean" />
+		<xs:attribute name="lineWidth" type="xs:long" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="medianColor" type="xs:string" />
+		<xs:attribute name="medianWidth" type="xs:long" />
+		<xs:attribute name="negativeColor" type="xs:string" />
+		<xs:attribute name="pointInterval" type="xs:long" />
+		<xs:attribute name="pointPadding" type="xs:double" />
+		<xs:attribute name="pointPlacement" type="xs:string" />
+		<xs:attribute name="pointRange" type="xs:long" />
+		<xs:attribute name="pointStart" type="xs:double" />
+		<xs:attribute name="pointWidth" type="xs:long" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="showCheckbox" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="stemColor" type="xs:string" />
+		<xs:attribute name="stemDashStyle" type="xs:string" />
+		<xs:attribute name="stemWidth" type="xs:long" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="turboThreshold" type="xs:long" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="whiskerColor" type="xs:string" />
+		<xs:attribute name="whiskerLength" type="xs:long" />
+		<xs:attribute name="whiskerWidth" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="funnelDTO">
+		<xs:all>
+			<xs:element name="centers" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="center" type="xs:string" minOccurs="2"
+							maxOccurs="2" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<xs:attribute name="depth" type="xs:long" />
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="ignoreHiddenPoint" type="xs:boolean" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="minSize" type="xs:long" />
+		<xs:attribute name="neckHeight" type="xs:string" />
+		<xs:attribute name="neckWidth" type="xs:string" />
+		<xs:attribute name="reversed" type="xs:boolean" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<xs:attribute name="slicedOffset" type="xs:long" />
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="width" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="pyramidDTO">
+		<xs:all>
+			<!-- <xs:element name="centers" minOccurs="0"> <xs:complexType> <xs:sequence> 
+				<xs:element name="center" type="xs:string" minOccurs="0" maxOccurs="unbounded" 
+				/> </xs:sequence> </xs:complexType> </xs:element> -->
+			<xs:element name="colors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="color" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="dataLabels" minOccurs="0" />
+			<xs:element name="events" type="plotoptionsEvents"
+				minOccurs="0" />
+			<xs:element ref="point" minOccurs="0" />
+			<xs:element name="states" type="plotOptionsStates"
+				minOccurs="0" />
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="allowPointSelect" type="xs:boolean" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="cursor" type="xs:string" />
+		<!-- <xs:attribute name="depth" type="xs:long" /> -->
+		<xs:attribute name="enableMouseTracking" type="xs:boolean" />
+		<xs:attribute name="height" type="xs:string" />
+		<xs:attribute name="ignoreHiddenPoint" type="xs:boolean" />
+		<xs:attribute name="linkedTo" type="xs:string" />
+		<xs:attribute name="minSize" type="xs:long" />
+		<xs:attribute name="reversed" type="xs:boolean" />
+		<xs:attribute name="selected" type="xs:boolean" />
+		<xs:attribute name="shadow" type="xs:boolean" />
+		<xs:attribute name="showInLegend" type="xs:boolean" />
+		<!-- <xs:attribute name="slicedOffset" type="xs:long" /> -->
+		<xs:attribute name="stickyTracking" type="xs:boolean" />
+		<xs:attribute name="visible" type="xs:boolean" />
+		<xs:attribute name="width" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="wordcloudDTO">
+		<xs:all>
+			<xs:element name="tooltip" type="chartSeriesTooltip"
+				minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="padding" type="xs:long" default="5"></xs:attribute>
+		<xs:attribute name="fontFamily" type="xs:string"></xs:attribute>
+		<xs:attribute name="font" type="xs:string" default="5"></xs:attribute>
+		<xs:attribute name="height" type="xs:long" default="600"></xs:attribute>
+		<xs:attribute name="width" type="xs:long"></xs:attribute>
+		<xs:attribute name="fontSizeRatio" type="xs:float"
+			default="15"></xs:attribute>
+		<xs:attribute name="rotateAngle" type="xs:float" default="90"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="rangeSelector">
+		<xs:all>
+			<xs:element name="buttons" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="button" type="buttons" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="buttonTheme" type="theme" minOccurs="0" />
+			<xs:element name="inputPosition" type="position"
+				minOccurs="0" />
+			<xs:element name="inputStyle" type="style" minOccurs="0" />
+			<xs:element name="labelStyle" type="style" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="buttonSpacing" type="xs:long" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="inputDateFormat" type="xs:string" />
+		<xs:attribute name="inputEditDateFormat" type="xs:string" />
+		<xs:attribute name="inputEnabled" type="xs:boolean" />
+		<xs:attribute name="selected" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="scrollbar">
+		<xs:sequence>
+			<xs:element name="barBackgroundColor" type="backgroundColor"
+				minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="barBorderColor" type="xs:string" />
+		<xs:attribute name="barBorderRadius" type="xs:long" />
+		<xs:attribute name="barBorderWidth" type="xs:long" />
+		<xs:attribute name="buttonArrowColor" type="xs:string" />
+		<xs:attribute name="buttonBackgroundColor" type="xs:string" />
+		<xs:attribute name="buttonBorderColor" type="xs:string" />
+		<xs:attribute name="buttonBorderRadius" type="xs:long" />
+		<xs:attribute name="buttonBorderWidth" type="xs:long" />
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="height" type="xs:long" />
+		<xs:attribute name="liveRedraw" type="xs:boolean" />
+		<xs:attribute name="minWidth" type="xs:long" />
+		<xs:attribute name="rifleColor" type="xs:string" />
+		<xs:attribute name="trackBackgroundColor" type="xs:string" />
+		<xs:attribute name="trackBorderColor" type="xs:string" />
+		<xs:attribute name="trackBorderRadius" type="xs:long" />
+		<xs:attribute name="trackBorderWidth" type="xs:long" />
+	</xs:complexType>
+
+	<xs:complexType name="subTitle">
+		<xs:sequence>
+			<xs:element name="style" type="htmlCSS" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="text" type="xs:string" />
+		<xs:attribute name="cssClass" type="xs:string" />
+	</xs:complexType>
+
+	<xs:simpleType name="filterEvents">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="change" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="filterUnion">
+		<xs:union memberTypes="filterType customFilterType" />
+	</xs:simpleType>
+
+	<xs:simpleType name="filterType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="singleSelect" />
+			<xs:enumeration value="multiSelect" />
+			<xs:enumeration value="multiSelectCheckbox" />
+			<xs:enumeration value="textbox" />
+			<xs:enumeration value="label" />
+			<xs:enumeration value="slider" />
+			<xs:enumeration value="stockSlider" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="customFilterType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z0-9_-]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="filtersType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="individual" />
+			<xs:enumeration value="combination" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="widgetState">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="show" />
+			<xs:enumeration value="hide" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Visualizations">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="chart" />
+			<xs:enumeration value="table" />
+			<xs:enumeration value="infographics" />
+			<xs:enumeration value="map" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="chartEventTypeUnion">
+		<xs:union memberTypes="chartEventType customFilterType" />
+	</xs:simpleType>
+
+	<xs:simpleType name="chartEventType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="click" />
+			<xs:enumeration value="addSeries" />
+			<xs:enumeration value="load" />
+			<xs:enumeration value="redraw" />
+			<xs:enumeration value="selection" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="axisEventType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="afterSetExtremes" />
+			<xs:enumeration value="setExtremes" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="plotoptionEventType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="click" />
+			<xs:enumeration value="mouseover" />
+			<xs:enumeration value="mouseout" />
+			<xs:enumeration value="checkboxclick" />
+			<xs:enumeration value="hide" />
+			<xs:enumeration value="show" />
+			<xs:enumeration value="legenditemclick" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="seriesEventType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="click" />
+			<xs:enumeration value="mouseover" />
+			<xs:enumeration value="mouseout" />
+			<xs:enumeration value="select" />
+			<xs:enumeration value="unselect" />
+			<!-- <xs:enumeration value="remove" /> -->
+			<xs:enumeration value="update" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="tableSeriesEventType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="click" />
+			<xs:enumeration value="mouseover" />
+			<xs:enumeration value="mouseout" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="eventActionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="drilldown" />
+			<xs:enumeration value="loadWidget" />
+			<xs:enumeration value="popupWidget" />
+			<xs:enumeration value="changePage" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="chartsTypeUnion">
+		<xs:union memberTypes="chartsType nonEmptyString" />
+	</xs:simpleType>
+
+	<xs:simpleType name="chartsType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="line" />
+			<xs:enumeration value="column" />
+			<xs:enumeration value="pie" />
+			<xs:enumeration value="spline" />
+			<xs:enumeration value="scatter" />
+			<xs:enumeration value="bar" />
+			<xs:enumeration value="area" />
+			<xs:enumeration value="bubble" />
+			<xs:enumeration value="gauge" />
+			<xs:enumeration value="areaspline" />
+			<xs:enumeration value="arearange" />
+			<xs:enumeration value="columnrange" />
+			<xs:enumeration value="candlestick" />
+			<xs:enumeration value="ohlc" />
+			<xs:enumeration value="wordcloud" />
+			<xs:enumeration value="boxplot" />
+			<xs:enumeration value="funnel" />
+			<xs:enumeration value="pyramid" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="nonEmptyString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:pattern value=".*[^\s0-9_-].*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- <xs:simpleType name="restrictedString"> <xs:restriction base="xs:string"> 
+		<xs:minLength value="0" /> <xs:pattern value=".*[^(?!(widget|filter)$).*].*" 
+		/> </xs:restriction> </xs:simpleType> -->
+
+	<!-- <xs:simpleType name="stockChartsType"> <xs:restriction base="xs:string"> 
+		<xs:enumeration value="line" /> <xs:enumeration value="column" /> <xs:enumeration 
+		value="spline" /> <xs:enumeration value="scatter" /> <xs:enumeration value="area" 
+		/> <xs:enumeration value="areaSpline" /> <xs:enumeration value="areaRange" 
+		/> <xs:enumeration value="columnRange" /> <xs:enumeration value="candleStick" 
+		/> <xs:enumeration value="ohlc" /> </xs:restriction> </xs:simpleType> -->
+
+
+	<xs:simpleType name="renderTypeEnum">
+		<xs:restriction base="xs:string">
+
+			<xs:enumeration value="Table" />
+			<xs:enumeration value="Table BarChart" />
+			<xs:enumeration value="Heatmap" />
+			<xs:enumeration value="Row Heatmap" />
+			<xs:enumeration value="Col Heatmap" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="aggregatorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="count" />
+			<xs:enumeration value="countUnique" />
+			<xs:enumeration value="listUnique" />
+			<xs:enumeration value="intSum" />
+			<xs:enumeration value="sum" />
+			<xs:enumeration value="average" />
+			<xs:enumeration value="sumAsFractionOfTotal" />
+			<xs:enumeration value="sumAsFractionOfRow" />
+			<xs:enumeration value="sumAsFractionOfCol" />
+			<xs:enumeration value="countAsFractionOfTotal" />
+			<xs:enumeration value="countAsFractionOfRow" />
+			<xs:enumeration value="countAsFractionOfCol" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="displayOptionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="row" />
+			<xs:enumeration value="column" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="eventParamUnion">
+		<xs:union memberTypes="eventsParamType customFilterType" />
+	</xs:simpleType>
+
+	<xs:simpleType name="eventsParamType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="categoryName" />
+			<xs:enumeration value="pointName" />
+			<xs:enumeration value="seriesName" />
+			<xs:enumeration value="seriesType" />
+			<xs:enumeration value="x" />
+			<xs:enumeration value="y" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="alignType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="left" />
+			<xs:enumeration value="center" />
+			<xs:enumeration value="right" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="verticalAlignType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="top" />
+			<xs:enumeration value="middle" />
+			<xs:enumeration value="bottom" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="layoutType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="horizontal" />
+			<xs:enumeration value="vertical" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="fieldTypeUnion">
+		<xs:union memberTypes="fieldType customFilterType" />
+	</xs:simpleType>
+
+	<xs:simpleType name="fieldType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="x" />
+			<xs:enumeration value="y" />
+			<xs:enumeration value="z" />
+			<xs:enumeration value="q1" />
+			<xs:enumeration value="q3" />
+			<xs:enumeration value="low" />
+			<xs:enumeration value="high" />
+			<xs:enumeration value="code" />
+			<xs:enumeration value="name" />
+			<xs:enumeration value="open" />
+			<xs:enumeration value="close" />
+			<xs:enumeration value="value" />
+			<xs:enumeration value="median" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="pagination">
+		<xs:all>
+			<xs:element ref="recordCount" minOccurs="0" maxOccurs="1" />
+		</xs:all>
+		<xs:attribute name="recordPerPage" type="xs:long" />
+		<xs:attribute name="buttonType" type="buttonType" />
+		<xs:attribute name="mode" type="modetype" default="client" />
+
+		<xs:attribute name="offsetParam" type="xs:string" />
+		<xs:attribute name="sortColumnParam" type="xs:string" />
+		<xs:attribute name="sortOrderParam" type="xs:string" />
+		<xs:attribute name="recordPerPageParam" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="recordCount">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="dataSource" type="dataSourceDef"
+				minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="dial">
+		<xs:attribute name="backgroundColor" type="xs:string" />
+		<xs:attribute name="baseLength" type="xs:string" />
+		<xs:attribute name="baseWidth" type="xs:long" />
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="radius" type="xs:string" />
+		<xs:attribute name="rearLength" type="xs:string" />
+		<xs:attribute name="topWidth" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="pivot">
+		<xs:all>
+			<xs:element ref="backgroundColor" minOccurs="0" maxOccurs="1" />
+		</xs:all>
+		<xs:attribute name="borderColor" type="xs:string" />
+		<xs:attribute name="borderWidth" type="xs:long" />
+		<xs:attribute name="radius" type="xs:long" />
+	</xs:complexType>
+
+	<xs:simpleType name="modetype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="client" />
+			<xs:enumeration value="server" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="formatterTypeUnion">
+		<xs:union memberTypes="formatterType customFilterType" />
+	</xs:simpleType>
+
+	<xs:simpleType name="formatterType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="currency" />
+			<xs:enumeration value="number" />
+			<xs:enumeration value="numberSequence" />
+			<xs:enumeration value="bytes" />
+			<xs:enumeration value="kiloBytes" />
+			<xs:enumeration value="gigaBytes" />
+			<xs:enumeration value="teraBytes" />
+			<xs:enumeration value="thousand" />
+			<xs:enumeration value="million" />
+			<xs:enumeration value="percentage" />
+			<xs:enumeration value="time" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="connectorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="$static_json" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="connectorTypeUnion">
+		<xs:union memberTypes="connectorType customFilterType" />
+	</xs:simpleType>
+
+	<xs:simpleType name="maxSelectAllowType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="tooltipAttrType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="series.name" />
+			<xs:enumeration value="point.name" />
+			<xs:enumeration value="point.category" />
+			<xs:enumeration value="x" />
+			<xs:enumeration value="y" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tooltipCustomeType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^*+]+" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tooltipTypeUnion">
+		<xs:union memberTypes="tooltipAttrType tooltipCustomeType" />
+	</xs:simpleType>
+
+
+	<xs:simpleType name="validationType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="alphabatic" />
+			<xs:enumeration value="alphanumeric" />
+			<xs:enumeration value="alphanumericWithQoutes" />
+			<xs:enumeration value="alphaWithQoutes" />
+			<xs:enumeration value="email" />
+			<xs:enumeration value="integer" />
+			<xs:enumeration value="numeric" />
+			<xs:enumeration value="rawstring" />
+			<xs:enumeration value="singlevalue" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="dashStyleType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Solid" />
+			<xs:enumeration value="ShortDash" />
+			<xs:enumeration value="ShortDot" />
+			<xs:enumeration value="ShortDashDot" />
+			<xs:enumeration value="ShortDashDotDot" />
+			<xs:enumeration value="Dot" />
+			<xs:enumeration value="Dash" />
+			<xs:enumeration value="LongDash" />
+			<xs:enumeration value="DashDot" />
+			<xs:enumeration value="LongDashDot" />
+			<xs:enumeration value="LongDashDotDot" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="queryParamType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Boolean" />
+			<xs:enumeration value="Integer" />
+			<xs:enumeration value="Float" />
+			<xs:enumeration value="String" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="resetZoomType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="chart" />
+			<xs:enumeration value="plot" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="minorTickType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="linear" />
+			<xs:enumeration value="logarithmic" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="axisTitleAlign">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="low" />
+			<xs:enumeration value="middle" />
+			<xs:enumeration value="high" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

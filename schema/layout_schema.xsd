@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="appDesign" type="appDesign" />
+
+	<xs:element name="layout" type="layout" />
+
+	<xs:element name="menu" type="menu" />
+
+	<xs:element name="menus" type="menus" />
+
+	<xs:element name="property" type="property" />
+
+	<xs:complexType name="dashboards">
+		<xs:sequence>
+			<xs:element name="dashboard" type="dashboard" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dashboard">
+		<xs:attribute name="name" type="nonEmptyString" use="required"/>
+		<xs:attribute name="file" type="xs:string" use="required"/>
+		<xs:attribute name="export" type="xs:boolean" />
+		<xs:attribute name="access" type="xs:string" />
+		<!-- <xs:attribute name="parent" type="nonEmptyString" /> -->
+	</xs:complexType>
+
+	<xs:complexType name="appDesign">
+		<xs:all>
+			<xs:element ref="layout" minOccurs="0" />
+			<xs:element name="dashboards" type="dashboards" minOccurs="1" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="layout">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence>
+					<xs:element ref="menus" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="abstractRequestBody" abstract="true">
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="plugin">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence>
+					<xs:element ref="property" minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="property">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence />
+				<xs:attribute name="key" type="xs:string" use="required" />
+				<xs:attribute name="value" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="menus">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:sequence>
+					<xs:element ref="menu" minOccurs="1" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="menu">
+		<xs:complexContent>
+			<xs:extension base="abstractRequestBody">
+				<xs:all>
+					<xs:element name="childMenus" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence minOccurs="1" maxOccurs="unbounded">
+								<xs:element name="menu" type="menu"></xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:all>
+				<xs:attribute name="active" type="xs:boolean" default="true" />
+				<xs:attribute name="hash" type="hashString" />
+				<xs:attribute name="icon" type="xs:string" />
+				<xs:attribute name="title" type="i18nString" />
+				<xs:attribute name="dashboard" type="nonEmptyString" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="nonEmptyString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:pattern value="[A-Za-z0-9_\- ].*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="i18nString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:pattern value="[A-Za-z0-9_\-\\{\\} ].*" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	
+	<xs:simpleType name="hashString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:pattern value="/([A-Za-z0-9_\- ]*)|([A-Za-z0-9_\- ]*)" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

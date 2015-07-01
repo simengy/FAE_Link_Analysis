@@ -1,0 +1,25 @@
+Version 1.3.2 (2014-08-19)
+
+
+chart>options
+	Changed default top position for loading label to 45%, which results in a vertically centered label.
+	
+	Added option, chart.panKey, to allow panning and zooming on the same chart. The chart can now be configured so the user can pan by holding down the shift key while dragging.
+			panKey: Allows setting a key to switch between zooming and panning.
+			example: <options zoomType="x" panning="true" panKey="shift"></options>
+	
+	Better handling of data label heights on pie charts, related to #2630.
+	
+	defaultSeriesType: depricated: Alias of type. Defaults to line.
+	
+	Added option, yAxis.reversedStacks, to choose whether to stack from the top down or from the bottom of the stack and up.
+	
+	
+	
+	
+	
+	
+	
+/******Services*******/
+		
+		

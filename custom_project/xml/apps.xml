@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apps xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/app_schema.xsd">
+	<app name="vividSenseAppService" root="/custom_project"
+		enableUiErrorMsgs="true">
+		<datasources>
+		
+			<datasource name="excelD3Connector"
+				class="com.saama.vividsense.datasource.excel.SpreadSheetConnectorFactory">
+				<properties>
+					<property key="url"
+						value="webcontent:/custom_project/xml/workshop/excel/Linklayer.xlsx" />
+				</properties>
+			</datasource>
+		
+			<datasource name="excelD3Connector1"
+				class="com.saama.vividsense.datasource.excel.SpreadSheetConnectorFactory">
+				<properties>
+					<property key="url"
+						value="webcontent:/custom_project/xml/workshop/excel/Linklayer1.xlsx" />
+				</properties>
+			</datasource>
+			
+			<datasource name="excelD3Connector2"
+				class="com.saama.vividsense.datasource.excel.SpreadSheetConnectorFactory">
+				<properties>
+					<property key="url"
+						value="webcontent:/custom_project/xml/workshop/excel/Linklayer2.xlsx" />
+				</properties>
+			</datasource>
+			
+			
+			
+		</datasources>
+		
+		<view>layout.xml</view>
+
+		<!-- Start Email Configuration -->
+
+		<mailConfig>
+			<host>smtp.gmail.com</host>
+			<password>Your Password</password>
+			<port>587</port>
+			<protocol>smtp</protocol>
+			<smtpAuth>true</smtpAuth>
+			<startTlsEnabled>true</startTlsEnabled>
+			<username>Your Email Id</username>
+		</mailConfig>
+		<!-- End Email Configuration -->
+	</app>
+</apps>
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="Winners">gagnants</entry>
+	<entry key="Winners Score">Les gagnants Score</entry>
+	<entry key="Yearly Winners Score">Les gagnants annuels Score</entry>
+	<entry key="Winners Score Table Event">Les gagnants Score Tableau des événements</entry>
+	
+	<entry key="Winners Goals Players">Gagnants Buts Joueurs</entry>
+	<entry key="FIFA WordCloud">FIFA wordcloud</entry>
+	<entry key="Sample">échantillon</entry>
+	<entry key="Winners Score Table Event">Coupe du Monde Joué</entry>
+	
+	<entry key="Countries Participated">pays ont participé</entry>
+	<entry key="Goal Scored">but marqué</entry>
+	<entry key="Matches Played">matchs joués</entry>
+	<entry key="Goals For and Against the Winners (Overall)">Buts pour et contre les gagnants (général)</entry>
+	
+	<entry key="Top 10 Goal Scorers">Meilleurs buteurs 10 __gVirt_NP_NN_NNPS__ But</entry>
+	<entry key="test">-test</entry>
+	<entry key="Total Wins">Total des Victoires</entry>
+	<entry key="test">test</entry>
+	<entry key="Go Back">retourner</entry>
+	<entry key="Error Message:">Message d'erreur:</entry>
+	<entry key="Filter">filtre</entry>
+
+
+	<entry key="Query">question</entry>
+	<entry key="Query Insert">requête d'insertion</entry>
+	<entry key="Submit">soumettre</entry>
+	<entry key="Cancel">annuler</entry>
+	<entry key="Insert">insérer</entry>
+	
+	<entry key="Rule Engine">Moteur de règles</entry>
+	<entry key="Logout">Déconnexion</entry>
+	<entry key="Copyright 2014">Droit d'auteur 2014</entry>
+	<entry key="All Rights Reserved">Tous les droits sont réservés</entry>
+	
+	
+</properties>

@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="vs_lib/jquery/jquery-ui.css">
+<div data-ng-clock style="padding: 10px;">
+	<div class="row" style="margin:0 -30px">
+		<div data-ng-repeat="item in filterData.data"
+			style="float:left; text-align:center; width:{{100/filterData.data.length}}%;">
+			{{item[getFilterIndexValue()]}}</div>
+	</div>
+	<div basic-slider value="index"></div>
+	<b style="float: right; color: #FB4810">Selected :
+		{{filterSelection[0]}}</b>
+</div>

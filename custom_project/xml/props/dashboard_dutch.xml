@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="Winners">winnaars</entry>
+	<entry key="Winners Score">winnaars Score</entry>
+	<entry key="Yearly Winners Score">Jaarlijkse Winnaars Score</entry>
+	<entry key="Winners Score Table Event">Winnaars Score Table Event</entry>
+	
+	<entry key="Winners Goals Players">Winnaars Goals Spelers</entry>
+	<entry key="FIFA WordCloud">FIFA WordCloud</entry>
+	<entry key="Sample">monster</entry>
+	<entry key="Winners Score Table Event">WorldCup Gespeeld</entry>
+	
+	<entry key="Countries Participated">landen deelgenomen</entry>
+	<entry key="Goal Scored">doelpunt</entry>
+	<entry key="Matches Played">wedstrijden gespeeld</entry>
+	<entry key="Goals For and Against the Winners (Overall)">Doelen voor en tegen de winnaars (algemeen)</entry>
+	
+	<entry key="Top 10 Goal Scorers">Top 10 Doelpunten Makers</entry>
+	<entry key="test">-test</entry>
+	<entry key="Total Wins">totale winst</entry>
+	<entry key="test">-test</entry>
+	<entry key="Go Back">Ga terug</entry>
+	<entry key="Error Message:">Foutmelding:</entry>
+	<entry key="Filter">filter</entry>
+	
+</properties>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/dashboard_schema.xsd">
+	<dashboardInfo>
+		<title text="Rule Engine"></title>
+		<template>1.html</template>
+	</dashboardInfo>
+	<widgets>
+		<widget container="top" name="Winners" zoom="true" streamId="t1">
+			<data>
+				<dataSource connector="$static_json" name="ds">
+					<query>[{"a":20},{"a":30}]</query>
+				</dataSource>
+			</data>
+			<stream>
+				<streamSource connector="test" name="t1">
+					<options>
+						<option name="batchSize" value="5000" />
+						<option name="timeColumn" value="y" />
+					</options>
+					<queryParams>
+						<queryParam defaultValue="0" name="$startTime" />
+					</queryParams>
+					<query>
+						select id as 'y',id as 'x' from stream where id > :$startTime
+					</query>
+				</streamSource>
+			</stream>
+			<design>
+				<chart chartLib="stockChart">
+					<seriesList>
+						<series type="line">
+							<fields>
+								<field name="y" columnKey="ds.a" />
+								<field name="x" columnKey="ds.a" />
+							</fields>
+						</series>
+					</seriesList>
+				</chart>
+			</design>
+		</widget>
+	</widgets>
+</dashboard>

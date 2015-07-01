@@ -1,0 +1,67 @@
+<div class="widget border_container" data-ng-if="show">
+	<!-- filters -->
+	<filters data-ng-class="widgetInfo.filters.cssClass"
+		data-ng-if="widgetInfo.filters" value="filterInner" level="level"
+		widgetContainer="containerName"> </filters>
+	<!-- errors -->
+	<div data-ng-if="showBack"
+		style="text-align: right; height: 20px; position: relative; z-index: 0">
+		<div data-ng-click="goBack()" data-ng-if="showBack"
+			class="btn btn-xs btn-primary goBackButton">
+			<span translate>Go Back</span>
+		</div>
+	</div>
+	<div class="alert" style="margin-top: 10px"
+		data-ng-class="'alert-'+widgetErrorType" data-ng-show="widgetError">
+		<b translate>Error Code:</b> {{widgetError.id}} <br /> <b translate>Error
+			Message:</b> {{widgetError.msg}}
+	</div>
+
+
+	<!-- widgets -->
+	<div data-ng-show="widgetError.id!=='6030'">
+		<div class="widget_options">
+			<div class="btn-group export_button"
+				data-ng-model="exportOptions.type"
+				data-ng-if="widgetExporting.enabled === true" style="float: left">
+				<form class="download" target="_blank" name="frmExportWidget"
+					action="" method="POST">
+					<input type="hidden" name="pagelist" /> <input type="hidden"
+						name="widget" /> <input type="hidden" name="filters" />
+				</form>
+				<button class="btn btn-default dropdown-toggle"
+					data-toggle="dropdown">
+					<span class="export_icon"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li data-ng-repeat="value in exportOptions.options"><a
+						data-ng-click="exportOptions.call(value)">{{value}}</a></li>
+				</ul>
+			</div>
+			<div style="display: inline-block">
+				<a class="zoom" data-ng-show="showZoom"
+					data-ng-click="widget.zoom({'data':widgetData,'info':widgetInfo})"><i
+					class="glyphicon glyphicon-fullscreen"></i></a>
+			</div>
+		</div>
+		<div class="border_container_inr">
+			<span class="widget_icon" style="float: left"
+				data-ng-style="widgetInfo.title.style"> <img
+				data-ng-if="widgetIcon" data-ng-src="{{widgetIcon}}" />
+			</span>
+			<div data-ng-class="widgetInfo.title.cssClass"
+				data-ng-if="widgetInfo.title.text" class="container_header"
+				data-ng-style="widgetInfo.title.style">{{widgetInfo.title.text
+				| translate}}</div>
+			<div class="container_subheader"
+				data-ng-class="widgetInfo.subTitle.cssClass"
+				data-ng-if="widgetInfo.subTitle.text"
+				data-ng-style="widgetInfo.subTitle.style">{{widgetInfo.subTitle.text
+				| translate}}</div>
+
+			<div data-ng-include="widgetUrl" data-ng-class="widgetInfo.cssClass"
+				data-ng-style="widgetInfo.style" data-ng-hide="dashboardError"
+				id="{{containerName}}"></div>
+		</div>
+	</div>
+</div>

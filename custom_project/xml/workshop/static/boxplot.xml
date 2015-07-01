@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <dashboard export="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="http://vividsense.saama.com/schema/dashboard_schema.xsd"> -->
+<dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/dashboard_schema.xsd">
+	<dashboardInfo>
+		<template>1.html</template>
+	</dashboardInfo>
+	<widgets>
+		<widget name="test" container="top" zoom="true">
+			<data>
+				<!-- <dataSource connector="$static_json" name="ds" report="webcontent:custom_project/xml/custom/boxPlot.json"> -->
+				<dataSource connector="$static_json" name="ds">
+					<query>
+						[
+							{"a":5,"b":760,"c":801,"d":848,"e":895,"f":965},
+							{"a":6,"b":733,"c":853,"d":939,"e":980,"f":1080},
+							{"a":7,"b":714,"c":762,"d":817,"e":870,"f":918},
+							{"a":8,"b":724,"c":802,"d":806,"e":871,"f":950},
+							{"a":9,"b":834,"c":836,"d":864,"e":882,"f":910}
+						]
+					</query>
+				</dataSource>
+			</data>
+			<design>
+				<chart>
+					<seriesList>
+						<series type="boxplot">
+							<fields>
+								<field columnKey="ds.a" name="x" />
+								<field columnKey="ds.b" name="low" />
+								<field columnKey="ds.c" name="q1" />
+								<field columnKey="ds.d" name="median" />
+								<field columnKey="ds.e" name="q3" />
+								<field columnKey="ds.f" name="high" />
+							</fields>
+						</series>
+					</seriesList>
+				</chart>
+			</design>
+		</widget>
+	</widgets>
+</dashboard>

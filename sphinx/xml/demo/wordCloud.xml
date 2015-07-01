@@ -1,0 +1,52 @@
+<!-- <dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vividsense.saama.com/schema/dashboard_schema.xsd"> -->
+<dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/dashboard_schema.xsd">
+	<dashboardInfo>
+		<template>1.html</template>
+	</dashboardInfo>
+	<widgets>
+		<widget name="widget3" container="top" zoom="true">
+			<data>
+				<dataSource name="ds" connector="mongo">
+					<query>
+						db.fifa_comments.aggregate(
+  							
+							    { "$project" : { "comment" : "$comment" ,"_id":0} } 
+							)
+					</query>
+				</dataSource>
+				<analysis connector="wordCloud" name="wc">
+					<inputs>
+						<input name="text" columnKey="ds.comment" />
+					</inputs>
+					<outputs>
+						<output name="count" value="c"/>
+						<output name="word" value="w"/>
+					</outputs>
+					<options>
+						<option key="LIMIT" value="50"/>
+						<option key="SORT_BY" value="count"/>
+						<option key="SORT_ORDER" value="dsc"/>						
+					</options>
+				</analysis>
+			</data>
+
+			<design>
+				<chart chartLib="custom">
+					<plotOptions>
+						<wordcloud height="300" width="400" font="Impact" fontFamily="Impact" rotateAngle="45" padding="3" fontSizeRatio=".2"></wordcloud>
+					</plotOptions>
+					<seriesList>
+						<series type="wordcloud">
+							<fields>
+								<field name="word" columnKey="wc.w" />
+								<field name="count" columnKey="wc.c" />
+							</fields>
+							
+						</series>
+					</seriesList>
+				</chart>
+			</design>
+		</widget>
+	</widgets>
+</dashboard> 

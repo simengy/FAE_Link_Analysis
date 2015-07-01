@@ -1,0 +1,259 @@
+<style>
+.node {
+	stroke: #fff;
+	stroke-width: 1.5px;
+}
+
+.link {
+	stroke: #999;
+	stroke-opacity: .6;
+}
+
+
+</style>
+<div data-ng-controller="D3ControllerLayer1Drilldown">
+	<div class="well">
+<!-- 		<a href="" style="float: right" data-ng-click="closeDetails()">X</a> -->
+		<ul>
+			<li><b>Name:</b>{{currentNode.data.name}}</li>
+			<li><b>Degree:</b>{{currentNode.data.weight}}</li>
+			<li><b>Modularity:</b>{{currentNode.data.modularity}}</li>
+		</ul>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Time</th>
+					<th>PageRank</th>
+				</tr>
+			</thead>
+			<tr data-ng-repeat="n in currentNode.links">
+				<td>{{n.name}}</td>
+				<td>{{n.time}}</td>
+				<td>{{n.PageRank}}</td>
+			</tr>
+		</table>
+	</div>
+	<div id="layer1Drilldown"></div>
+</div>
+
+<script>
+  function D3ControllerLayer1Drilldown($scope, $rootScope) {
+
+    var width = 740, height = 600;
+    var color = d3.scale.category20();
+    var sliderMin=-1,sliderMax=101;
+
+    var nodeIndex = function(nodes, name) {
+      for (var i = 0; i < nodes.length; i++) {
+        if (nodes[i].name === name) {
+          return i;
+        }
+      }
+      return -1;
+    }
+    
+    var resetSliderData = function(){
+      sliderMin=-1,
+      sliderMax=101;
+    }
+
+    var getNodeByName = function(nodeName, n) {
+      var node = null;
+      for (var i = 0; i < n.length; i++) {
+        node = n[i];
+        if (node.name === nodeName) {
+          return node;
+        }
+      }
+      return null;
+    }
+
+    var getLinkedNodes = function(nodeName, l, n) {
+      var link = [];
+      var node = null;
+      for (var i = 0; i < l.length; i++) {
+        node = l[i];
+        if (node.source === nodeName) {
+          link.push(getNodeByName(node.target, n));
+        }
+      }
+      return link;
+    }
+
+    var getLinkesFromSource = function(nodeName, l) {
+      var link = [];
+      var node = null;
+      for (var i = 0; i < l.length; i++) {
+        node = l[i];
+        if (node.source === nodeName) {
+          link.push(node);
+        }
+      }
+      return link;
+    }
+    
+    
+    var getNodeColor = function(d){
+      if(d.modularity >= sliderMin && d.modularity <= sliderMax){
+        return color(d.group);          
+      }else{
+        return "rgb(192, 192, 192)";
+      }
+    }
+    
+    var svg = null;
+
+    var render = function(n, l) {
+      var force = d3.layout.force()
+		.charge(-30)
+		.linkDistance(37)
+		.size([ width, height ]);
+		
+      var _n = $.extend(true, [], n);
+      var _l = $.extend(true, [], l);
+
+      if (!Array.isArray(l)) {
+        l = [];
+      }
+      if (!Array.isArray(n)) {
+        n = [];
+      }
+
+      $("#layer1Drilldown svg").remove();
+      svg = d3.selectAll("#layer1Drilldown")
+		.append("svg")
+		.attr("width", width)
+		.attr("height", height);
+
+      l.forEach(function(link, index, list) {
+        link._source = link.source;
+        link._target = link.target;
+        link.source = nodeIndex(n, link._source);
+        link.target = nodeIndex(n, link._target);
+        if (link.source === -1 || link.target === -1) {
+          console.log(link);
+        }
+      });
+
+      //filter links which are -1
+      l = l.filter(function(ln) {
+        if (ln.source === -1 || ln.target === -1) {
+          return false;
+        }
+        return true;
+      });
+
+      force.nodes(n).links(l).start();
+
+      var link = svg.selectAll(".link")
+		.data(l)
+		.enter()
+		.append("line")
+		.attr("class", "link")
+		.style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+      var node = svg.selectAll(".node")
+		.data(n)
+		.enter()
+		.append("circle")
+		.attr("class", "node")
+		.attr("r", function(d) { if (d.weight === 0) {
+				return 0;
+        }
+        return d.weight + 3;
+      })
+      //Change modularity color here
+      .style("fill", function(d) {
+        return getNodeColor(d);
+      }).call(force.drag);
+
+      node.append("title").text(function(d) {
+        return d.name;
+      });
+      
+      force.on("tick", function() {
+        link.attr("x1", function(d) {
+          return d.source.x;
+        }).attr("y1", function(d) {
+          return d.source.y;
+        }).attr("x2", function(d) {
+          return d.target.x;
+        }).attr("y2", function(d) {
+          return d.target.y;
+        });
+
+        node.attr("cx", function(d) {
+          return d.x;
+        }).attr("cy", function(d) {
+          return d.y;
+        });
+      });
+
+      var legend = svg.selectAll(".legend")
+		.data(color.domain())
+		.enter()
+        .append("g")
+		.attr("class", "legend")
+		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+      legend.append("rect")
+		.attr("x", width - 10)
+		.attr("width", 10)
+		.attr("y", 405)
+		.attr("x", 1)
+		.attr("height", 10)
+		.style("fill", color);
+
+      legend.append("text")
+		.attr("x", width - 24)
+		.attr("y", 410)
+		.attr("x", 15)
+        .attr("dy", ".35em")
+		.style("text-anchor", "start").text(
+              function(d, e) {
+                if (d === 3) {
+                  return "ClaimID"
+                } else if (d === 2) {
+                  return "Claimant"
+                } else if (d === 1) {
+                  return "Body Shop"
+                } else if (d === 4) {
+                  return "Doctor"
+                } else if (d === 5) {
+                  return "Inspector"
+                } else if (d === 6) {
+                  return "Lawyer"
+                } else if (d === 7) {
+                  return "Towing Company"
+                }
+                console.log(d, e);
+                return d;
+              });
+    }
+
+    $scope.currentNode = {};
+
+    $scope.closeDetails = function() {
+      var graph = $.extend(true, {}, $scope.widgetData.data);
+      render(graph.nodes, graph.links);
+    }
+
+    $rootScope.$on("colorSliderChanged", function(e, min, max) {
+      sliderMin = min;
+      sliderMax = max;
+      svg.selectAll(".node").style("fill", function(d) {
+        return getNodeColor(d);
+      });
+    })
+
+    $scope.$watch("widgetData.data", function() {
+      resetSliderData();
+      var graph = $.extend(true, {}, $scope.widgetData.data);
+      $scope.currentNode.data = graph.nodes[0];
+      console.log(">>",graph);
+      render(graph.nodes, graph.links);
+
+    });
+  };
+</script>

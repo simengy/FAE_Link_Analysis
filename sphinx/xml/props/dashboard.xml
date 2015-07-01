@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="Winners">Winners</entry>
+	<entry key="Winners Score">Winners Score</entry>
+	<entry key="Yearly Winners Score">Yearly Winners Score</entry>
+	<entry key="Winners Score Table Event">Winners Score Table Event</entry>
+	
+	<entry key="Winners Goals Players">Winners Goals Players</entry>
+	<entry key="FIFA WordCloud">FIFA WordCloud</entry>
+	<entry key="Sample">Sample</entry>
+	<entry key="Winners Score Table Event">Winners Score Table Event</entry>
+	
+	<entry key="Countries Participated">Countries Participated</entry>
+	<entry key="Goal Scored">Goal Scored</entry>
+	<entry key="Matches Played">Matches Played</entry>
+	<entry key="Goals For and Against the Winners (Overall)">Goals For and Against the Winners (Overall)</entry>
+	
+	<entry key="Top 10 Goal Scorers">Top 10 Goal Scorers</entry>
+	<entry key="test">test</entry>
+	<entry key="Total Wins">Total Wins</entry>
+	<entry key="test">test</entry>
+
+	<entry key="Go Back">Go Back</entry>
+	<entry key="Error Message:">Error Message:</entry>
+	<entry key="Filter">Filter</entry>
+	<entry key="Query">Query</entry>
+	<entry key="Query Insert">Query Insert</entry>
+	<entry key="Submit">Submit</entry>
+	<entry key="Cancel">Cancel</entry>
+	<entry key="Logout">Logout</entry>
+</properties>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appDesign xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/layout_schema.xsd">
+	<dashboards>
+		<dashboard name="ruleEngine" file="demo/rule-engine.xml" />
+		<dashboard name="wordCloud" file="demo/wordCloud.xml" />
+		<dashboard name="main" file="demo/main.xml" />
+	</dashboards>
+	<layout>
+		<menus>
+			<menu title="Rule Engine" dashboard="ruleEngine" icon="monthly_snapshot" hash="rules" active="true" />
+			<menu title="Word Cloud" dashboard="wordCloud" icon="monthly_snapshot" hash="wordCloud" active="true" />
+			<menu title="Main" dashboard="Main" icon="monthly_snapshot" hash="main" active="true" />
+		</menus>
+	</layout>
+</appDesign>

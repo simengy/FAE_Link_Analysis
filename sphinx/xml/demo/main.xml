@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/dashboard_schema.xsd">
+	<dashboardInfo>
+		<title text="Schema"></title>
+		<template>main.html</template>
+	</dashboardInfo>
+	<widgets>
+		<widget container="schema" name="schema">
+			<filters type="individual">
+				<filter id="dbType" type="singleSelect">
+					<data>
+						<dataSource connector="$static_json" name="dbType">
+							<query>[{"type":"mysql"}]</query>
+						</dataSource>
+					</data>
+				</filter>
+			</filters>
+			<data>
+				<dataSource connector="rdbms" name="schemaSource">
+					<query>show tables</query>
+				</dataSource>
+			</data>
+			<design>
+				<table type="datatable">
+					<plotOptions>
+						<datatable>
+							<style fontWeight="bold" fontSize="14px" color="grey" />
+							<events>
+								<rowCreated>
+									<![CDATA[
+									(function(nRow, aData, iDisplayIndex, iDisplayIndexFull){
+									 	$(nRow).append("<span class='meta'>meta</span>");
+										
+										$('span',nRow).bind('click',function(e){
+											vsApp.Events.process({'eventParent':'point','action':'popupWidget','source':'schema'},
+												e, 
+												this,
+												[{'name':'meta','params':[{'key':'tableName','value':aData[Object.keys(aData)[0]]}]}]
+											);
+										});
+										
+										$('td', nRow).bind('click', function(e){
+											$('tr').removeClass("selected");
+											$(nRow).addClass("selected");
+											vsApp.Events.process({'eventParent':'point','action':'drilldown','location':'results','source':'schema'},
+											e, 
+											this,
+											[{'name':'results','params':[{'key':'tableName','value':aData[Object.keys(aData)[0]]},{'key':'queryType','value':'SELECT'}]}]
+										);
+										});
+									})
+																			
+									]]>
+								</rowCreated>
+							</events>
+						</datatable>
+					</plotOptions>
+				</table>
+			</design>
+		</widget>
+
+		<widget container="meta" name="meta" state="hide">
+			<data>
+				<dataSource connector="rdbms" name="schemaSource">
+					<queryBuilder id="meta.desc">
+						return "desc " + params["tableName"][0];
+					</queryBuilder>
+				</dataSource>
+			</data>
+			<design>
+				<table type="datatable">
+				</table>
+			</design>
+		</widget>
+
+		<widget container="results" name="results" state="hide"
+			template="view.html" cssClass="demo_table_ui">
+			<filters template="filter.html">
+				<filter id="query" type="textbox" template="queryText.html"
+					cssClass="demo_filter_ui">
+					<data>
+						<dataSource connector="$static_json" name="queryDb">
+							<queryBuilder id="ressults.filter.query">
+							return "[{\"a\":\"" + "select * from "+params["tableName"][0] +" limit 10" + "\"}]";
+							
+							</queryBuilder>
+						</dataSource>
+					</data>
+				</filter>
+				<filter id="queryType" type="singleSelect">
+					<data>
+						<dataSource connector="$static_json" name="queryType">
+							<query>[{"type":"SELECT"},{"type":"INSERT"},{"type":"UPDATE"},{"type":"DELETE"}]</query>
+						</dataSource>
+					</data>
+				</filter>
+			</filters>
+			<design>
+				<table>
+					<plotOptions>
+						<datatable>
+							<pagination mode="client" recordPerPage="10"
+								buttonType="fullButton">
+
+							</pagination>
+							<events>
+								<rowCreated>
+									<![CDATA[
+									(function(nRow, aData, iDisplayIndex, iDisplayIndexFull){
+										var td = $(nRow).find('td');
+									 	var rowMeta = Object.keys(aData),rowData = [];
+									 	rowMeta.forEach(function(e){
+									 		rowData.push(aData[e]);
+									 	});
+
+									 	$(nRow).append("<td style='text-align:center;width:80px;min-width: 80px;'><span style='color:grey' id='edit' class='edit' title='Edit'></span>&nbsp;<span style='color:grey' id='delete' class='delete' title='Delete'></span></td>");
+
+									 	$('#delete',nRow).bind('click',function(e){
+									 		vsApp.Events.process({'eventParent':'point','action':'dmlEvent','source':'results'},
+											e, 
+											this,
+											[{'name':'dmlRow','params':[{'key':'queryType','value':'DELETE'},{'key':'$rowMeta','value':rowMeta},{'key':'$rowData','value':rowData}]}]
+											)
+									 	});
+									 	
+									 	$('#edit',nRow).bind('click',function(e){
+									 		vsApp.Events.process({'eventParent':'point','action':'dmlEvent','source':'results'},
+											e, 
+											this,
+											[{'name':'dmlRow','params':[{'key':'queryType','value':'UPDATE'},{'key':'$rowMeta','value':rowMeta},{'key':'$rowData','value':rowData}]}]
+											)
+									 	});
+									 										
+									})
+																			
+									]]>
+								</rowCreated>
+							</events>
+						</datatable>
+					</plotOptions>
+				</table>
+			</design>
+			<data>
+				<dataSource connector="rdbms" name="snapShot" condition="queryType=SELECT">
+					<queryBuilder id="results.serachQuery">
+					if(params.containsKey("query")){
+						return params["query"][0];
+					}
+					
+					return "select * from "+params["tableName"][0] +" limit 10";
+					</queryBuilder>
+				</dataSource>
+				<dataSource connector="rdbms" name="snapShot" condition="queryType=INSERT">
+					<queryBuilder id="results.insertQuery">
+					if(params.containsKey("query")){
+						return params["query"][0];
+					}
+					</queryBuilder>
+				</dataSource>
+				<dataSource connector="rdbms" name="snapShot" condition="queryType=UPDATE">
+					<queryBuilder id="results.updateQuery">
+					if(params.containsKey("query")){
+						return params["query"][0];
+					}
+					</queryBuilder>
+				</dataSource>
+				<dataSource connector="rdbms" name="snapShot" condition="queryType=DELETE">
+					<queryBuilder id="results.deleteQuery">
+					if(params.containsKey("query")){
+						return params["query"][0];
+					}
+					</queryBuilder>
+				</dataSource>
+			</data>
+		</widget>
+
+		<widget container="dml" name="dmlRow" state="hide">
+			<design>
+				<table>
+				</table>
+			</design>
+			<data>
+				<dataSource connector="rdbms" name="meta" condition="queryType=DELETE">
+					<queryBuilder id="dml.dmlQuery.delete">
+					<![CDATA[
+							query =  "delete from "+params["tableName"][0]+" where ";
+							keys = params["$rowMeta"];
+							values = params["$rowData"];
+							k = null;
+							for(int i=0;i<keys.size();i++){
+								k = "$rowData" +"_"+i;
+								params[k] = [values[i]];
+								query = query + keys[i] + "= :"+k; 
+								if( i != keys.size()-1){
+									query = query  + " and ";
+								}
+							}
+							return query;
+						]]>
+						
+					</queryBuilder>
+				</dataSource>
+				<dataSource connector="rdbms" name="meta" condition="queryType=UPDATE">
+					<queryBuilder id="dml.dmlQuery.update">
+					<![CDATA[
+							query =  "update "+params["tableName"][0] + " set ";
+							
+							keys = params["$rowEditMeta"];
+							values = params["$rowEditData"];
+							k = null;
+							for(int i=0;i<keys.size();i++){
+								k = "$rowEditData" +"_"+i;
+								params[k] = [values[i]];
+								query = query + keys[i] + "= :"+k; 
+								if( i != keys.size()-1){
+									query = query  + " , ";
+								}
+							}
+							
+							query = query + " where ";
+							
+							keys = params["$rowMeta"];
+							values = params["$rowData"];
+							k = null;
+							for(int i=0;i<keys.size();i++){
+								k = "$rowData" +"_"+i;
+								params[k] = [values[i]];
+								query = query + keys[i] + "= :"+k; 
+								if( i != keys.size()-1){
+									query = query  + " and ";
+								}
+							}
+							
+							System.out.println(query);
+							
+							return query;
+							
+						]]>
+						
+					</queryBuilder>
+				</dataSource>
+				<dataSource connector="rdbms" name="meta" condition="queryType=INSERT">
+					<queryBuilder id="dml.dmlQuery.insert">
+					<![CDATA[
+							query =  "insert into "+params["tableName"][0] + "(";
+							
+							keys = params["$rowEditMeta"];
+							values = params["$rowEditData"];
+							k = null;
+							for(int i=0;i<keys.size();i++){
+								k = "$rowEditMeta" +"_"+i;
+								params[k] = [values[i]];
+								query = query + keys[i]; 
+								if( i != keys.size()-1){
+									query = query  + " , ";
+								}
+							}
+							
+							query = query + " ) values (";
+							
+							k = null;
+							for(int i=0;i<keys.size();i++){
+								k = "$rowData" +"_"+i;
+								params[k] = [values[i]];
+								query = query + ":" + k; 
+								if( i != keys.size()-1){
+									query = query  + " , ";
+								}
+							}
+							
+							query = query + " )";
+							return query;
+							
+						]]>
+						
+					</queryBuilder>
+				</dataSource>
+			</data>
+		</widget>
+
+		<widget container="chartDesign" name="chartDesign">
+			<filters>
+				<filter id="chartTypeId" type="singleSelect">
+					<data>
+						<dataSource connector="$static_json" name="chart">
+							<query>
+								[
+								{"name":"Line"},{"name":"column"},{"name":"bar"},{"name":"spline"},{"name":"area"},{"name":"arearange"},{"name":"areaspline"},
+								{"name":"pie"}
+								]
+							</query>
+						</dataSource>
+					</data>
+				</filter>
+			</filters>
+			<design>
+				<infographics></infographics>
+			</design>
+		</widget>
+
+	</widgets>
+</dashboard>

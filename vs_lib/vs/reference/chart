@@ -1,0 +1,10 @@
+chart:
+	options
+	navigation
+
+stock chart:
+	options
+	navigator
+	navigation
+	rangeSelector
+	scrollbar

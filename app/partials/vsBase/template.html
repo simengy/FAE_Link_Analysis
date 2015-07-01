@@ -1,0 +1,55 @@
+<div class="inner_wrapper" data-ng-class="{'add_height': addHeight}"
+	data-ng-controller="templateCtrl">
+	<div>
+		<!-- PAGE HEADING -->
+		<div class="page_heading">
+			<div data-ng-style="header.title.style"
+				data-ng-class="header.title.cssClass">
+				<span class="icon" data-ng-class="header.title.text|join"></span>{{header.title.text
+				| translate}}
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<!-- END PAGE HEADING -->
+
+		<!-- ERROR MESSAGES -->
+		<div data-ng-show="dashboardError">
+			<div data-ng-repeat="error in dashboardError"
+				class="alert {{error.type.toLowerCase()=='error'?'alert-danger':'alert-warning'}}">
+
+				<button data-ng-click="popErrorMessage(error)" type="button"
+					class="close" style="left: -4px;"></button>
+				<div>
+					<strong translate>Error Code - </strong> <span>{{error.errorCode}}</span>
+				</div>
+				<div>
+					<strong>Error Message - </strong> <span
+						data-ng-repeat="item in (error.errorMessage | newLine) track by $index">{{item}}<br /></span>
+				</div>
+				<div data-ng-if="error.errorDetails">
+					<strong style="float: left;">Error Details - </strong>
+					<div
+						data-ng-repeat="item in (error.errorDetails | newLine) track by $index">{{item}}</div>
+				</div>
+				<div data-ng-if="error.widgetName">
+					<strong style="float: left;">widgetName - </strong>
+					<div
+						data-ng-repeat="item in (error.widgetName | newLine) track by $index">{{item}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END ERROR MESSAGES -->
+
+	<!-- FILTERS -->
+	<filters data-ng-if="filterJSON" value="filterJSON" level="level"
+		position="'top'" data-ng-class="filterJSON.cssClass"> </filters>
+	<!-- END FILTERS -->
+
+	<!-- CONTAINER -->
+	<div class="container" data-ng-class="header.title.text|join"
+		data-ng-show="templateURL" data-ng-include="templateURL"></div>
+	<!-- END CONTAINER -->
+</div>
+<!-- END CONTENT -->
+</div>

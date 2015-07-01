@@ -1,0 +1,77 @@
+<style>
+.title_bar {
+	background: #101010;
+	height: 25px;
+	width: 100%;
+}
+
+.link_button_group {
+	padding-left: 1px;
+	padding-top: 10px;
+}
+
+.filter {
+	width: 1173px;
+	height: 100px;
+}
+
+.table {
+	height: 570px;
+}
+</style>
+
+<div data-ng-controller="LinkAnalysisController">
+
+	<!-- <div class="row" id="sliderw">
+		<div class="col-md-12" id="sliderborder">
+			<widget name="slider"></widget>
+		</div>
+	</div> -->
+
+	<div class="clearfix"></div>
+	<div class="row">
+		<div class="col-md-8 border" data-ng-if="showlayer3">
+			<widget name="top-Left"></widget>
+		</div>
+		<div class="col-md-8 border" data-ng-if="showlayer1">
+			<widget name="top-Left-L1"></widget>
+		</div>
+		<div class="col-md-8 border" data-ng-if="showlayer2">
+			<widget name="top-Left-L2"></widget>
+		</div>
+		<div class="col-md-4">
+			<widget name="top_Right"></widget>
+		</div>
+	</div>
+</div>
+
+<script>
+  $("#windowButton").click(function() {
+    if ($(this).html() == "-") {
+      $(this).html("+");
+    } else {
+      $(this).html("-");
+    }
+    $("#box").slideToggle();
+  });
+
+  function LinkAnalysisController($scope) {
+    $scope.showlayer3 = true;
+
+    $scope.showlayer3Widget = function() {
+      $scope.showlayer3 = true;
+      $scope.showlayer2 = false;
+      $scope.showlayer1 = false;
+    };
+    $scope.showlayer2Widget = function() {
+      $scope.showlayer2 = true;
+      $scope.showlayer1 = false;
+      $scope.showlayer3 = false;
+    };
+    $scope.showlayer1Widget = function() {
+      $scope.showlayer1 = true;
+      $scope.showlayer3 = false;
+      $scope.showlayer2 = false;
+    };
+  }
+</script>

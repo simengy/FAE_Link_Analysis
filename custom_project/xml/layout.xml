@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appDesign xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/layout_schema.xsd">
+	<dashboards>
+		<dashboard name="Forced-Directed-Graph" file="workshop/excel/directed.xml"
+			export="true" />
+	</dashboards>
+	<layout>
+		<menus>
+			<menu title="Link Analysis" dashboard="Forced-Directed-Graph"
+				icon="monthly_snapshot" hash="forced-directed-graph" active="true" />
+		</menus>
+	</layout>
+</appDesign>

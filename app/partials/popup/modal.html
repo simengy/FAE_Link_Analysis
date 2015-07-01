@@ -1,0 +1,17 @@
+<div class="modal-body">
+	<button class="close" type="button" data-ng-click="cancel()"></button>
+	<div data-ng-repeat="d in design">
+		<div class="border_container_inr">
+			<div data-ng-if="d.info.title.text" class="container_header"
+				data-ng-class="'align_'+d.info.title.align"
+				data-ng-style="{'margin-top': d.info.title.y+'px', 'margin-left': d.info.title.x+'px'}">{{d.info.title.text | translate}}</div>
+			<div data-ng-if="d.info.subTitle.text" class="container_subheader"
+				data-ng-class="'align_'+d.info.subTitle.align"
+				data-ng-style="{'margin-top': d.info.subTitle.y+'px', 'margin-left': d.info.subTitle.x+'px'}">{{d.info.subTitle.text | translate}}</div>
+			<div data-ng-include="getTemplate(d)"></div>
+		</div>
+	</div>
+	<div data-ng-if="content">
+		<div data-ng-include="content"></div>
+	</div>
+</div>

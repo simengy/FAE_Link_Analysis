@@ -1,0 +1,12 @@
+.fifa_world_cup{padding:15px 0;margin-top:-10px;text-align:center}
+.width_20_per{float:left;width:20%;padding:0 12px}
+.fifa_world_cup .width_20_per{border-right:1px solid #bfbfbf}
+.fifa_world_cup .width_20_per:last-child{border-right:0}
+.fifa_count{font-size:36px;color:#138bd3;font-weight:bold}
+.fifa_label{font-size:16px;color:#333;margin-bottom:5px}
+.fifa_world_cup>.width_20_per>div[class="infographic_"]{height:90px;width:100%}
+.infographic_worldCup_played{background:url("../images/workshop/worldCup_played.png") center center no-repeat;height:90px;width:100%;background-size:100% auto}
+.infographic_countries_participated{background:url("../images/workshop/countries_participated.png") center center no-repeat;height:90px;width:100%;background-size:100% auto}
+.infographic_goal_scored{background:url("../images/workshop/goal_scored.png") center center no-repeat;height:90px;width:100%;background-size:100% auto}
+.infographic_matches_played{background:url("../images/workshop/matches_played.png") center center no-repeat;height:90px;width:100%;background-size:100% auto}
+.infographic_worldCup_winners{background:url("../images/workshop/worldCup_winners.png") center center no-repeat;height:90px;width:100%;background-size:100% auto}

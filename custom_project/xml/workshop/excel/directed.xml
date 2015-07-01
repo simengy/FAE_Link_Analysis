@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <dashboard export="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="http://vividsense.saama.com/schema/dashboard_schema.xsd"> -->
+<dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/dashboard_schema.xsd">
+	<dashboardInfo>
+		<title text="Fraud Detection via Interactive Link Analysis"></title>
+		<template>directedtemp.html</template>
+		<filters template="directedFilterTemplate.html" type="combination">
+			<filter id="layerSelectFiler" type="singleSelect" title="Layers">
+				<data>
+					<dataSource connector="$static_json" name="ds1">
+						<query>
+							[{"val":0,"id":"Claims Data"},{"val":1,"id":"Internal Data"},
+							{"val":2,"id":"Internal and External Data"}]
+						</query>
+					</dataSource>
+				</data>
+			</filter>
+			<filter id="f2" type="multiSelectCheckbox" initIndexes="$all" title="State">
+				<data>
+					<dataSource connector="excelD3Connector1" name="ds2">
+						<query>
+							select unique(geo) from nodes
+						</query>
+					</dataSource>
+				</data>
+			</filter>
+			<filter id="f3" type="multiSelectCheckbox" initIndexes="$all" title="Time">
+				<data>
+					<dataSource connector="excelD3Connector1" name="ds3">
+						<query>
+							select unique(time) from nodes 
+						</query>
+					</dataSource>
+				</data>
+			</filter>
+			<filter id="f1" type="multiSelectCheckbox" initIndexes="$all" title="Community" parent="layerSelectFiler">
+				<data>
+					<dataSource connector="excelD3Connector1" name="ds1" condition="layerSelectFiler=0">
+						<query>
+							select unique(modularity) as modularity from nodes order by modularity
+						</query>
+					</dataSource>
+					<dataSource connector="excelD3Connector2" name="ds1"
+						condition="layerSelectFiler=1">
+						<query>
+							select unique(modularity) as modularity from nodes order by modularity
+						</query>
+					</dataSource>
+					<dataSource connector="excelD3Connector" name="ds1"
+						condition="layerSelectFiler=2">
+						<query>
+							select unique(modularity) as modularity from nodes order by modularity
+						</query>
+					</dataSource>
+				</data>
+			</filter>
+			<filter id="slider" type="singleSelect" template="slider.html" title="Slider">
+			<data>
+				<dataSource connector="$static_json" name="sliderData">
+					<query>
+						[{"min":0,"max":100,"step":1}]
+					</query>
+				</dataSource>
+			</data>
+			</filter>
+		</filters>
+	</dashboardInfo>
+
+	<widgets>
+<!-- 		<widget name="slider" container="slider" template="slider.html">
+			<title text="Fraud Score">
+				<style color="#333352" />
+			</title>
+			<data>
+				<dataSource connector="$static_json" name="sliderData">
+					<query>
+						[{"min":0,"max":100,"step":1}]
+					</query>
+				</dataSource>
+			</data>
+			<design>
+				<infographics>
+				</infographics>
+			</design>
+		</widget> -->
+
+		<widget name="forcedDirectedGraph" container="top-Left"
+			template="directedLayer1.html" zoom="true">
+			<title text="Claim Network Layer">
+				<style color="#333352" />
+			</title>
+			<data>
+				<dataSource connector="excelD3Connector1" name="nodes"
+					condition="layerSelectFiler=0">
+					<query>
+						select * from nodes where "group" in (1,2,3,5,6,7) OR 
+						(modularity in (:f1) AND geo in (:f2) AND time in (:f3))
+					</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector1" name="links"
+					condition="layerSelectFiler=0">
+					<query>
+						select * from links
+					</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector2" name="nodes"
+					condition="layerSelectFiler=1">
+					<query>
+						select * from nodes where "group" in (1,2,3,5,6,7) OR 
+						(modularity in (:f1) AND geo in (:f2) AND time in (:f3))
+					 </query>
+				</dataSource>
+				<dataSource connector="excelD3Connector2" name="links"
+					condition="layerSelectFiler=1">
+					<query>select * from links 
+					</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector" name="nodes"
+					condition="layerSelectFiler=2">
+					<query>
+						select * from nodes where "group" in (1,2,3,5,6,7) OR 
+						(modularity in (:f1) AND geo in (:f2) AND time in (:f3))
+					</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector" name="links"
+					condition="layerSelectFiler=2">
+					<query>
+						select * from links
+					</query>
+				</dataSource>
+
+			</data>
+			<design>
+				<infographics>
+				</infographics>
+			</design>
+		</widget>
+
+		<widget name="forcedDirectedGraphDrilldown" container="top-Left"
+			template="directedLayer1Drilldown.html" zoom="true" state="hide">
+			<title text="Claim Network Layer">
+				<style color="#333352" />
+			</title>
+			<data>
+				<dataSource connector="excelD3Connector1" name="nodes"
+					condition="layerSelectFiler=0">
+					<query>
+						select * from nodes where "group" in (1,2,3,5,6,7) OR 
+						(modularity in (:f1) AND geo in (:f2) AND time in (:f3))
+					</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector1" name="links"
+					condition="layerSelectFiler=0">
+					<query>select * from links where source = :claimId or target = :claimId</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector2" name="nodes"
+					condition="layerSelectFiler=1">
+					<query>
+						select * from nodes where "group" in (1,2,3,5,6,7) OR 
+						(modularity in (:f1) AND geo in (:f2) AND time in (:f3))
+					 </query>
+				</dataSource>
+				<dataSource connector="excelD3Connector2" name="links"
+					condition="layerSelectFiler=1">
+					<query>select * from links where source = :claimId</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector" name="nodes"
+					condition="layerSelectFiler=2">
+					<query>
+						select * from nodes where "group" in (1,2,3,5,6,7) OR 
+						(modularity in (:f1) AND geo in (:f2) AND time in (:f3))
+					</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector" name="links"
+					condition="layerSelectFiler=2">
+					<query>select * from links where source = :claimId</query>
+				</dataSource>
+			</data>
+			<design>
+				<infographics>
+				</infographics>
+			</design>
+		</widget>
+
+		<widget name="table" container="top_Right" state="show">
+			<title text="Network KPI" >
+				<style color="#333352"/>
+			</title>
+			<data>
+				<dataSource connector="excelD3Connector" name="nodes1">
+					<query> 
+						select * from nodes where modularity in (:f1) AND "group" in (4) 
+						</query>
+				</dataSource>
+			</data>
+			<design>
+				<table>
+					<plotOptions>
+						<datatable sortable="true" searchable="true">
+							<pagination mode="client" recordPerPage="10"></pagination>
+							<point>
+								<events>
+									<event action="drilldown" type="click" location="top-Left">
+										<eventWidgets>
+											<eventWidget name="forcedDirectedGraphDrilldown">
+												<params>
+													<param key="claimId" value="Claim ID" />
+												</params>
+											</eventWidget>
+										</eventWidgets>
+									</event>
+								</events>
+							</point>
+						</datatable>
+					</plotOptions>
+					<columns>
+						<column columnKey="nodes1.name" name="Claim ID" />
+						<column columnKey="nodes1.modularity" name="Community" />
+						<column columnKey="nodes1.fraudScore" name="Fraud Score" />
+					</columns>
+				</table>
+			</design>
+		</widget>
+	</widgets>
+</dashboard>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/schema/dashboard_schema.xsd">
+
+	<dashboardInfo>
+		<template>2.html</template>
+		<title text="test" />
+	</dashboardInfo>
+
+	<widgets>
+
+		<!-- <widget name="widget5" container="top" zoom="true">
+
+			<filters>
+				<filter id="year" type="singleSelect">
+					<data>
+						<dataSource connector="excel" name="filter">
+							<query>select distinct year from wp_matches_master where year is not null order by year</query>
+						</dataSource>
+					</data>
+				</filter>
+			</filters>
+			<exporting enabled="true" />
+			<subtitle text="widget234"><style emptyCells="abc" border="" borderColor="red" 
+				backgroundColor="green" borderLeft="1" borderStyle=""/></subtitle> 
+
+
+			<data>
+				<dataSource name="ds" connector="excel">
+					<query> select distinct(team) as team,shots_on_goal,lost,matches,goals_for,goals_against, year
+					from wp_matches_master where year in (:year)  order by goals_for,matches desc
+					</query>
+				</dataSource>
+			</data>
+
+			<design>
+
+				<chart chartLib="stockChart">
+					<navigator enabled="true">
+						<series color="red" type="line">
+							<fields>
+								<field name="y" columnKey="ds.matches" />
+								<field name="x" columnKey="ds.goals_for" />
+							</fields>
+						</series>
+						<xAxis columnKey="ds.goals_for" >
+						</xAxis>
+						<yAxis columnKey="ds.matches">
+						</yAxis>
+					</navigator>
+					<plotOptions>
+						<ohlc>
+							<dataGrouping enabled="true" approximation="sum">
+							</dataGrouping>
+						</ohlc>
+					</plotOptions>
+
+					<seriesList>
+						<series type="ohlc" name="abc">
+							<fields>
+								<field name="y" columnKey="ds.matches" />
+								<field name="x" columnKey="ds.goals_for" />
+								<field name="open" columnKey="ds.matches" />
+								<field name="high" columnKey="ds.lost" />
+								<field name="low" columnKey="ds.goals_against" />
+								<field name="close" columnKey="ds.shots_on_goal" />
+							</fields>
+						</series>
+					</seriesList>
+				</chart>
+			</design>
+		</widget> -->
+		
+		<widget container="top-left" name="Winners" zoom="true">
+			
+			<filters>
+				<filter id="year" type="singleSelect">
+					<data>
+						<dataSource connector="excel" name="filter">
+							<query>select distinct year from wp_matches_master where year is not null order by year</query>
+						</dataSource>
+					</data>
+				</filter>
+			</filters>
+			<data>
+				<dataSource connector="$static_json" name="ds1">
+					<query>
+											[{"a":10},{"a":20}]
+					</query>
+				</dataSource>
+			</data>
+			<design>
+				<chart>
+					<navigator>
+						<series>
+							<fields>
+								<field name="y" columnKey="ds.matches" />
+								<field name="x" columnKey="ds.goals_fors" />
+							</fields>
+						</series>
+					</navigator>
+					<seriesList>
+						<series type="column">
+							<fields>
+								<field name="y" columnKey="ds1.aa"/>
+							</fields>
+						</series>
+					</seriesList>
+				</chart>
+			</design>
+		</widget>
+		
+		<widget container="top-right" name="Winners2" zoom="true">
+			
+			<filters>
+				<filter id="year" type="singleSselect" template="sdkfk.html">
+					<data>
+						<dataSource connector="excel" name="filter">
+							<query>select distinct year from wp_matches_master where year is not null order by year</query>
+						</dataSource>
+					</data>
+				</filter>
+			</filters>
+			<data>
+				<dataSource connector="$static_json" name="ds1">
+					<query>
+											[{"a":10},{"a":20}]
+					</query>
+				</dataSource>
+			</data>
+			<design>
+				<chart>
+					<navigator>
+						<series>
+							<fields>
+								<field name="y" columnKey="ds.matches" />
+								<field name="x" columnKey="ds.goals_fors" />
+							</fields>
+						</series>
+					</navigator>
+					<seriesList>
+						<series type="column">
+							<fields>
+								<field name="y" columnKey="ds1.a"/>
+							</fields>
+						</series>
+					</seriesList>
+				</chart>
+			</design>
+		</widget>
+		
+	</widgets>
+</dashboard>

@@ -1,0 +1,5 @@
+<div class="btn-group">
+	<button data-ng-model="filterSelection"
+		data-ng-repeat="item in filterData.data" type="button"
+		class="btn btn-primary" data-ng-click="clicked(item)">{{item[getFilterIndexValue()]}}</button>
+</div>

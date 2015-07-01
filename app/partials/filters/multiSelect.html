@@ -1,0 +1,8 @@
+<div class="filter_type">
+<select chosen multiple data-ng-model="$parent.filterSelection"
+	data-ng-change="filterChanged(filterSelection)"
+	data-ng-options="value[getFilterIndexValue()] for value in filterData.data"
+	style="width: 200px;" data-placeholder='Choose Value' required><option
+		value=''></option>
+</select>
+</div>

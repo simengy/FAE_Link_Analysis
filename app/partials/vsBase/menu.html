@@ -1,0 +1,16 @@
+<ul class="nav navbar-nav">
+	<li data-ng-repeat="link in submenu"
+		data-ng-class="{active:link.pageActive}"><a
+		data-ng-click="changeTab(link)"><span class="related_icon"
+			data-ng-class="link.icon"></span> <span class="txt">{{link.title
+				| specialcharacter | translate}} </span></a>
+		<div data-ng-switch on="link.childMenus.length &gt; 0">
+			<div data-ng-switch-when="true">
+				<div data-ng-init="submenu = link.childMenus;"
+					data-ng-include="'app/partials/vsBase/menu.html'"></div>
+			</div>
+		</div></li>
+		<li>
+			<a href="http://54.67.104.151/SaamaFluidAnalytics/" target="_blank">Claims Fraud</a>
+		</li>
+</ul>
