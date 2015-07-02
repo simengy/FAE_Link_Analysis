@@ -37,7 +37,8 @@
 			</filter>
 			<filter id="f1" type="multiSelectCheckbox" initIndexes="$all" title="Community" parent="layerSelectFiler">
 				<data>
-					<dataSource connector="excelD3Connector1" name="ds1" condition="layerSelectFiler=0">
+                                    <dataSource connector="excelD3Connector1" name="ds1" 
+                                                condition="layerSelectFiler=0">
 						<query>
 							select unique(modularity) as modularity from nodes order by modularity
 						</query>
@@ -172,20 +173,23 @@
 				<style color="#333352"/>
 			</title>
 			<data>
-				<dataSource connector="excelD3Connector1" name="nodes1">
+				<dataSource connector="excelD3Connector1" name="nodes1" 
+                                    condition="layerSelectFiler=0">
 					<query> 
 						select * from nodes where modularity in (:f1) AND "group" in (4) 
-						</query>
+					</query>
 				</dataSource>
-				<dataSource connector="excelD3Connector2" name="nodes2">
+				<dataSource connector="excelD3Connector2" name="nodes1"
+                                    condition="layerSelectFiler=1">
 					<query> 
 						select * from nodes where modularity in (:f1) AND "group" in (4) 
-						</query>
+					</query>
 				</dataSource>
-				<dataSource connector="excelD3Connector3" name="nodes3">
+				<dataSource connector="excelD3Connector3" name="nodes1"
+                                    condition="layerSelectFiler=2">
 					<query> 
 						select * from nodes where modularity in (:f1) AND "group" in (4) 
-						</query>
+					</query>
 				</dataSource>
 			</data>
 			<design>
