@@ -176,19 +176,22 @@
 				<dataSource connector="excelD3Connector1" name="nodes1" 
                                     condition="layerSelectFiler=0">
 					<query> 
-						select * from nodes where modularity in (:f1) AND "group" in (4) 
+                                            select * from nodes where modularity in (:f1) AND "group" in (4) 
+                                            AND geo in (:f2) AND time in (:f3)
 					</query>
 				</dataSource>
 				<dataSource connector="excelD3Connector2" name="nodes1"
                                     condition="layerSelectFiler=1">
 					<query> 
-						select * from nodes where modularity in (:f1) AND "group" in (4) 
+                                            select * from nodes where modularity in (:f1) AND "group" in (4) 
+                                            AND geo in (:f2) AND time in (:f3)
 					</query>
 				</dataSource>
 				<dataSource connector="excelD3Connector3" name="nodes1"
                                     condition="layerSelectFiler=2">
 					<query> 
-						select * from nodes where modularity in (:f1) AND "group" in (4) 
+                                            select * from nodes where modularity in (:f1) AND "group" in (4) 
+                                            AND geo in (:f2) AND time in (:f3)
 					</query>
 				</dataSource>
 			</data>
