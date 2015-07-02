@@ -11,8 +11,8 @@
 				<data>
 					<dataSource connector="$static_json" name="ds1">
 						<query>
-							[{"val":0,"id":"Claims Data"},{"val":1,"id":"Internal Data"},
-							{"val":2,"id":"Internal and External Data"}]
+							[{"val":0,"id":"Claims Data"},{"val":1,"id":"Claims Data with network"},
+							{"val":2,"id":"Claims External Data with network"}]
 						</query>
 					</dataSource>
 				</data>
@@ -56,7 +56,7 @@
 					</dataSource>
 				</data>
 			</filter>
-			<filter id="slider" type="singleSelect" template="slider.html" title="Slider">
+			<filter id="slider" type="singleSelect" template="slider.html" title="Fraud Score Slider">
 			<data>
 				<dataSource connector="$static_json" name="sliderData">
 					<query>
@@ -69,23 +69,6 @@
 	</dashboardInfo>
 
 	<widgets>
-<!-- 		<widget name="slider" container="slider" template="slider.html">
-			<title text="Fraud Score">
-				<style color="#333352" />
-			</title>
-			<data>
-				<dataSource connector="$static_json" name="sliderData">
-					<query>
-						[{"min":0,"max":100,"step":1}]
-					</query>
-				</dataSource>
-			</data>
-			<design>
-				<infographics>
-				</infographics>
-			</design>
-		</widget> -->
-
 		<widget name="forcedDirectedGraph" container="top-Left"
 			template="directedLayer1.html" zoom="true">
 			<title text="Claim Network Layer">
@@ -140,7 +123,7 @@
 
 		<widget name="forcedDirectedGraphDrilldown" container="top-Left"
 			template="directedLayer1Drilldown.html" zoom="true" state="hide">
-			<title text="Claim Network Layer">
+			<title text="Claim Network">
 				<style color="#333352" />
 			</title>
 			<data>
@@ -164,7 +147,7 @@
 				</dataSource>
 				<dataSource connector="excelD3Connector2" name="links"
 					condition="layerSelectFiler=1">
-					<query>select * from links where source = :claimId</query>
+					<query>select * from links where source = :claimId or target = :claimId</query>
 				</dataSource>
 				<dataSource connector="excelD3Connector" name="nodes"
 					condition="layerSelectFiler=2">
@@ -175,7 +158,7 @@
 				</dataSource>
 				<dataSource connector="excelD3Connector" name="links"
 					condition="layerSelectFiler=2">
-					<query>select * from links where source = :claimId</query>
+					<query>select * from links where source = :claimId or target = :claimId</query>
 				</dataSource>
 			</data>
 			<design>
