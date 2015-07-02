@@ -5,14 +5,6 @@
 		enableUiErrorMsgs="true">
 		<datasources>
 		
-			<datasource name="excelD3Connector"
-				class="com.saama.vividsense.datasource.excel.SpreadSheetConnectorFactory">
-				<properties>
-					<property key="url"
-						value="webcontent:/custom_project/xml/workshop/excel/Linklayer.xlsx" />
-				</properties>
-			</datasource>
-		
 			<datasource name="excelD3Connector1"
 				class="com.saama.vividsense.datasource.excel.SpreadSheetConnectorFactory">
 				<properties>
@@ -20,12 +12,20 @@
 						value="webcontent:/custom_project/xml/workshop/excel/Linklayer1.xlsx" />
 				</properties>
 			</datasource>
-			
+		
 			<datasource name="excelD3Connector2"
 				class="com.saama.vividsense.datasource.excel.SpreadSheetConnectorFactory">
 				<properties>
 					<property key="url"
 						value="webcontent:/custom_project/xml/workshop/excel/Linklayer2.xlsx" />
+				</properties>
+			</datasource>
+			
+			<datasource name="excelD3Connector3"
+				class="com.saama.vividsense.datasource.excel.SpreadSheetConnectorFactory">
+				<properties>
+					<property key="url"
+						value="webcontent:/custom_project/xml/workshop/excel/Linklayer3.xlsx" />
 				</properties>
 			</datasource>
 			

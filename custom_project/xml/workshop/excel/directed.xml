@@ -48,7 +48,7 @@
 							select unique(modularity) as modularity from nodes order by modularity
 						</query>
 					</dataSource>
-					<dataSource connector="excelD3Connector" name="ds1"
+					<dataSource connector="excelD3Connector3" name="ds1"
 						condition="layerSelectFiler=2">
 						<query>
 							select unique(modularity) as modularity from nodes order by modularity
@@ -100,14 +100,14 @@
 					<query>select * from links 
 					</query>
 				</dataSource>
-				<dataSource connector="excelD3Connector" name="nodes"
+				<dataSource connector="excelD3Connector3" name="nodes"
 					condition="layerSelectFiler=2">
 					<query>
 						select * from nodes where "group" in (1,2,3,5,6,7) OR 
 						(modularity in (:f1) AND geo in (:f2) AND time in (:f3))
 					</query>
 				</dataSource>
-				<dataSource connector="excelD3Connector" name="links"
+				<dataSource connector="excelD3Connector3" name="links"
 					condition="layerSelectFiler=2">
 					<query>
 						select * from links
@@ -149,14 +149,14 @@
 					condition="layerSelectFiler=1">
 					<query>select * from links where source = :claimId or target = :claimId</query>
 				</dataSource>
-				<dataSource connector="excelD3Connector" name="nodes"
+				<dataSource connector="excelD3Connector3" name="nodes"
 					condition="layerSelectFiler=2">
 					<query>
 						select * from nodes where "group" in (1,2,3,5,6,7) OR 
 						(modularity in (:f1) AND geo in (:f2) AND time in (:f3))
 					</query>
 				</dataSource>
-				<dataSource connector="excelD3Connector" name="links"
+				<dataSource connector="excelD3Connector3" name="links"
 					condition="layerSelectFiler=2">
 					<query>select * from links where source = :claimId or target = :claimId</query>
 				</dataSource>
@@ -172,7 +172,17 @@
 				<style color="#333352"/>
 			</title>
 			<data>
-				<dataSource connector="excelD3Connector" name="nodes1">
+				<dataSource connector="excelD3Connector1" name="nodes1">
+					<query> 
+						select * from nodes where modularity in (:f1) AND "group" in (4) 
+						</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector2" name="nodes2">
+					<query> 
+						select * from nodes where modularity in (:f1) AND "group" in (4) 
+						</query>
+				</dataSource>
+				<dataSource connector="excelD3Connector3" name="nodes3">
 					<query> 
 						select * from nodes where modularity in (:f1) AND "group" in (4) 
 						</query>
