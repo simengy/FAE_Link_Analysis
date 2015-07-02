@@ -69,7 +69,9 @@
     }
 
     var getNodeColor = function(d) {
-      if (d.modularity >= sliderMin && d.modularity <= sliderMax) {
+     console.log(sliderMin,sliderMax,d); 
+        
+     if (d.fraudScore >= sliderMin && d.fraudScore <= sliderMax) {
         return color(d.group);
       } else {
         return "rgb(192, 192, 192)";
@@ -200,19 +202,19 @@
       legend.append("text").attr("x", width - 24).attr("y", 410).attr("x", 15)
           .attr("dy", ".35em").style("text-anchor", "start").text(
               function(d, e) {
-                if (d === 3) {
+                if (d === 4) {
                   return "ClaimID"
-                } else if (d === 2) {
-                  return "Claimant"
                 } else if (d === 1) {
-                  return "Body Shop"
-                } else if (d === 4) {
-                  return "Doctor"
-                } else if (d === 5) {
-                  return "Inspector"
-                } else if (d === 6) {
-                  return "Lawyer"
+                  return "Claimant"
                 } else if (d === 7) {
+                  return "Body Shop"
+                } else if (d === 3) {
+                  return "Doctor"
+                } else if (d === 6) {
+                  return "Inspector"
+                } else if (d === 5) {
+                  return "Lawyer"
+                } else if (d === 2) {
                   return "Towing Company"
                 }
                 console.log(d, e);

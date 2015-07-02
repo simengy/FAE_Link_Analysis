@@ -18,19 +18,21 @@
 			<li><b>Name:</b>{{currentNode.data.name}}</li>
 			<li><b>Degree:</b>{{currentNode.data.weight}}</li>
 			<li><b>Modularity:</b>{{currentNode.data.modularity}}</li>
+			<li><b>Geo:</b>{{currentNode.data.geo}}</li>
+			<li><b>Time:</b>{{currentNode.data.time}}</li>
 		</ul>
 		<table>
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>Time</th>
 					<th>PageRank</th>
+					<th>fraudScore</th>
 				</tr>
 			</thead>
 			<tr data-ng-repeat="n in currentNode.links">
 				<td>{{n.name}}</td>
-				<td>{{n.time}}</td>
 				<td>{{n.PageRank}}</td>
+				<td>{{n.fraudScore}}</td>
 			</tr>
 		</table>
 	</div>
@@ -72,10 +74,16 @@
     var getLinkedNodes = function(nodeName, l, n) {
       var link = [];
       var node = null;
+	  var linkIds = [];
       for (var i = 0; i < l.length; i++) {
         node = l[i];
-        if (node.source === nodeName) {
-          link.push(getNodeByName(node.target, n));
+		console.log(nodeName,node);
+        if (node.source === nodeName || node.target === nodeName) {
+		  var nn = getNodeByName(node.target === nodeName ? node.source : node.target, n);
+		  if(linkIds.lastIndexOf(nn.name) === -1){
+			link.push(nn);
+			linkIds.push(nn.name);
+		  }
         }
       }
       return link;
@@ -95,7 +103,7 @@
     
     
     var getNodeColor = function(d){
-      if(d.modularity >= sliderMin && d.modularity <= sliderMax){
+      if(d.fraudScore >= sliderMin && d.fraudScore <= sliderMax){
         return color(d.group);          
       }else{
         return "rgb(192, 192, 192)";
@@ -212,19 +220,19 @@
         .attr("dy", ".35em")
 		.style("text-anchor", "start").text(
               function(d, e) {
-                if (d === 3) {
+                if (d === 4) {
                   return "ClaimID"
-                } else if (d === 2) {
-                  return "Claimant"
                 } else if (d === 1) {
-                  return "Body Shop"
-                } else if (d === 4) {
-                  return "Doctor"
-                } else if (d === 5) {
-                  return "Inspector"
-                } else if (d === 6) {
-                  return "Lawyer"
+                  return "Claimant"
                 } else if (d === 7) {
+                  return "Body Shop"
+                } else if (d === 3) {
+                  return "Doctor"
+                } else if (d === 6) {
+                  return "Inspector"
+                } else if (d === 5) {
+                  return "Lawyer"
+                } else if (d === 2) {
                   return "Towing Company"
                 }
                 console.log(d, e);
@@ -250,9 +258,27 @@
     $scope.$watch("widgetData.data", function() {
       resetSliderData();
       var graph = $.extend(true, {}, $scope.widgetData.data);
-      $scope.currentNode.data = graph.nodes[0];
-      console.log(">>",graph);
-      render(graph.nodes, graph.links);
+
+      $scope.currentNode.data = null;
+
+	  var nodeId = null;
+	  graph.links.forEach(function(e){
+		if(e.target.startsWith("ClaimID") || e.source.startsWith("ClaimID")){
+			nodeId = e.target.startsWith("ClaimID") ? e.target : e.source;
+		}
+	  });
+	  graph.nodes.forEach(function(e){
+		if(e.name === nodeId){
+			$scope.currentNode.data = e;
+			return;
+		}
+	  });
+
+      $scope.currentNode.links = getLinkedNodes(nodeId,graph.links,graph.nodes);
+
+      console.log($scope.currentNode);
+	  
+	  render(graph.nodes, graph.links);
 
     });
   };
