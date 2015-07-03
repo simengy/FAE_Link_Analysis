@@ -21,18 +21,18 @@
 			<li><b>Geo:</b>{{currentNode.data.geo}}</li>
 			<li><b>Time:</b>{{currentNode.data.time}}</li>
 		</ul>
-		<table>
+		<table border="1" style="width:100%">
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>PageRank</th>
-					<th>fraudScore</th>
+                                    <td align="center"><b>Name</b></td>
+                                    <td align="center"><b>PageRank</b></td>
+                                            <td align="center"><b>Fraud Score</b></td>
 				</tr>
 			</thead>
 			<tr data-ng-repeat="n in currentNode.links">
-				<td>{{n.name}}</td>
-				<td>{{n.PageRank}}</td>
-				<td>{{n.fraudScore}}</td>
+				<td align="center">{{n.name}}</td>
+				<td align="center">{{n.PageRank}}</td>
+				<td align="center">{{n.fraudScore}}</td>
 			</tr>
 		</table>
 	</div>
