@@ -125,14 +125,13 @@
 
       var node = svg.selectAll(".node").data(n).enter().append("circle").attr(
           "class", "node").attr("r", function(d) {
-        if (d.weight === 0) {
-          return 0;
-        }
-
         if (d.group === 4) {
           return 5.0;
+        } else if (d.weight === 0) {
+          return 0;
+        } else {
+          return d.PageRank * 4000;
         }
-        return d.PageRank * 4000;
       })
       //Change modularity color here
       .style("fill", function(d) {
