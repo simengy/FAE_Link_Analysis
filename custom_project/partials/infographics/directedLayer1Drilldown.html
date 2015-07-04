@@ -14,13 +14,16 @@
 <div data-ng-controller="D3ControllerLayer1Drilldown">
 	<div class="well">
 <!-- 		<a href="" style="float: right" data-ng-click="closeDetails()">X</a> -->
-		<ul>
-			<li><b>Name:</b>{{currentNode.data.name}}</li>
-			<li><b>Degree:</b>{{currentNode.data.weight}}</li>
-			<li><b>Modularity:</b>{{currentNode.data.modularity}}</li>
-			<li><b>Geo:</b>{{currentNode.data.geo}}</li>
-			<li><b>Time:</b>{{currentNode.data.time}}</li>
-		</ul>
+		<table>
+                        <tr><td width="15%"><b>Name:</b></td><td>{{currentNode.data.name}}</td></tr>
+			<tr><td width="15"><b>Degree:</b></td><td>{{currentNode.data.weight}}</td></tr>
+			<tr><td width="15%"><b>Community:</b></td><td>{{currentNode.data.modularity}}</td></tr>
+			<tr><td width="15%"><b>Location:</b></td><td>{{currentNode.data.geo}}</td></tr>
+			<tr><td width="15%"><b>Timestamp:</b></td><td>{{currentNode.data.time}}</td></tr>
+		</table>
+                <ul>
+                    <li>     </li>
+                </ul>
 		<table border="1" style="width:100%">
 			<thead>
 				<tr>
